@@ -1,0 +1,14 @@
+/*PROPRIEDADES DO TEXTO 'SOBRE MIM' DA SKY*/
+.sobre-mim {
+    font-size: 1.45em;
+    color: white;
+    line-height: 28px;
+    padding-top: 10%;
+    display: flex;
+    align-items: center;
+   justify-content: center;
+}
+.skai-photo {
+    margin-right: 50px;
+    width: 30%;
+}

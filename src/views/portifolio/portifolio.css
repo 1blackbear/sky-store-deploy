@@ -1,0 +1,78 @@
+.first-part {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("/src/images/background-portifolio.svg");
+    background-color: #90CBEB;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.first-section {
+    padding-bottom: 12%;
+}
+h3 {
+    font-family: 'Architects Daughter', cursive;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+}
+#button:hover {
+    cursor: pointer;
+}
+#linha-fotos {
+    background-color: white;
+}
+.fotos{
+    width: 100%;  
+}
+.fotos:hover{
+    transition: opacity .2s linear;
+    transform: scale(1.05);
+}
+.coluna {
+    padding: 0px;
+}
+.col-image {
+    padding-bottom: 5px;
+    padding-right:2.5px;
+}
+.col2-image{
+    padding-bottom: 5px;
+    padding-left:2.5px;
+}
+.arrow{
+    margin-top: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.arrow span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+.arrow span:nth-child(2){
+    animation-delay: -0.2s;
+}
+.arrow span:nth-child(3){
+    animation-delay: -0.4s;
+}
+@keyframes animate {
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px,-20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(20px,20px);
+    }
+}

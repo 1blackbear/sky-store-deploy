@@ -1,0 +1,81 @@
+/*Moda login*/
+.button-save {
+    background-color: #90cbeb; 
+    border-style: none;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.button-save:hover {
+    background-color: #707070; 
+}
+
+.button-save:visited {
+    background-color: #707070 !important;
+}
+
+.button-save:active {
+    background-color: #707070 !important;
+}
+
+.btn-secondary{
+    background-color: #707070;
+    margin: 5px;
+    margin-top: 15px;
+    border-style: none;
+}
+
+.cadastro {
+    margin-top: 10px;
+}
+.voltarLogin i {
+    margin-right: 8px;
+}
+.cadastro a, .voltarLogin a{
+    align-items: center;
+    color: rgb(56, 56, 56);
+}
+
+.cadastro a:hover, .voltarLogin a:hover{
+    color: #90cbeb;
+}
+
+.cadastro a i {
+    margin-right: 5px;
+}
+
+.cadastro i {
+    margin-right: 5px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-check {
+    
+    display: flex;
+    justify-content:space-between;
+    align-items: center; 
+}
+
+.form-group{
+    padding-left: 0px;
+    padding-bottom: 13px; 
+}
+
+/*Modal esqueci minha senha*/
+.esqueci a{
+    color: rgb(56, 56, 56);
+}
+
+.esqueci a:hover{
+    color: #90cbeb;
+}
+
+.esqueci a i {
+    margin-right: 5px;
+}
+

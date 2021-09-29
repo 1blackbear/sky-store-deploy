@@ -1,0 +1,17 @@
+.button {
+    display: flex;
+    justify-content: center;
+    padding: 25px 35px;
+    background-color: white;
+    border-radius: 80px;
+    border-style: none;
+    color: #707070;
+    font-size: 1.25em;
+}
+.playIcon {
+    font-size: 1.7em !important;
+}
+.button:hover {
+    background-color: #707070;
+    color: white;
+}

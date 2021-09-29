@@ -1,0 +1,40 @@
+.valor-artes{
+    text-decoration: none;
+    color: #68747b;
+    font-size: 14px;
+ 
+}
+
+.descricao{
+    font-size: 14px;
+    color: #68747b;
+}
+
+.part1-body{
+    padding:0;
+    margin-bottom: 13px;
+    margin-top: 10px;
+
+}
+.part2-body{
+padding:0;
+   
+}
+
+.produtos{
+    margin: 40px;
+    border: white;
+}
+
+.part1{
+    margin-top: 80px;
+}
+
+.card-part{
+    height: 100rem;
+    background-color: white ;
+}
+
+.artes-img{
+    border: 1px solid #c8cdf4;
+}

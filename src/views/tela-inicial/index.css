@@ -1,0 +1,77 @@
+/*ALINHAMENTOS DE ELEMENTOS DA PAG INICIAL*/
+.start-page-back{
+    background-image: url("/src/images/background.svg");
+    background-repeat: no-repeat;
+    background-size:100%;
+    background-position:0 -100px;
+    width: 100%;
+    height: 90vh;
+}
+.start-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 60%;
+}
+
+/*PROPRIEDADES DO TEXTO 'SOBRE MIM' DA SKY*/
+.start-page p{
+    margin-right: 120px;
+    font-size: 1.45em;
+    color: white;
+    line-height: 28px;
+}
+
+/*HIPERLINK SAIBA MAIS*/
+.saiba-mais {
+    color: #707070;
+}
+.saiba-mais:hover {
+    color: white;
+    cursor: pointer;
+}
+
+/*PROPRIEDADES BOTÃO 'ENCOMENDE COM A SKY'*/
+.botao-main{
+    width: 100%;
+    margin-right: 200px;
+}
+
+.logo-mobile {
+    display: none;
+}
+
+/*-------RESPONSIVIDADE*-------*/
+@media screen and (max-height: 1024px) and (min-height: 950px) {
+    #root, .start-page{ 
+        height: 25% !important;
+    }
+}
+
+ @media screen and (max-width: 768px){
+    p, .botao-main{
+        display: none;
+    }
+    .logo-mobile {
+        display: block;
+        width: 100%;
+        margin-bottom: 50px;
+        margin-left: 5px;
+    }
+ }
+
+ @media screen and (max-width: 1200px) and (min-width: 768px) {
+    .start-page p {
+        font-size: 16px;
+        margin-right: 80px;
+    }
+}
+
+ /*IPAD PRO*/
+ @media screen and (min-height: 1300px) and (max-width: 1025px){
+    #root, .start-page{ 
+        height: 10% !important;
+    }
+ }
+ /*-------RESPONSIVIDADE*-------*/

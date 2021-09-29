@@ -1,0 +1,26 @@
+.btnMobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --primary: #fff;
+    }
+    
+    .btnMobile {
+        text-decoration: none;
+        display: block;
+        margin-left: 20px;
+        margin-top: 10px;
+        padding: 8px 30px;
+        border-radius: 4px;
+        outline: none;
+        border: none;
+        font-weight: bold;
+        font-size: 18px;
+        color:#383838; 
+        cursor: pointer;
+        background-color: var(--primary);
+    }
+} 
+  
