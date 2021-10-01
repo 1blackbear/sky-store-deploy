@@ -44,12 +44,20 @@
 
 /*-------RESPONSIVIDADE*-------*/
 @media screen and (max-height: 1024px) and (min-height: 950px) {
+    
+    
     #root, .start-page{ 
         height: 25% !important;
     }
 }
 
  @media screen and (max-width: 768px){
+    .start-page-back{
+        background-image: url("/src/images/background-mobile.svg");
+        background-position-x: -40px;
+        background-position-y: 80px;
+        background-size: 120%;
+    }
     p, .botao-main{
         display: none;
     }

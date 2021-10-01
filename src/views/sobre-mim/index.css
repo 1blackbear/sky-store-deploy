@@ -12,3 +12,17 @@
     margin-right: 50px;
     width: 30%;
 }
+@media screen and (max-width: 768px) {
+    .sobre-mim{
+        padding-bottom: 50%;
+    }
+    .text-about {
+        margin-top: 50px;
+        color: #707070;
+        text-align: center;
+    }
+    .skai-photo {
+        margin-right: 0px;
+        width: 80%;
+    }
+}

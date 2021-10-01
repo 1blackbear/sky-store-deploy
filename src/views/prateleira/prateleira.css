@@ -31,10 +31,17 @@ padding:0;
 }
 
 .card-part{
-    height: 100rem;
-    background-color: white ;
+    height: max-content;
+    margin-bottom: 10%;
 }
 
 .artes-img{
     border: 1px solid #c8cdf4;
+}
+
+@media screen and (max-width: 768px) {
+    .card-part {
+        margin-top: -10%;
+        
+    }
 }

@@ -8,6 +8,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import {  Link } from "react-router-dom";
 import { ButtonMobile } from './button-login/button.js';
 import ModalCadastro from '../modal-cadastro/modal-cadastro';
+import ModalCompartilha from '../modal-compartilhar/modal-compartilhar.js';
 import ModalLogin from './modal-login/modal-login';
 import { Dropdown } from 'react-bootstrap';
 import ModalEsqueciSenha from './modal-login/modal-esquecisenha/modal-esquecisenha';
@@ -51,9 +52,15 @@ function MenuSuperior() {
      const [showEsq, setShowEsq] = useState(false);
      const handleCloseEsq = () => setShowEsq(false);
 
+    /*Funções para abrir e fechar o Modal de compartilhamento */
+    const [showcomp, setShowComp] = useState(false);
+    const handleCloseComp = () => setShowComp(false);
+    const handleShowComp = () => setShowComp(true);   
+
     /* Funções para abrir e fechar o modal de cadastro, login e esqueci a senha e sair*/
     const [showCad, setShowCad] = useState(false);
     const handleCloseCad = () => setShowCad(false);
+    
     const handleCloseLogin = () => {
         setShowCad(false);
         setShow(true);
@@ -99,7 +106,11 @@ function MenuSuperior() {
                     <a href="#" onClick={handleShow} className="button-link"><ButtonMobile id="button-mobile" /></a>
                 </ul>
                 <div className="icons col-2">
-                    <a href="#"><ShareIcon className="menu-icons" style={{ fontSize: 25 }} /></a>
+                    <a href="#"><ShareIcon className="menu-icons" onClick={handleShowComp} style={{ fontSize: 25 }} /></a>
+                    <ModalCompartilha
+                    show={showcomp}
+                        onHide={handleCloseComp}
+                    />
                     {!GetCurrentUser() && <>
                         <a href="#"><PersonIcon onClick={handleShow} className="menu-icons" style={{ fontSize: 28 }} /></a>
                     </>}

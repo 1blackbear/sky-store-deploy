@@ -72,6 +72,13 @@ ul {
   
 
 @media screen and (max-width: 768px) {
+    .menu{
+        background-image: url("/src/images/background-mobile-menu.svg");
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: 100%;
+        height: 35vh !important;
+    }
     .logo, .menu-icons {
         display:none !important;
     }
@@ -83,7 +90,7 @@ ul {
         transform: translate(-130%, 180%);
         font-size: 1.8rem;
         cursor: pointer;
-        z-index: 1;
+        z-index: 5;
       }
       .fa-times, .fa-bars {
         color: #fff;
@@ -109,7 +116,7 @@ ul {
         opacity: 0.5;
         align-items: center;
         transition: all 0.5s ease;
-        z-index: 0.99;
+        z-index: 4;
       }
 
       .nav-link {
