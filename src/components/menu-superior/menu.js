@@ -17,8 +17,9 @@ import { auth } from '../../config/firebase.js';
 function MenuSuperior() {
 
     /*Atributos do usuário atual */
+    const [userAdmin, setUser] = useState(null);
+
     function GetCurrentUser() {
-        const [userAdmin, setUser] = useState(null);
         useEffect(() => {
             auth.onAuthStateChanged(user => {
                 if (user) {
@@ -34,8 +35,6 @@ function MenuSuperior() {
         }, [])
         return userAdmin;
     }
-
-    const userAdmin = GetCurrentUser();
    
 
     /*Atributos do login e do cadastro */
@@ -101,10 +100,10 @@ function MenuSuperior() {
                 </ul>
                 <div className="icons col-2">
                     <a href="#"><ShareIcon className="menu-icons" style={{ fontSize: 25 }} /></a>
-                    {!userAdmin && <>
+                    {!GetCurrentUser() && <>
                         <a href="#"><PersonIcon onClick={handleShow} className="menu-icons" style={{ fontSize: 28 }} /></a>
                     </>}
-                    {userAdmin && <>
+                    {GetCurrentUser() && <>
                         <Dropdown id="dropdown">
                             <Dropdown.Toggle variant="success" id="dropdown-basic"/>
                             <Dropdown.Menu>

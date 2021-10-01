@@ -1,0 +1,10 @@
+/*Propriedades dos ícones de visibilidade de senha*/
+.visibility {
+    color: #707070;
+    font-size: 1.2em;
+    background-color: transparent;
+    border-left: none;
+}
+.inputText {
+    border-right: none;
+}

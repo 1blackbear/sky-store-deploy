@@ -11,17 +11,43 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
 
-    function logar() {
+    const [errorMsg, setErrorMsg] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
 
+    function logar(e) {
+        e.preventDefault();
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, senha)
             .then((resultado) => {
-                onHide();
+                setEmail("");
+                setSenha("");
+                setErrorMsg('');
+                setSuccessMsg('Logado com sucesso! Um momentinho para redirecionarmos você. ^.^');
+                console.log(resultado);
+                setTimeout(() => {
+                    setSuccessMsg('');
+                    setErrorMsg('');
+                    onHide();
+                }, 3000)
                 //var user = userCredential.user;
-                // ...
             })
             .catch((error) => {
-                console.log(error);
+                switch (error.message) {
+                    case 'Firebase: Error (auth/user-not-found).':
+                        setErrorMsg('Ooops! E-mail não encontrado. Tente novamente! :(');
+                        break;
+                    case 'Firebase: Error (auth/invalid-email).':
+                        setErrorMsg('Ooops! Formato de e-mail inválido. Tente novamente! :(');
+                        break;
+                    case 'Firebase: Error (auth/internal-error).':
+                        setErrorMsg('Ooops! Campo de senha vazio. Tente novamente! :(');
+                        break;
+                    case 'Firebase: Error (auth/wrong-password).':
+                        setErrorMsg('Ooops! Senha incorreta. Tente novamente! :(');
+                        break;
+                    default:
+                        setErrorMsg(error.message);
+                }
                 //alert(error)
                 // var errorCode = error.code;
                 // var errorMessage = error.message;
@@ -54,6 +80,12 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
                                 <label for="exampleInputPassword1">Senha</label>
                                 <input onChange={(e) => setSenha(e.target.value)} type="password" class="form-control" id="exampleInputPassword1" />
                             </div>
+                            {successMsg && <>
+                                <div className='success-msg'>{successMsg}</div>
+                            </>}
+                            {errorMsg && <>
+                                <div className='error-msg'>{errorMsg}</div>
+                            </>}
                             <div class="form-group form-check">
                                 <div class="esqueci-part">
                                     <label onClick={showEsq} class="esqueci" for="" ><a href="#">Esqueci minha senha</a></label>

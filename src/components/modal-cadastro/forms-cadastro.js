@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, InputGroup } from 'react-bootstrap';
 import Usuario from "./usuario";
+import './index.css';
+
 
 const FormsCadastro = () => {
 
@@ -9,6 +11,10 @@ const FormsCadastro = () => {
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
+
+    const [typeInput, setTypeInput] = useState("password");
+    const [typeInput2, setTypeInput2] = useState("password");
+
 
     const user = new Usuario;
 
@@ -40,23 +46,38 @@ const FormsCadastro = () => {
                     <Col>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label className="titulo-campo">Senha</Form.Label>
+                            <InputGroup>
                             <Form.Control
-                                type="password"
+                                type={typeInput}
                                 placeholder="Senha"
                                 value={senha}
                                 onChange={(e) => setSenha(e.target.value)}
+                                className="inputText"
                             />
+                                <InputGroup.Text className="visibility" ><a onClick={() => { if (typeInput == "password")  setTypeInput("text"); else setTypeInput("password");} }>
+                                    {typeInput == "password" && <i class="fas fa-eye"></i>}
+                                    {typeInput != "password" && <i class="fas fa-eye-slash"></i>}
+                                    </a></InputGroup.Text>
+                            </InputGroup>
+                            
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label className="titulo-campo">Confirmar Senha</Form.Label>
-                            <Form.Control
-                                type="password"
-                                placeholder="Confirmar Senha"
-                                value={confirmSenha}
-                                onChange={(e) => setConfirmSenha(e.target.value)}
-                            />
+                            <InputGroup>
+                                <Form.Control
+                                    type={typeInput2}
+                                    placeholder="Confirmar Senha"
+                                    value={confirmSenha}
+                                    onChange={(e) => setConfirmSenha(e.target.value)}
+                                    className="inputText"
+                                />
+                                <InputGroup.Text className="visibility" ><a onClick={() => { if (typeInput2 == "password")  setTypeInput2("text"); else setTypeInput2("password");} }>
+                                    {typeInput2 == "password" && <i class="fas fa-eye"></i>}
+                                    {typeInput2 != "password" && <i class="fas fa-eye-slash"></i>}
+                                    </a></InputGroup.Text>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>

@@ -1,4 +1,4 @@
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import FechaCadastro from "./botao-fechar";
 import FormsCadastro from "./forms-cadastro";
 

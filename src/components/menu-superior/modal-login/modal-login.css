@@ -79,3 +79,9 @@
     margin-right: 5px;
 }
 
+.success-msg {
+    color: green;
+}
+.error-msg {
+    color: red;
+}

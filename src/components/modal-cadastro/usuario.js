@@ -1,5 +1,5 @@
 import React from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 class Usuario extends React.Component {
     constructor() {
