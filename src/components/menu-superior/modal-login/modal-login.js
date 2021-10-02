@@ -1,4 +1,4 @@
-import { Modal } from 'react-bootstrap';
+import { Modal, InputGroup } from 'react-bootstrap';
 import { useState } from "react";
 import './modal-login.css';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -13,6 +13,8 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
 
     const [errorMsg, setErrorMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
+
+    const [typeInput, setTypeInput] = useState("password");
 
     function logar(e) {
         e.preventDefault();
@@ -78,7 +80,13 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Senha</label>
-                                <input onChange={(e) => setSenha(e.target.value)} type="password" class="form-control" id="exampleInputPassword1" />
+                                <InputGroup>
+                                <input onChange={(e) => setSenha(e.target.value)} type={typeInput} className="form-control inputText" id="exampleInputPassword1" />
+                                <InputGroup.Text className="visibility" ><a onClick={() => { if (typeInput == "password") setTypeInput("text"); else setTypeInput("password"); }}>
+                                        {typeInput == "password" && <i class="fas fa-eye"></i>}
+                                        {typeInput != "password" && <i class="fas fa-eye-slash"></i>}
+                                    </a></InputGroup.Text>
+                                </InputGroup>
                             </div>
                             {successMsg && <>
                                 <div className='success-msg'>{successMsg}</div>

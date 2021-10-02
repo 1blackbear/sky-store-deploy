@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from '../../images/logo.svg';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/ShareOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ButtonMobile } from './button-login/button.js';
 import ModalCadastro from '../modal-cadastro/modal-cadastro';
 import ModalCompartilha from '../modal-compartilhar/modal-compartilhar.js';
@@ -18,13 +18,19 @@ import { auth } from '../../config/firebase.js';
 function MenuSuperior() {
 
     /*Atributos do usuário atual */
-    const [userAdmin, setUser] = useState(null);
+    const [userCommun, setUser] = useState(null);
+    const [userAdmin, setUserAdmin] = useState(false);
+
 
     function GetCurrentUser() {
         useEffect(() => {
             auth.onAuthStateChanged(user => {
                 if (user) {
                     if (user.uid.toString() == "UGr7iwkw4ONmIlS16rJzROSTQ6A3") {
+                        setUser(user);
+                        setUserAdmin(true);
+                    } else {
+                        setUserAdmin(false);
                         setUser(user);
                     }
                 }
@@ -34,37 +40,42 @@ function MenuSuperior() {
                 }
             })
         }, [])
-        return userAdmin;
+        return userCommun;
     }
-   
+
 
     /*Atributos do login e do cadastro */
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false); 
+    const closeMobileMenu = () => setClick(false);
 
     /*Funções para abrir e fechar o Modal de Login */
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-     /* Funções para abrir e fechar o modal de esqueci minha senha*/
-     const [showEsq, setShowEsq] = useState(false);
-     const handleCloseEsq = () => setShowEsq(false);
+    /* Funções para abrir e fechar o modal de esqueci minha senha*/
+    const [showEsq, setShowEsq] = useState(false);
+    const handleCloseEsq = () => setShowEsq(false);
 
     /*Funções para abrir e fechar o Modal de compartilhamento */
     const [showcomp, setShowComp] = useState(false);
     const handleCloseComp = () => setShowComp(false);
-    const handleShowComp = () => setShowComp(true);   
+    const handleShowComp = () => setShowComp(true);
 
     /* Funções para abrir e fechar o modal de cadastro, login e esqueci a senha e sair*/
     const [showCad, setShowCad] = useState(false);
     const handleCloseCad = () => setShowCad(false);
-    
+
     const handleCloseLogin = () => {
         setShowCad(false);
         setShow(true);
         setShowEsq(false);
+    }
+    const handleCloseEsqueci = () => {
+        setShowEsq(false);
+        setShow(true);
+        setShowCad(false);
     }
     const handleShowCad = () => {
         setShowCad(true);
@@ -76,7 +87,7 @@ function MenuSuperior() {
         setShowEsq(true);
         setShow(false);
     }
-    const handleLogout = () => { 
+    const handleLogout = () => {
         auth.signOut();
     }
 
@@ -106,24 +117,44 @@ function MenuSuperior() {
                     <a href="#" onClick={handleShow} className="button-link"><ButtonMobile id="button-mobile" /></a>
                 </ul>
                 <div className="icons col-2">
+ 
                     <a href="#"><ShareIcon className="menu-icons" onClick={handleShowComp} style={{ fontSize: 25 }} /></a>
                     <ModalCompartilha
-                    show={showcomp}
+                        show={showcomp}
                         onHide={handleCloseComp}
                     />
                     {!GetCurrentUser() && <>
-                        <a href="#"><PersonIcon onClick={handleShow} className="menu-icons" style={{ fontSize: 28 }} /></a>
+                        <a href="#" onClick={handleShow} id="login-button"><i class="fas fa-sign-in-alt" /></a>
                     </>}
                     {GetCurrentUser() && <>
-                        <Dropdown id="dropdown">
-                            <Dropdown.Toggle variant="success" id="dropdown-basic"/>
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
-                                <Dropdown.Item href="/adiciona-portifolio">Adicionar item portifólio</Dropdown.Item>
-                                <Dropdown.Item href="/adiciona-prateleira">Adicionar item prateleira</Dropdown.Item>
-                                <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        {!userAdmin && <>
+                            {/*<a id="text-user"> Olá, estranho</a>*/}
+                            <Dropdown >
+                                <Dropdown.Toggle variant="success" id="dropdown-logged">
+                                    
+                                    <a href="#"><PersonIcon className="menu-icons" style={{ fontSize: 28 }} /></a>
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
+                                    <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            
+                        </>
+                        }
+                        {userAdmin && <>
+                            <Dropdown id="dropdown">
+                                <Dropdown.Toggle variant="success" id="dropdown-basic" />
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
+                                    <Dropdown.Item href="/adiciona-portifolio">Adicionar item portifólio</Dropdown.Item>
+                                    <Dropdown.Item href="/adiciona-prateleira">Adicionar item prateleira</Dropdown.Item>
+                                    <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </>
+                        }
+
 
                     </>}
                     <a href="#"><ShoppingCartOutlinedIcon className="menu-icons" style={{ fontSize: 25 }} /></a>
@@ -152,6 +183,7 @@ function MenuSuperior() {
                     {/*Modal  de Esqueci Minha Senha */}
                     <ModalEsqueciSenha
                         showEsq={showEsq}
+                        voltaLogin={handleCloseEsqueci}
                         handleCloseLogin={handleCloseLogin}
                         handleCloseEsq={handleCloseEsq}
                     >

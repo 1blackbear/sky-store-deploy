@@ -1,12 +1,11 @@
-import { Modal } from 'react-bootstrap';
-import FechaCadastro from "./botao-fechar";
+import { Modal, Button } from 'react-bootstrap';
+
 import FormsCadastro from "./forms-cadastro";
+import Usuario from "./usuario";
 
 const ModalCadastro = ({show, onHide, voltaLogin, toggle}) => {
-
+       
     return (
-
-
         <div>
             {/*Modal de Cadastro */}
             <Modal
@@ -20,16 +19,10 @@ const ModalCadastro = ({show, onHide, voltaLogin, toggle}) => {
                     <Modal.Title>Cadastrar novo usuário</Modal.Title>
                 </Modal.Header>
                 <Modal.Body id="modal-body">
-                    <FormsCadastro>
+                    <FormsCadastro voltaLogin={voltaLogin} toggle={toggle}>
                     </FormsCadastro>                
                 </Modal.Body>
-                <Modal.Footer className="modal-footer footer">
-                <label onClick={voltaLogin} for="" class="voltarLogin"><a href="#"><i class="fas fa-arrow-left"></i>Já possuo conta!</a></label>
-                    <FechaCadastro
-                        onClick={toggle}
-                    >
-                    </FechaCadastro>
-                </Modal.Footer>
+                
             </Modal >
             {/*Modal  de Cadastro */}
         </div>

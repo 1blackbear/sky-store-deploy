@@ -4,7 +4,7 @@ import '../modal-login.css';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 
-const ModalEsqueciSenha = ({ showEsq, handleCloseLogin, handleCloseEsq }) => {
+const ModalEsqueciSenha = ({ showEsq, handleCloseLogin, handleCloseEsq, voltaLogin }) => {
 
     /*Atributos do esqueci minha senha */
     const [sending, setSending] = useState(false);
@@ -52,9 +52,13 @@ const ModalEsqueciSenha = ({ showEsq, handleCloseLogin, handleCloseEsq }) => {
                                         <label for="exampleInputEmail1">Email</label>
                                         <input onChange={(e) => setEmail(e.target.value)} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                     </div>
-                                    <div class="form-group">
-                                        <button type="submit" className="btn btn-primary button-save" onClick={redefinir}>Refefinir senha</button>
-                                        <button className="btn btn-secondary" onClick={handleCloseEsq}>Fechar</button>
+                                    <div class="form-group d-flex justify-content-between align-items-center">
+                                        <label onClick={voltaLogin} for="" class="voltarLogin"><a href="#"><i class="fas fa-arrow-left"></i>Voltar ao login</a></label>
+                                        <div>
+                                            <button type="submit" className="btn btn-primary button-save" onClick={redefinir}>Refefinir senha</button>
+                                            <button className="btn btn-secondary" onClick={handleCloseEsq}>Fechar</button>
+                                        </div>
+
                                     </div>
                                 </form>
                                 {/*Forms de esqueci minha senha */}

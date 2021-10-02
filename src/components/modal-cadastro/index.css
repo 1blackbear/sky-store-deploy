@@ -8,3 +8,21 @@
 .inputText {
     border-right: none;
 }
+#modal-body{
+    height: 52vh;
+}
+#footer-cadastro {
+    margin-top: 10px;
+    height: max-content;
+}
+
+@media screen and (max-width: 768px) {
+    #modal-body{
+        height: unset;
+    }
+}
+@media screen and  (max-height: 760px) {
+    #modal-body{
+        height: unset;
+    }
+}
