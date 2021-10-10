@@ -1,0 +1,26 @@
+.first-section-detail {
+    background-color: #90CBEB;
+    height: 65vh;
+    margin-bottom: 2vh;
+}
+.first-col-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    color: white;
+}
+.first-col-detail h1 {
+    font-weight: bold;
+}
+.first-col-detail p {
+    margin-left: 25%;
+    max-width: 50%;
+}
+.first-detail-image {
+    width: 100%;  
+}
+.col-detail {
+    padding: 0px;
+}

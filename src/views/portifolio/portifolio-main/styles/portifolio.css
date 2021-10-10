@@ -6,6 +6,7 @@
     background-color: #90CBEB;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 5px;
 }
 .first-section {
     padding-bottom: 12%;
@@ -33,7 +34,7 @@ h3 {
 }
 .col-image {
     padding-bottom: 5px;
-    padding-right:2.5px;
+    padding-right:5px;
 }
 .col2-image{
     padding-bottom: 5px;
