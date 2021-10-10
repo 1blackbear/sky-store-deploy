@@ -1,7 +1,7 @@
 import { Modal, InputGroup } from 'react-bootstrap';
 import { useState } from "react";
 import './modal-login.css';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../../config/firebase.js'
 
 
 
@@ -18,14 +18,12 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
 
     function logar(e) {
         e.preventDefault();
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, senha)
-            .then((resultado) => {
+        auth.signInWithEmailAndPassword(email, senha)
+            .then(() => {
                 setEmail("");
                 setSenha("");
                 setErrorMsg('');
                 setSuccessMsg('Logado com sucesso! Um momentinho para redirecionarmos você. ^.^');
-                console.log(resultado);
                 setTimeout(() => {
                     setSuccessMsg('');
                     setErrorMsg('');
@@ -35,16 +33,16 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
             })
             .catch((error) => {
                 switch (error.message) {
-                    case 'Firebase: Error (auth/user-not-found).':
+                    case 'There is no user record corresponding to this identifier. The user may have been deleted.':
                         setErrorMsg('Ooops! E-mail não encontrado. Tente novamente! :(');
                         break;
-                    case 'Firebase: Error (auth/invalid-email).':
+                    case 'The email address is badly formatted.':
                         setErrorMsg('Ooops! Formato de e-mail inválido. Tente novamente! :(');
                         break;
                     case 'Firebase: Error (auth/internal-error).':
                         setErrorMsg('Ooops! Campo de senha vazio. Tente novamente! :(');
                         break;
-                    case 'Firebase: Error (auth/wrong-password).':
+                    case 'The password is invalid or the user does not have a password.':
                         setErrorMsg('Ooops! Senha incorreta. Tente novamente! :(');
                         break;
                     default:

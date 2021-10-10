@@ -1,0 +1,25 @@
+.imagem {
+     position: relative;
+}
+
+      
+.imagem:hover .capa {
+    display: flex;
+}
+      
+.capa {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: #eabba994;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.text-item {
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+}

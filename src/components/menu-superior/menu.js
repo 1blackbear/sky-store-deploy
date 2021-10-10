@@ -147,7 +147,7 @@ function MenuSuperior() {
                                 <Dropdown.Toggle variant="success" id="dropdown-basic" />
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
-                                    <Dropdown.Item><Link to="/adiciona-portifolio" className="link-dropdown">Adicionar item portifólio</Link></Dropdown.Item>
+                                    <Dropdown.Item><Link to="/portifolio-list" className="link-dropdown">Adicionar item portifólio</Link></Dropdown.Item>
                                     <Dropdown.Item href="/adiciona-prateleira">Adicionar item prateleira</Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>

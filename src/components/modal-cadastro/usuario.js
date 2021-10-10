@@ -1,5 +1,5 @@
 import React from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../config/firebase.js'
 
 class Usuario extends React.Component {
     constructor() {
@@ -27,8 +27,7 @@ class Usuario extends React.Component {
             this.setState({ msg: 'As senhas informadas são diferentes!' })
             return;
         }
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, senha)
+        auth.createUserWithEmailAndPassword(auth, email, senha)
             .then((resultado) => {
                 // Signed in
                 /**const user = userCredential.user;**/

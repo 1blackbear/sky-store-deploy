@@ -1,0 +1,57 @@
+#form {
+    background-color: white;
+    margin: 40px 0;
+    color: #707070;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+#input-files{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#input-photo,  #input-files-1{
+    display: flex;
+    flex-direction: column;
+}
+.input-photos{
+    width: max-content;
+    color: black;
+    border-radius: 2px;
+    border-style:solid;
+    border-width: 1px;
+    border-color: #bebebe;
+}
+.form-checkt {
+    justify-content: start;
+}
+.form-check-label {
+    margin-left: 10px;
+}
+.label-choose {
+    display: flex;
+    justify-content: start;
+    background: none;
+    color: #111111;
+    border: none;
+    padding: 0;
+	font-size:0;
+}
+.label-choose input {
+    opacity: 0;
+}
+
+
+.label-choose input + img {
+    border: 1px solid white;
+  }
+.label-choose input:checked+img {
+    border: 2px solid #90CBEB;
+  }
+#label-box {
+    margin: 25px 0;
+    display: flex;
+}
+.img-thumbnail {
+    width: 50%;
+}

@@ -1,7 +1,7 @@
 import { Modal } from 'react-bootstrap';
 import React, { useState } from "react";
 import '../modal-login.css';
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import {auth} from '../../../../config/firebase.js'
 
 
 const ModalEsqueciSenha = ({ showEsq, handleCloseLogin, handleCloseEsq, voltaLogin }) => {
@@ -14,13 +14,11 @@ const ModalEsqueciSenha = ({ showEsq, handleCloseLogin, handleCloseEsq, voltaLog
 
     function redefinir() {
 
-        const auth = getAuth();
-
         if (error !== '') setError('');
 
         setSending(true);
 
-        sendPasswordResetEmail(auth, email)
+        auth.sendPasswordResetEmail(auth, email)
             .then(() => {
                 setSent('Email enviado');
                 setSending(false);

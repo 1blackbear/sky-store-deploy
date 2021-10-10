@@ -1,0 +1,55 @@
+#table-title {
+    padding: 80px 0px 20px;
+}
+#btn-addItem {
+    height: max-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #EABBA9;
+    display: flex;
+    align-items: center !important;
+    border-style:  none;
+    margin-right: 10px;
+}
+#btn-addItem:hover {
+    background-color: #d4bef1;
+}
+#link-addItem {
+    text-decoration: none;
+    color: white;
+}
+.table-Item, #table-Item-header {
+    padding: 10px;
+    border: 0.1em #b3b2b4;
+    border-style: solid none;
+    border-bottom-style: none;
+}
+#table-header,#table-title {
+    font-weight: bold;
+}
+.table-Item {
+    display: flex;
+    align-items: center;
+}
+.table-Item:hover {
+    background-color: rgba(228, 228, 228, 0.466);
+}
+
+.btn-delete {
+    background-color: rgb(194, 43, 43);
+    border-color: transparent;
+}
+.btn-delete:hover {
+    background-color: rgb(255, 62, 62);
+    border-color: transparent;
+}
+.btn-update {
+    color: black;
+    background-color: gold;
+    border-color: transparent;
+}
+.btn-update:hover {
+    color: black;
+    background-color: rgb(247, 231, 146);
+    border-color: transparent;
+}
