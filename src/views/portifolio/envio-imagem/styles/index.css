@@ -55,3 +55,7 @@
 .img-thumbnail {
     width: 50%;
 }
+#error-upload-message {
+    color: red;
+    margin-top: 8px;
+}

@@ -2,7 +2,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import React from 'react'
 import './details.css';
 import { useState, useEffect } from 'react';
-import { fs, auth } from '../../../../../config/firebase.js'
+import { fs } from '../../../../../config/firebase.js'
 
 const FirstDetailPage = () => {
     const [item, setItem] = useState(null);
@@ -10,28 +10,17 @@ const FirstDetailPage = () => {
     useEffect(() => {
         let str = window.location.href.toString();
         str = str.slice(str.length - 20);
-
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                fs.collection('Portifolio-item').onSnapshot(snapshot => {
-                    const newItem = snapshot.docs.map((doc) => ({
-                        ID: doc.id,
-                        ...doc.data(),
-                    }));
-                    newItem.map((individualItem) => {
-                        if (individualItem.ID === str) {
-                            setItem(individualItem);
-                        }
-                    })
-                })
-
-            }
-            else {
-                console.log('user is not signed in to retrieve cart');
-            }
+        fs.collection('Portifolio-item').onSnapshot(snapshot => {
+            const newItem = snapshot.docs.map((doc) => ({
+                ID: doc.id,
+                ...doc.data(),
+            }));
+            newItem.map((individualItem) => {
+                if (individualItem.ID === str) {
+                    setItem(individualItem);
+                }
+            })
         })
-
-
     }, [])
 
     return (

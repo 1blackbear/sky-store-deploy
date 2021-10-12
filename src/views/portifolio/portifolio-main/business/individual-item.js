@@ -1,3 +1,7 @@
+//Código do item único do portifólio que receberá por parâmetro o objeto 
+//individual da lista de itens da coleção 'Portifolio-item'
+
+
 export const IndividualItemMain = ({ individualItemMain }) => {
     return (
         <div className="imagem">

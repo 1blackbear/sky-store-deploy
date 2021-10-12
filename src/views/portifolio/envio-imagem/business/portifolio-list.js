@@ -20,12 +20,12 @@ const PortifolioList = () => {
                 })
             }
             else{
-                console.log('user is not signed in to retrieve cart');
+                alert('Usuário não está logado');
             }
         })
     },[])
 
-
+    //Renderizar tabela database 
     return (
         <Container>
             <Row id="table-title">

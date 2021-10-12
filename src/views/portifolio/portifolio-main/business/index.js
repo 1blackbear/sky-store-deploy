@@ -2,47 +2,45 @@ import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/portifolio.css';
 import '../styles/arrow.scss';
 import '../styles/images-portifolio.css';
-import React, { Component, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
-import { fs, auth } from '../../../../config/firebase.js'
+import { fs} from '../../../../config/firebase.js'
 import { PortifolioItemMain } from './portifolio-main-item.js';
 
 const Portifolio = () => {
-    const commentSection = useRef(null);
+    //Seta para a seção de itens do portifólio
+    const commentSection = useRef(null); //referência para seção
     const componentDidMount = () =>
+        // scroll para a referência da commentSection  
         commentSection.current.scrollIntoView({
             behavior: 'smooth',
             block: 'start',
         });
-
+    
+    //Vetores de itens da Coluna 1 e Coluna 2
     const [itemsCol1, setitemsCol1] = useState([]);
     const [itemsCol2, setitemsCol2] = useState([]);
 
+    //Atualização dinâmicas de itens da coluna com base em lista do firebase
     useEffect(() => {
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                fs.collection('Portifolio-item').onSnapshot(snapshot => {
-                    const newItem = snapshot.docs.map((doc) => ({
-                        ID: doc.id,
-                        ...doc.data(),
-                    }));
-                    newItem.map((individualItem)=>{
-                        if (individualItem.checkCol === 'col1') {
-                            setitemsCol1((prevState) => [...prevState, individualItem]);
-                        } else {
-                            setitemsCol2((prevState) => [...prevState, individualItem]);
-                        }
-                    })
-                })
-                
-            }
-            else {
-                console.log('user is not signed in to retrieve cart');
-            }
+        //Busca a snapshot da coleção 'Portifolio-item'
+        fs.collection('Portifolio-item').onSnapshot(snapshot => {
+            const newItem = // Variável com vetor de itens do map seguinte:
+            snapshot.docs.map((doc) => ({  //Faz um map na lista de documentos da seleção
+                ID: doc.id,
+                ...doc.data(),
+            }));
+            newItem.map((individualItem) => { //Faz um map no vetor de itens do newItem
+                if (individualItem.checkCol === 'col1') { //Verifica qual coluna pertence o item
+                    setitemsCol1((prevState) => [...prevState, individualItem]);
+                } else {
+                    setitemsCol2((prevState) => [...prevState, individualItem]);
+                }
+            })
         })
     }, [])
 
-    
+
     return (
         <Container fluid>
             <Row className="first-part">
@@ -73,9 +71,10 @@ const Portifolio = () => {
                     </div></a>
                 </Col>
             </Row>
-            <Row ref={commentSection} id="linha-fotos">
+            <Row ref={commentSection} id="linha-fotos"> {/*Linha de referência para a commentSection*/}
                 <Col className="coluna">
-                    {itemsCol1.length > 0 && (
+                    {/*O vetor de itens da coluna 1 é maior que 0? Se sim, renderiza os itens presente nele*/}
+                    {itemsCol1.length > 0 && (  
                         <PortifolioItemMain items={itemsCol1} />
                     )}
                     {itemsCol1.length < 1 && (
@@ -83,6 +82,7 @@ const Portifolio = () => {
                     )}
                 </Col>
                 <Col className="coluna">
+                    {/*O vetor de itens da coluna 2 é maior que 0? Se sim, renderiza os itens presente nele*/}
                     {itemsCol2.length > 0 && (
                         <PortifolioItemMain items={itemsCol2} />
                     )}

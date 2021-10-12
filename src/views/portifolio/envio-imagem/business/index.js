@@ -1,5 +1,5 @@
 import { Form, Container, Row, Col, Modal } from 'react-bootstrap';
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import '../styles/index.css';
 import '../styles/check.scss';
 import option1 from '../../../../images/portifolio-inicial/adicionar-img/option1.jpg';
@@ -25,7 +25,7 @@ const AddPortifolio = () => {
 
     //- Imagem princial
     const [imgMain, setMainIMG] = useState(null);
-    
+
     //- Imagens múltiplas
     const [images, setImages] = useState([]);
     const [urls, setUrls] = useState([]);
@@ -36,7 +36,8 @@ const AddPortifolio = () => {
 
     //- Template de descrição 
     const [checkType, setCheckType] = useState('');
-    
+
+    const [goAhead, setGO] = useState(false);
 
     //Número de imagens múltiplas
     const [numberImg, setNumber] = useState(0);
@@ -54,14 +55,16 @@ const AddPortifolio = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    
-    const [id, setID] = useState(getRandomInt(1000,9999));
+    //Função para gerar ID aleatório entre 1000-9999
+    const [id, setID] = useState(getRandomInt(1000, 9999));
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
-      }
+    }
 
+    //timer
+    let [waitTime, setWaitTime] = useState(3);
 
     //Obter valor da imagem principal e múltiplas imagens
     const HandleMainImg = (e) => {
@@ -75,10 +78,11 @@ const AddPortifolio = () => {
             }
         }
         else {
-            console.log('please select your file');
+            alert('please select your file');
         }
     };
     const HandleMultiImg = (e) => {
+        setImages([]);
         for (let i = 0; i < e.target.files.length; i++) {
             const newImage = e.target.files[i];
             newImage["id"] = Math.random();
@@ -87,44 +91,73 @@ const AddPortifolio = () => {
     };
 
     //Upload de dados das imagens e campos
+    const [errorUploadImages, setEUploadImages] = useState(true);
+    const [errorUIMessage, setErrorUIMessage] = useState('');
     const handleUpload = () => {
         const promises = [];
-        images.map((image) => {
-            const uploadTask = storage.ref(`portifolio-images/${image.name}`).put(image);
-            promises.push(uploadTask);
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {
-                    const progress = Math.round(
-                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        if (images.length > 0) {
+            if (images.length === numberImg) {
+                setEUploadImages(false);
+                setErrorUIMessage('');
+                images.map((image) => {
+                    const uploadTask = storage.ref(`portifolio-images/${image.name}`).put(image);
+                    promises.push(uploadTask);
+                    uploadTask.on(
+                        "state_changed",
+                        (snapshot) => {
+                            const progress = Math.round(
+                                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                            );
+                        },
+                        (error) => {
+                            console.log(error);
+                        },
+                        async () => {
+                            await storage
+                                .ref("portifolio-images")
+                                .child(image.name)
+                                .getDownloadURL()
+                                .then((urls) => {
+                                    setUrls((prevState) => [...prevState, urls]);
+                                });
+                        }
                     );
-                    console.log(progress + 'multi');
-                },
-                (error) => {
-                    console.log(error);
-                },
-                async () => {
-                    await storage
-                        .ref("portifolio-images")
-                        .child(image.name)
-                        .getDownloadURL()
-                        .then((urls) => {
-                            setUrls((prevState) => [...prevState, urls]);
-                        });
-                }
-            );
-        });
+                });
+                Promise.all(promises)
+                    .then(() => {
+                        handleShow();
+                        setWaitTime(waitTime--);
+                        setTimeout(() => {
+                            setWaitTime(waitTime--);
+                            setTimeout(() => {
+                                setWaitTime(waitTime--);
+                            }, 1000)
+                        }, 1000)
+                        setTimeout(() => {
+                            setGO(true);
+                        }, 3000)
+                    })
+                    .catch((err) => console.log(err));
 
-        Promise.all(promises)
-            .then(() => console.log("All images uploaded"))
-            .catch((err) => console.log(err));
+            } else if (numberImg == 0) {
+                setEUploadImages(true);
+                setErrorUIMessage('Por favor, selecione qual tipo de página você quer!');
+            } else {
+                setEUploadImages(true);
+                setErrorUIMessage('Por favor, selecione ' + numberImg + ' imagens!');
+            }
+
+        } else {
+            setEUploadImages(true);
+            setErrorUIMessage('Por favor, selecione as imagens que você deseja enviar!');
+        }
     };
+
     const AddNewItem = (e) => {
         e.preventDefault();
         const uploadTask = storage.ref(`/portifolio-images/${imgMain.name}`).put(imgMain);
         uploadTask.on('state_changed', snapshot => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            console.log(progress + 'single');
         }, (err) => {
             console.log(err)
         }, () => {
@@ -140,6 +173,8 @@ const AddPortifolio = () => {
                 }).then(() => {
                     setTitle('');
                     setDesc('');
+                    setCheckCol('');
+                    setCheckType('');
                     handleClose();
                     history.push('/portifolio-list');
                 });
@@ -212,13 +247,12 @@ const AddPortifolio = () => {
                             <div id="input-photo">
                                 <Form.Label>Escolha {numberImg} imagens</Form.Label>
                                 <Form.Control type="file" multiple className="input-photos" onChange={HandleMultiImg} />
+                                {errorUploadImages && (<>
+                                    <p id="error-upload-message">{errorUIMessage}</p>
+                                </>)}
                             </div>
                             <button type="button"
-                                class="btn btn-primary button-save" onClick={() => {
-                                    handleUpload(); setTimeout(() => {
-                                        handleShow();
-                                    }, 3000)
-                                }}>Enviar</button>
+                                class="btn btn-primary button-save" onClick={handleUpload}>Enviar</button>
                         </Form.Group>
 
                         {/*--------MODAL SUCESSO--------*/}
@@ -237,9 +271,16 @@ const AddPortifolio = () => {
                                 </div>
                             </Modal.Body>
                             <Modal.Footer className="modal-footer d-flex justify-items-end">
-                                <div />
-                                <button type="button"
-                                    class="btn btn-primary button-save" onClick={AddNewItem}>Voltar à página</button>
+                                {!goAhead && (<>
+                                    <p>Espere {waitTime} segundos...</p>
+                                    <div />
+                                </>)}
+                                {goAhead && (<>
+                                    <div />
+                                    <button type="button"
+                                        class="btn btn-primary button-save" onClick={AddNewItem}>Voltar à página</button>
+                                </>)}
+
                             </Modal.Footer>
                         </Modal>
                         {/*--------MODAL SUCESSO--------*/}

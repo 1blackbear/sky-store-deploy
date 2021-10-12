@@ -10,6 +10,7 @@ import PortifolioFirstDetail from './views/portifolio/portifolio-main/business/p
 import PortifolioThirdDetail from './views/portifolio/portifolio-main/business/portifolio-details/third-detail-page';
 import { ReactComponent as BotaoWhatsapp } from './images/botao-whatsapp.svg';
 import Prateleira from './views/prateleira';
+import PrateleiraList from './views/prateleira/envio-item/envio';
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
         <Route exact path='/portifolio-details-2/:id' component={PortifolioThirdDetail}/>
         <Route exact path='/sobre-mim' component={SobreMim}/>
         <Route exact path='/prateleira' component={Prateleira}/>
+        <Route exact path='/prateleira-list' component={PrateleiraList}/>
       </Switch>
     </Router> 
   );

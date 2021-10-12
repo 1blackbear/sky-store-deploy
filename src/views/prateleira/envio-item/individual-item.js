@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'react-bootstrap';
-import {fs, auth} from '../../../../config/firebase.js'
+import {fs, auth} from '../../../config/firebase.js'
 
-export const IndividualItem = ({ individualItem }) => {
-
-    // Obter coluna pertencente do individualItem
-    const [col, setCol] = useState();
-    useEffect(()=>{
-        if (individualItem.checkCol === 'col1') {
-            setCol(1);
-        } else {
-            setCol(2);
-        }
-    },[])
+export const IndividualItemPrat = ({ individualItem }) => {
 
     //Função para deletar o individualItem desejado
     const handleDelete = () => {
         if (window.confirm('Você tem certeza que deseja deletar esse item?')) {
         auth.onAuthStateChanged(user=>{
             if(user){
-                fs.collection('Portifolio-item').doc(individualItem.ID).delete();
+                fs.collection('Prateleira-item').doc(individualItem.ID).delete();
             }
         })
     }
@@ -29,9 +18,9 @@ export const IndividualItem = ({ individualItem }) => {
     return (
         <Row className="table-Item">
             <Col xs={1}>{individualItem.id}</Col>
-            <Col xs={1}>{col}</Col>
-            <Col xs={2}>{individualItem.title}</Col>
-            <Col xs={6}>{individualItem.desc}</Col>
+            <Col xs={2}>Categoria</Col>
+            <Col xs={5}>{individualItem.title}</Col>
+            <Col xs={2}>{individualItem.price}</Col>
             <Col xs={2} className="d-flex">
                 <Col xs={6}><Button className="btn-update">Editar</Button></Col>
                 <Col xs={6}><Button className="btn-delete" onClick={handleDelete}>Deletar</Button></Col>
