@@ -1,0 +1,33 @@
+.row-tutorial {
+    margin-top: 80px;
+    justify-content: center;
+}
+#title-tutorial {
+    margin-left: 5%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #707070;
+}
+#encomendas-tutorial {
+    width: 72%;
+}
+#title-desc-tutorial {
+    font-weight: bold;
+    color: #707070;
+    font-size: 2rem;
+}
+.row-desc-tutorial {
+    text-align: justify;
+    color: #707070;
+    margin-top: 40px;
+}
+.text-tutorial p:first-child {
+    margin-right: 10%;
+}
+.text-tutorial {
+    font-size: 1.2em;
+    margin-bottom: 3%;
+}
+.desc-tutorial {
+    padding: 0px 5%;
+}

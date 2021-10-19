@@ -43,6 +43,19 @@ padding:0;
     border-color: #5f69b9;
 }
 
+.nav-itens{
+    margin: 0 auto;
+    color: #68747b;
+    padding: 5px 20px;
+}
+
+.nav-categorias{
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top:50px;
+}
+
 @media screen and (max-width: 768px) {
     .card-part {
         margin-top: -10%;

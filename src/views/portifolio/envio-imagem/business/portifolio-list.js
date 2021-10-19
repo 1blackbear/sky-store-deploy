@@ -19,9 +19,6 @@ const PortifolioList = () => {
                     setItems(newItem);                    
                 })
             }
-            else{
-                alert('Usuário não está logado');
-            }
         })
     },[])
 

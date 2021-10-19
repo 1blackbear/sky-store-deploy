@@ -12,6 +12,14 @@
     margin-right: 50px;
     width: 30%;
 }
+#update-aboutme{
+    margin-top: 5%;
+    border-style: none;
+    background-color: #d4bef1;
+}
+#update-aboutme:hover{
+    background-color: #5a3b83;
+}
 @media screen and (max-width: 768px) {
     .sobre-mim{
         padding-bottom: 50%;

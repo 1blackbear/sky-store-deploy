@@ -5,13 +5,42 @@
     background-color: white;
     border-radius: 80px;
     border-style: none;
-    color: #707070;
+    
     font-size: 1.25em;
+}
+.buttonBlue {
+    display: flex;
+    justify-content: center;
+    padding: 25px 35px;
+    background-color: #90CBEB;
+    border-radius: 80px;
+    border-style: none;
+    
+    font-size: 1em;
+    margin-top: 5%;
+    margin-bottom: 15%;
 }
 .playIcon {
     font-size: 1.7em !important;
 }
 .button:hover {
     background-color: #707070;
+}
+.buttonBlue:hover {
+    background-color: #707070;
+    color: white;
+}
+.link-btn {
+    color: white;
+    text-decoration: none;
+}
+.link-btn-ini {
+    color: #707070;
+    text-decoration: none;
+}
+.link-btn-ini:hover {
+    color: white;
+}
+.link-btn:hover {
     color: white;
 }

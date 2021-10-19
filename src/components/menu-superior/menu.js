@@ -66,7 +66,6 @@ function MenuSuperior() {
     /* Funções para abrir e fechar o modal de cadastro, login e esqueci a senha e sair*/
     const [showCad, setShowCad] = useState(false);
     const handleCloseCad = () => setShowCad(false);
-
     const handleCloseLogin = () => {
         setShowCad(false);
         setShow(true);

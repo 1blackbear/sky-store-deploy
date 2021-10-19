@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1237.351" height="433.31" viewBox="0 0 1237.351 433.31">
+  <g id="Tutorial" transform="translate(-145 -901)">
+    <g id="cards" transform="translate(145 901)">
+      <g id="Retângulo_14" data-name="Retângulo 14" fill="#fff" stroke="#707070" stroke-width="8">
+        <rect width="237.647" height="154.471" rx="16" stroke="none"/>
+        <rect x="4" y="4" width="229.647" height="146.471" rx="12" fill="none"/>
+      </g>
+      <g id="Retângulo_19" data-name="Retângulo 19" transform="translate(335.083 201.208)" fill="#fff" stroke="#707070" stroke-width="8">
+        <rect width="237.647" height="154.471" rx="16" stroke="none"/>
+        <rect x="4" y="4" width="229.647" height="146.471" rx="12" fill="none"/>
+      </g>
+      <g id="Retângulo_20" data-name="Retângulo 20" transform="translate(670.166 65.749)" fill="#fff" stroke="#707070" stroke-width="8">
+        <rect width="237.647" height="154.471" rx="16" stroke="none"/>
+        <rect x="4" y="4" width="229.647" height="146.471" rx="12" fill="none"/>
+      </g>
+      <g id="Retângulo_21" data-name="Retângulo 21" transform="translate(999.703 278.84)" fill="#fff" stroke="#707070" stroke-width="8">
+        <rect width="237.647" height="154.471" rx="16" stroke="none"/>
+        <rect x="4" y="4" width="229.647" height="146.471" rx="12" fill="none"/>
+      </g>
+      <text id="Escolha_o_tipo_de_arte" data-name="Escolha o tipode arte" transform="translate(118.834 72.731)" fill="#637077" font-size="30" font-family="Roboto-Light, Roboto" font-weight="300"><tspan x="-92.476" y="0">Escolha o tipo</tspan><tspan x="-45.747" y="39">de arte</tspan></text>
+      <text id="Personalize_sua_arte" data-name="Personalize suaarte" transform="translate(453.834 270.731)" fill="#637077" font-size="30" font-family="Roboto-Light, Roboto" font-weight="300"><tspan x="-103.586" y="0">Personalize sua</tspan><tspan x="-26.016" y="39">arte</tspan></text>
+    </g>
+    <g id="seta" transform="translate(381.063 966.749)">
+      <g id="Retângulo_23" data-name="Retângulo 23" transform="translate(0)" fill="#707070" stroke="#707070" stroke-width="1">
+        <rect width="50.698" height="6.337" stroke="none"/>
+        <rect x="0.5" y="0.5" width="49.698" height="5.337" fill="none"/>
+      </g>
+      <g id="Caminho_62" data-name="Caminho 62" transform="translate(50.698 3.169) rotate(90)" fill="#707070">
+        <path d="M 218.1356048583984 6.16065788269043 L 0.4999968707561493 6.16065788269043 L 0.4999968707561493 0.4999913275241852 L 110.5060501098633 0.4999913275241852 L 218.1356048583984 0.4999913275241852 L 218.1356048583984 6.16065788269043 Z" stroke="none"/>
+        <path d="M 1 0.9999914169311523 L 1 5.66065788269043 L 217.6356048583984 5.66065788269043 L 217.6356048583984 0.9999914169311523 L 1 0.9999914169311523 M 0 -8.58306884765625e-06 L 218.6356048583984 -8.58306884765625e-06 L 218.6356048583984 6.66065788269043 L 0 6.66065788269043 L 0 -8.58306884765625e-06 Z" stroke="none" fill="#707070"/>
+      </g>
+      <g id="Retângulo_25" data-name="Retângulo 25" transform="translate(44.361 215.467)" fill="#707070" stroke="#707070" stroke-width="1">
+        <rect width="47.529" height="6.337" stroke="none"/>
+        <rect x="0.5" y="0.5" width="46.529" height="5.337" fill="none"/>
+      </g>
+      <path id="Polígono_3" data-name="Polígono 3" d="M9.9,0l9.9,14.259H0Z" transform="translate(99.02 209.13) rotate(90)" fill="#777"/>
+    </g>
+    <g id="seta-2" data-name="seta" transform="translate(1046.476 1035.667)">
+      <g id="Retângulo_23-2" data-name="Retângulo 23" transform="translate(0)" fill="#707070" stroke="#707070" stroke-width="1">
+        <rect width="50.698" height="6.337" stroke="none"/>
+        <rect x="0.5" y="0.5" width="49.698" height="5.337" fill="none"/>
+      </g>
+      <g id="Caminho_62-2" data-name="Caminho 62" transform="translate(50.698 3.169) rotate(90)" fill="#707070">
+        <path d="M 218.1356048583984 6.16065788269043 L 0.4999968707561493 6.16065788269043 L 0.4999968707561493 0.4999913275241852 L 110.5060501098633 0.4999913275241852 L 218.1356048583984 0.4999913275241852 L 218.1356048583984 6.16065788269043 Z" stroke="none"/>
+        <path d="M 1 0.9999914169311523 L 1 5.66065788269043 L 217.6356048583984 5.66065788269043 L 217.6356048583984 0.9999914169311523 L 1 0.9999914169311523 M 0 -8.58306884765625e-06 L 218.6356048583984 -8.58306884765625e-06 L 218.6356048583984 6.66065788269043 L 0 6.66065788269043 L 0 -8.58306884765625e-06 Z" stroke="none" fill="#707070"/>
+      </g>
+      <g id="Retângulo_25-2" data-name="Retângulo 25" transform="translate(44.361 215.467)" fill="#707070" stroke="#707070" stroke-width="1">
+        <rect width="47.529" height="6.337" stroke="none"/>
+        <rect x="0.5" y="0.5" width="46.529" height="5.337" fill="none"/>
+      </g>
+      <path id="Polígono_3-2" data-name="Polígono 3" d="M9.9,0l9.9,14.259H0Z" transform="translate(99.02 209.13) rotate(90)" fill="#777"/>
+    </g>
+    <g id="seta-3" data-name="seta" transform="translate(815.166 1190.93) rotate(180)">
+      <g id="Retângulo_23-3" data-name="Retângulo 23" transform="translate(49.906 0)" fill="#707070" stroke="#707070" stroke-width="1">
+        <rect width="50.698" height="6.337" stroke="none"/>
+        <rect x="0.5" y="0.5" width="49.698" height="5.337" fill="none"/>
+      </g>
+      <g id="Caminho_62-3" data-name="Caminho 62" transform="translate(56.837 0) rotate(90)" fill="#707070">
+        <path d="M 149.6624755859375 6.16064453125 L 0.4999977946281433 6.16064453125 L 0.4999977946281433 0.5000046491622925 L 75.8973388671875 0.5000046491622925 L 149.6624755859375 0.5000046491622925 L 149.6624755859375 6.16064453125 Z" stroke="none"/>
+        <path d="M 1 1.000004768371582 L 1 5.66064453125 L 149.1624755859375 5.66064453125 L 149.1624755859375 1.000004768371582 L 1 1.000004768371582 M 0 4.76837158203125e-06 L 150.1624755859375 4.76837158203125e-06 L 150.1624755859375 6.66064453125 L 0 6.66064453125 L 0 4.76837158203125e-06 Z" stroke="none" fill="#707070"/>
+      </g>
+      <g id="Retângulo_25-3" data-name="Retângulo 25" transform="translate(7.129 144.173)" fill="#707070" stroke="#707070" stroke-width="1">
+        <rect width="47.529" height="6.337" stroke="none"/>
+        <rect x="0.5" y="0.5" width="46.529" height="5.337" fill="none"/>
+      </g>
+      <path id="Polígono_3-3" data-name="Polígono 3" d="M9.9,0l9.9,14.259H0Z" transform="translate(0 157.639) rotate(-90)" fill="#777"/>
+    </g>
+    <text id="Receba_sua_arte" data-name="Receba suaarte" transform="translate(1265.834 1253.731)" fill="#637077" font-size="30" font-family="Roboto-Light, Roboto" font-weight="300"><tspan x="-76.611" y="0">Receba sua</tspan><tspan x="-26.016" y="39">arte</tspan></text>
+    <text id="Converse_com_a_Sky" data-name="Converse coma Sky" transform="translate(934.834 1035.731)" fill="#637077" font-size="30" font-family="Roboto-Light, Roboto" font-weight="300"><tspan x="-94.805" y="0">Converse com</tspan><tspan x="-35.039" y="39">a Sky</tspan></text>
+  </g>
+</svg>

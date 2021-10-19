@@ -1,7 +1,8 @@
 import './index.css';
-import Botao from '../../components/botao/buttons';
+import { Button } from '../../components/botao/buttons';
 import { ReactComponent as LogoMobile } from '../../images/logo-mobile.svg';
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
 
 function TelaInicial() {
     return (
@@ -14,11 +15,16 @@ function TelaInicial() {
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;nascida e criada no interior de Minas Gerais. <Link to="/sobre-mim" className="saiba-mais">Saiba mais</Link><br></br>
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Obrigada por visitar o site e espero que encontre o que procura!
                 </p>
-                <div className="botao-main">
-                    <div className="botao-encomende d-flex justify-content-end">
-                        <Botao />
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                >
+                    <div className="botao-main">
+                        <div className="botao-encomende d-flex justify-content-end">
+                            <Button text="ENCOMENDE COM A SKY!" name="button" linkBtn="link-btn-ini" />
+                        </div>
                     </div>
-                </div>
+                </motion.div>
                 <div />
             </div>
         </section>
