@@ -4,7 +4,6 @@ import 'firebase/firestore'
 import 'firebase/storage'
 
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyB49qjKQeSdRmqMhCUsmM5H6i2nHPJS2bw",
     authDomain: "sky-loja.firebaseapp.com",
@@ -19,6 +18,5 @@ const firebaseConfig = {
   const auth = firebase.auth();
   const fs = firebase.firestore();
   const storage = firebase.storage();
-
-
+  
   export {auth,firebaseStart, fs, storage};

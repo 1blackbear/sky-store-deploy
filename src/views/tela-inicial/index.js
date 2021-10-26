@@ -1,5 +1,5 @@
 import './index.css';
-import { Button } from '../../components/botao/buttons';
+import  Buttons  from '../../components/botao/buttons';
 import { ReactComponent as LogoMobile } from '../../images/logo-mobile.svg';
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"
@@ -21,7 +21,7 @@ function TelaInicial() {
                 >
                     <div className="botao-main">
                         <div className="botao-encomende d-flex justify-content-end">
-                            <Button text="ENCOMENDE COM A SKY!" name="button" linkBtn="link-btn-ini" />
+                            <Buttons text="ENCOMENDE COM A SKY!" name="button" linkBtn="link-btn-ini" />
                         </div>
                     </div>
                 </motion.div>

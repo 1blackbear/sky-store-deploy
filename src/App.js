@@ -15,10 +15,14 @@ import PrateleiraList from './views/prateleira/envio-item/envio';
 import { storage, fs, auth } from './config/firebase.js';
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from "framer-motion";
+import FormsEditPortifolio from './views/portifolio/envio-imagem/editar/form-edita';
+import FormsPrateleira from './views/prateleira/envio-item/adicionar/forms-prateleira';
+import FormsEditPrateleira from './views/prateleira/envio-item/editar/forms-edit-prateleira';
 
 
 const App = () => {
   const [showBtn, setShowBtn] = useState(false);
+    
   //Atualização dinâmicas de itens da coluna com base em lista do firebase
   useEffect(() => {
     auth.onAuthStateChanged(user => {
@@ -48,6 +52,9 @@ const App = () => {
           <Route exact path='/prateleira' component={Prateleira} />
           <Route exact path='/prateleira-list' component={PrateleiraList} />
           <Route exact path='/encomendas' component={Encomendas} />
+          <Route exact path='/adiciona-prateleira' component={FormsPrateleira}/>
+          <Route exact path='/edita-portifolio/:id' component={FormsEditPortifolio}/>
+          <Route exact path='/edita-prateleira/:id' component={FormsEditPrateleira}/>
         </Switch>
       </Router>
     </AnimatePresence>

@@ -1,9 +1,9 @@
 import { Modal, InputGroup } from 'react-bootstrap';
 import { useState } from "react";
 import './modal-login.css';
-import {auth} from '../../../config/firebase.js'
-
-
+import {auth} from '../../../config/firebase.js';
+import { googleProvider } from '../../../config/auth-methods';
+import googleAuth from '../../../service/auth';
 
 
 
@@ -18,6 +18,20 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
     const [successMsg, setSuccessMsg] = useState('');
 
     const [typeInput, setTypeInput] = useState("password");
+
+    const handleOnClick = async (provider) =>{
+        const res = await googleAuth(provider);
+            setEmail("");
+            setSenha("");
+            setErrorMsg('');
+            setSuccessMsg('Logado com sucesso! Um momentinho para redirecionarmos você. ^.^');
+            setTimeout(() => {
+                setSuccessMsg('');
+                setErrorMsg('');
+                onHide();
+            }, 3000)
+            console.log(res);
+    };
 
     function logar(e) {
         e.preventDefault();
@@ -108,7 +122,7 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
                     <div class="modal-footer">
                         <div class="login-google">
                             <a href="#"><button type="button"
-                                class="btn btn-primary button-save">Entrar com Google</button></a>
+                                class="btn btn-primary button-save" onClick={() => handleOnClick(googleProvider)}>Entrar com Google</button></a>
                         </div>
                         <label onClick={onClick} for="" class="cadastro"><a href="#"><i class="fas fa-sign-in-alt"></i>Cadastrar
                             minha

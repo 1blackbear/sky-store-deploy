@@ -6,6 +6,7 @@ const ModalComp = ({ show, onHide }) => {
         <div id="share">
             {/*Modal  de Compartilhar */}
             <Modal  centered show={show} onHide={onHide} id="modal-compartilhar">
+                <Modal.Header className="justify-content-center"><Modal.Title >Compartilhe o site!</Modal.Title></Modal.Header>
                 <Modal.Body>
                     <div class="modal-body">
                         <form id="share-form">

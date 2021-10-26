@@ -12,7 +12,8 @@ import ModalCompartilha from '../modal-compartilhar/modal-compartilhar.js';
 import ModalLogin from './modal-login/modal-login';
 import { Dropdown } from 'react-bootstrap';
 import ModalEsqueciSenha from './modal-login/modal-esquecisenha/modal-esquecisenha';
-import { auth } from '../../config/firebase.js';
+import { auth, fs } from '../../config/firebase.js';
+import CarrinhoDeCompras from '../carrinho/carrinho';
 
 
 function MenuSuperior() {
@@ -86,9 +87,17 @@ function MenuSuperior() {
         setShowEsq(true);
         setShow(false);
     }
+
     const handleLogout = () => {
         auth.signOut();
+        window.location.reload();
     }
+
+    const [open, setOpen] = useState(false);
+
+    const handleCart = () => {
+        setOpen(!open);
+    };
 
     return (
         <header className="menu">
@@ -116,7 +125,7 @@ function MenuSuperior() {
                     <a href="#" onClick={handleShow} className="button-link"><ButtonMobile id="button-mobile" /></a>
                 </ul>
                 <div className="icons col-2">
- 
+
                     <a href="#"><ShareIcon className="menu-icons" onClick={handleShowComp} style={{ fontSize: 25 }} /></a>
                     <ModalCompartilha
                         show={showcomp}
@@ -130,7 +139,7 @@ function MenuSuperior() {
                             {/*<a id="text-user"> Olá, estranho</a>*/}
                             <Dropdown >
                                 <Dropdown.Toggle variant="success" id="dropdown-logged">
-                                    
+
                                     <a href="#"><PersonIcon className="menu-icons" style={{ fontSize: 28 }} /></a>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
@@ -138,7 +147,7 @@ function MenuSuperior() {
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            
+
                         </>
                         }
                         {userAdmin && <>
@@ -147,7 +156,7 @@ function MenuSuperior() {
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
                                     <Dropdown.Item><Link to="/portifolio-list" className="link-dropdown">Adicionar item portifólio</Link></Dropdown.Item>
-                                    <Dropdown.Item><Link to="/prateleira-list" className="link-dropdown">Adicionar item prateleira</Link></Dropdown.Item>
+                                    <Dropdown.Item href="/prateleira-list">Adicionar item prateleira</Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -156,7 +165,17 @@ function MenuSuperior() {
 
 
                     </>}
-                    <a href="#"><ShoppingCartOutlinedIcon className="menu-icons" style={{ fontSize: 25 }} /></a>
+                    <a href="#"><ShoppingCartOutlinedIcon onClick={handleCart} className="menu-icons" style={{ fontSize: 25 }} /></a>
+
+                    {/*Sidemenu Carrinho */}
+
+                    <CarrinhoDeCompras
+                        open={open}
+                        handleCart={handleCart}
+                    >
+                    </CarrinhoDeCompras>
+
+
 
                     {/*Modal de Cadastro */}
                     <ModalCadastro

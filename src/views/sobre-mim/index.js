@@ -41,8 +41,6 @@ function SobreMim() {
 
     const AddNewItem = (e) => {
         e.preventDefault();
-        console.log(imgMain);
-        console.log(items[0].length);
         if (imgMain == null) {
             fs.collection('Sobre-mim').doc("tnyYhgkXPqlbNiTz63J8").update({
                 desc,
@@ -142,7 +140,7 @@ function SobreMim() {
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Descrição</Form.Label>
-                                        <Form.Control as="textarea" rows={3} defaultValue={items.length > 0 ? desc : ""} onChange={(e) => setDesc(e.target.value)} />
+                                        <Form.Control as="textarea" rows={4} defaultValue={items.length > 0 ? desc : ""} onChange={(e) => setDesc(e.target.value)} />
                                     </Form.Group>
                                 </Modal.Body>
                                 <Modal.Footer>

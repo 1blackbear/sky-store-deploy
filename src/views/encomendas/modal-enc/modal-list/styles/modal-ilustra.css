@@ -1,0 +1,29 @@
+.modal-img-perfil {
+    margin-left: 20%;
+    background-image: url("/src/images/encomendas/Ilustrações/perfil.jpg");
+}
+.modal-img-paisagem {
+    background-image: url("/src/images/encomendas/Ilustrações/paisagem.jpg");
+}
+.modal-img-half {
+    margin-right: 20%;
+    background-image: url("/src/images/encomendas/Ilustrações/meio\ corpo.jpg");
+}
+.modal-img-pet {
+    background-image: url("/src/images/encomendas/Ilustrações/pet.png");
+}
+.modal-img-outros {
+    margin-right: 20%;
+    background-image: url("/src/images/encomendas/Ilustrações/outros.jpg");
+}
+.modal-img-conc {
+    margin-left: 20%;
+    background-image: url("/src/images/encomendas/Ilustrações/conceitual.jpg");
+}
+
+.modal-img-perfil:hover, .modal-img-paisagem:hover, .modal-img-half:hover, 
+.modal-img-pet:hover, .modal-img-outros:hover, .modal-img-conc:hover{
+    cursor: pointer;
+    filter: grayscale(100%)
+}
+

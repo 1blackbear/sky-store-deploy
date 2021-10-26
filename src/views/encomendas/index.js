@@ -1,16 +1,18 @@
 import { Container, Row, Col } from "react-bootstrap"
 import imgUrl from '../../images/Tutorial.svg';
-import { Button } from '../../components/botao/buttons';
 import PlayArrow from '@material-ui/icons/PlayArrowRounded';
 import './index.css';
 import { motion } from "framer-motion";
+import ModalList from './modal-enc/modal-list.js';
+
 
 
 export const Encomendas = () => {
+
     const variants = {
-        hidden: { opacity: 0,x: -400, y: 0 },
-        enter: {opacity: 1, x: 0, y: 0 },
-        exit: {opacity: 0, x: 0, y: -100 },
+        hidden: { opacity: 0, x: -400, y: 0 },
+        enter: { opacity: 1, x: 0, y: 0 },
+        exit: { opacity: 0, x: 0, y: -100 },
     }
 
     return (
@@ -54,12 +56,9 @@ export const Encomendas = () => {
                             </Col>
                         </Col>
                     </Row>
-                    <Row>
-                        <div className="botao-encomende d-flex justify-content-end">
-                            <Button text="ENCOMENDE COM A SKY!" name="buttonBlue" linkBtn="link-btn" />
-                        </div>
-                    </Row>
+                    <ModalList/>
                 </div>
+
             </Container>
         </motion.div>
     )

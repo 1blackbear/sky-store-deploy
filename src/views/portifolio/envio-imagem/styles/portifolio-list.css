@@ -44,7 +44,6 @@
     border-color: transparent;
 }
 .btn-update {
-    color: black;
     background-color: gold;
     border-color: transparent;
 }
@@ -52,4 +51,16 @@
     color: black;
     background-color: rgb(247, 231, 146);
     border-color: transparent;
+}
+.link-editItem {
+    color: black;
+    text-decoration: none;
+}
+.link-editItem:hover {
+    color: black;
+}
+#link-editItem{
+    text-decoration: none;
+    color: black;
+
 }

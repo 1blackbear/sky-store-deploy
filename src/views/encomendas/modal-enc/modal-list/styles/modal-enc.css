@@ -1,0 +1,40 @@
+.modal-enc-linha {
+    margin-top: 5%;
+    font-weight: bold;
+    color: #707070;
+    text-align: center;
+}
+.modal-enc-col {
+    display: flex;
+    justify-content: center;
+}
+.modal-enc-ret {
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 25vh;
+}
+.ilustra{
+    margin-left: 15%;
+    background-image: url("/src/images/encomendas/ilustração.jpg");
+    background-position-y: -60px;
+}
+.arte-digital {
+    margin-right: 15%;
+    background-image: url("/src/images/encomendas/arte\ digital.jpg");
+    background-position-y: -35px;
+}
+.arte-digital:hover {
+    cursor: pointer;
+    filter: grayscale(100%)
+}
+.ilustra:hover {
+    cursor: pointer;
+    filter: grayscale(100%)
+}

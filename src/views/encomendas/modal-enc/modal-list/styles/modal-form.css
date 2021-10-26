@@ -1,0 +1,28 @@
+.modal-enc-linhaForm {
+    font-weight: bold;
+    color: #707070;
+    padding-bottom: 2.5%;
+}
+.modal-line-form {
+    font-weight: bold;
+    color: #707070;
+}
+.modal-container-form {
+    padding: 0 5%;
+}
+.default-radio {
+    justify-content: start;
+}
+.default-radio-add, .radio-back  {
+    margin-top: 5%;
+}
+.default-radio-back {
+    margin-bottom: 4%;
+}
+.default-radio-backs {
+    margin-top: 1%;
+}
+.radioBtn:checked {
+    background-color: #9DA7EC;
+    border-color: #9DA7EC;
+}

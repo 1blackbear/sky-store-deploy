@@ -1,7 +1,11 @@
 import {Col, Card} from 'react-bootstrap';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-export const IndividualItemPratMain = ({ individualItem }) => {
+export const IndividualItemPratMain = ({ individualItem, addToCart }) => {
+
+    const handleAddToCart=()=>{
+        addToCart(individualItem);
+    }
 
     //Renderizar individualItem
     return (
@@ -15,7 +19,7 @@ export const IndividualItemPratMain = ({ individualItem }) => {
                 </Card.Body>
                 <Card.Body className="d-flex justify-content-between part2-body">
                     <Card.Link className="valor-artes"> {"R$ "+individualItem.price} </Card.Link>
-                    <Card.Link href="#"> <AiOutlineShoppingCart size={24} color="#68747b" /></Card.Link>
+                    <Card.Link href="#" onClick={handleAddToCart}> <AiOutlineShoppingCart size={24} color="#68747b" /></Card.Link>
                 </Card.Body>
             </Card>
         </Col>

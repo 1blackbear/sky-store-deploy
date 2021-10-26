@@ -1,0 +1,17 @@
+.modal-enc-linhaHalf {
+    margin-top: 0px;
+}
+.modal-img-size {
+    width: 180px;
+    height: 180px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 20%;
+    color: white;
+    font-size: 1.7em;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    filter: grayscale(50%)
+}

@@ -2,18 +2,13 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
 import { fs, auth, storage } from '../../../config/firebase.js';
 import { PrateleiraItem } from './prateleira-item';
-import ModalPrateleira from './modal-prateleira/modal-add-item.js';
-import AbreEditar from './botao-editar.js';
 import { propTypes } from 'react-bootstrap/esm/Image';
+import { Link } from "react-router-dom";
 
 
 const PrateleiraList = () => {
-
     
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     const [items, setItems] = useState([]);
     
     //lista
@@ -41,7 +36,7 @@ const PrateleiraList = () => {
             <Row id="table-title">
                 <Col className="d-flex justify-content-between align-items-center">
                     <h1>Prateleira Database</h1>
-                    <Button id="btn-addItem" onClick={handleShow}>Adicionar item</Button>
+                    <Button id="btn-addItem" href="/adiciona-prateleira"><Link to={"/adiciona-prateleira"} id={"link-addItem"}>Adicionar item</Link></Button>
                 </Col>
             </Row>
             <Row id="table-header">
@@ -56,21 +51,12 @@ const PrateleiraList = () => {
             <Row id="table-body">
                 {items.length > 0 && (<>
                     <div />
-                    <PrateleiraItem items={items}
-                        onClick={handleShow} />
+                    <PrateleiraItem items={items} />
                 </>)}
                 {items.length < 1 && (
                     <div className='container-fluid'>Por favor, espere....</div>
                 )}
             </Row>
-
-            <ModalPrateleira
-                show={show}
-                onClick={handleShow}
-                onHide={handleClose}
-                items={items}
-            >
-            </ModalPrateleira>
         </Container>
 
     )

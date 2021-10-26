@@ -1,0 +1,31 @@
+.modal-img-logo {
+    background-image: url("/src/images/encomendas/Artes\ digitais/logo.jpg");
+    background-position-x: -45px;
+}
+.modal-img-adesivo {
+    margin-left: 20%;
+    background-image: url("/src/images/encomendas/Artes\ digitais/adesivo.jpg");
+}
+.modal-img-capa {
+    margin-right: 20%;
+    background-image: url("/src/images/encomendas/Artes\ digitais/capa de livro.jpg");
+}
+.modal-img-visita {
+    margin-left: 20%;
+    background-image: url("/src/images/encomendas/Artes\ digitais/cartão de visita.jpg");
+    background-position-x: -60px;
+}
+.modal-img-doutros {
+    margin-right: 20%;
+    background-image: url("/src/images/encomendas/Artes\ digitais/outros.png");
+}
+.modal-img-redes {
+    background-image: url("/src/images/encomendas/Artes\ digitais/post de insta.png");
+}
+
+.modal-img-logo:hover, .modal-img-adesivo:hover, .modal-img-capa:hover, 
+.modal-img-visita:hover, .modal-img-doutros:hover, .modal-img-redes:hover{
+    cursor: pointer;
+    filter: grayscale(100%)
+}
+

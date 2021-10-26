@@ -56,6 +56,18 @@ padding:0;
     margin-top:50px;
 }
 
+
+#photo-input,  #files-input{
+    display: flex;
+    flex-direction: column;
+}
+
+#button-form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 768px) {
     .card-part {
         margin-top: -10%;

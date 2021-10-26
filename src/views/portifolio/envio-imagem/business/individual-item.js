@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col, Button } from 'react-bootstrap';
-import {fs, auth} from '../../../../config/firebase.js'
+import {fs, auth} from '../../../../config/firebase.js';
+import { Link } from "react-router-dom";
 
 export const IndividualItem = ({ individualItem }) => {
 
@@ -33,7 +34,7 @@ export const IndividualItem = ({ individualItem }) => {
             <Col xs={2}>{individualItem.title}</Col>
             <Col xs={6}>{individualItem.desc}</Col>
             <Col xs={2} className="d-flex">
-                <Col xs={6}><Button className="btn-update">Editar</Button></Col>
+            <Col xs={6}><Button className="btn-update"><Link to={"/edita-portifolio/" + individualItem.ID} key={individualItem.ID} className={"link-editItem"}>Editar</Link></Button></Col>
                 <Col xs={6}><Button className="btn-delete" onClick={handleDelete}>Deletar</Button></Col>
             </Col>
         </Row>
