@@ -4,10 +4,15 @@ import '../styles/modal-form.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import ModalConfirm from '../../modal-list/modal-confirm.js';
+import { auth, fs } from "../../../../../config/firebase";
+import { useHistory } from 'react-router-dom';
 
 
 
 const ModalFormDigital = ({ onHide, show, item }) => {
+    //Rotas para a página
+    const history = useHistory();
+
     /*Funções para abrir e fechar o Modal de Confirmação */
     const [showConfirm, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -27,30 +32,63 @@ const ModalFormDigital = ({ onHide, show, item }) => {
         setCampos(campos);
     }
 
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function getCurrentDate(separator='/'){
+
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        
+        return `${date}${separator}${month<10?`0${month}`:`${month}`}${separator}${year}`
+    }
+
     function handleFormSubmit(e) {
         e.preventDefault();
         campos["tipo"] = item;
         setCampos(JSON.stringify(campos));
-        axios.post('/encomendas/send',
-            campos,
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then((response) => {
-                setCampos({
-                    tipo: '',
-                    nome: '',
-                    contato: '',
-                    email: '',
-                    desc: ''
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                let num_pedido = getRandomInt(1000000,9999999);
+                let uid = user.uid;
+                let status = "Pedido recebido";
+                let data = getCurrentDate();
+                fs.collection('Encomendas-list').add({
+                    uid,
+                    campos,
+                    status,
+                    data,
+                    num_pedido
+                }).then(() => {
+                    axios.post('/encomendas/send',
+                        campos,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        }).then((response) => {
+                            setCampos({
+                                tipo: '',
+                                nome: '',
+                                contato: '',
+                                email: '',
+                                desc: ''
+                            });
+                            onHide();
+                            handleShow();
+                            setTimeout(() => { 
+                                handleClose();
+                                history.push('/perfil');
+                            }, 4000)
+                        });
                 });
-                onHide();
-                handleShow();
-                setTimeout(() => {
-                    handleClose();
-                }, 4000)
-            });
+            }
+        })
     }
 
 

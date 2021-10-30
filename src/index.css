@@ -20,4 +20,24 @@ html, body {
     font-size: 30px;
     z-index: 3;
 }
+#manutencao {
+    color: #3f3f3f;
+    font-weight: bold;
+    width: 100vw;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+#settings-icon {
+    color: #3f3f3f;
+    font-size: 12em;
+}
+
+#manutencao h1 {
+    margin-bottom: 80px;
+}
 

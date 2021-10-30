@@ -3,6 +3,7 @@ import TelaInicial from './views/tela-inicial/';
 import MenuSuperior from './components/menu-superior/menu';
 import Portifolio from './views/portifolio/portifolio-main/business/index.js';
 import SobreMim from './views/sobre-mim/';
+import {Manutencao} from './manutencao.js';
 import {Encomendas} from './views/encomendas/index.js';
 import AddPortifolio from './views/portifolio/envio-imagem/business/index';
 import PortifolioList from './views/portifolio/envio-imagem/business/portifolio-list';
@@ -18,6 +19,9 @@ import { AnimatePresence } from "framer-motion";
 import FormsEditPortifolio from './views/portifolio/envio-imagem/editar/form-edita';
 import FormsPrateleira from './views/prateleira/envio-item/adicionar/forms-prateleira';
 import FormsEditPrateleira from './views/prateleira/envio-item/editar/forms-edit-prateleira';
+import EncomendasList from './views/encomendas/encomendas-list/encomendas-list.js';
+import EncomendasListSky from './views/encomendas/encomendas-list/encomendas-list-sky.js';
+import Perfil from './views/perfil/index.js';
 
 
 const App = () => {
@@ -42,6 +46,7 @@ const App = () => {
         )}
         <Switch> 
           <Route exact path='/' component={TelaInicial} />
+          <Route exact path='/manutencao' component={Manutencao} />
           <Route exact path='/portifolio' component={Portifolio} />
           <Route exact path='/adiciona-portifolio' component={AddPortifolio} />
           <Route exact path='/portifolio-list' component={PortifolioList} />
@@ -55,6 +60,9 @@ const App = () => {
           <Route exact path='/adiciona-prateleira' component={FormsPrateleira}/>
           <Route exact path='/edita-portifolio/:id' component={FormsEditPortifolio}/>
           <Route exact path='/edita-prateleira/:id' component={FormsEditPrateleira}/>
+          <Route exact path='/encomendas-list' component={EncomendasList} />
+          <Route exact path='/encomendas-list-sky' component={EncomendasListSky} />
+          <Route exact path='/perfil' component={Perfil} />
         </Switch>
       </Router>
     </AnimatePresence>

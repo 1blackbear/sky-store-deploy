@@ -1,12 +1,9 @@
 .imagem {
      position: relative;
 }
-
-      
 .imagem:hover .capa {
     display: flex;
 }
-      
 .capa {
     display: none;
     align-items: center;

@@ -19,6 +19,10 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
 
     const user = new Usuario;
 
+    function cadastrar(){
+        user.cadastrar(email, senha, confirmSenha, nome);
+    }
+
 
     return (
 
@@ -88,7 +92,7 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                     <label onClick={voltaLogin} for="" class="voltarLogin"><a href="#"><i class="fas fa-arrow-left"></i>Já possuo conta!</a></label>
                     <div />
                     <div>
-                        <Button className="btn btn-primary button-save" onClick={user.cadastrar(email, senha, confirmSenha)} variant="primary" type="submit" block>
+                        <Button className="btn btn-primary button-save" variant="primary" onClick={cadastrar} type="submit" block>
                             Cadastrar
                         </Button>
                         <FechaCadastro
@@ -103,7 +107,7 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
 
 
                 <Usuario
-                    cadastrar={user.cadastrar(email, senha, confirmSenha)}
+                    cadastrar={cadastrar}
                 >
                 </Usuario>
             </Form>

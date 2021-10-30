@@ -4,9 +4,14 @@ import '../styles/modal-form.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import ModalConfirm from '../../modal-list/modal-confirm.js';
+import { auth, fs } from "../../../../../config/firebase";
+import { useHistory } from 'react-router-dom';
 
 
 const ModalFormIlustra = ({ onHide, show, item }) => {
+    //Rotas para a página
+    const history = useHistory();
+
     /*Funções para abrir e fechar o Modal de Confirmação */
     const [showConfirm, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -22,38 +27,70 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
         fundo: ''
     });
 
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
 
     function handleInputChange(event) {
         campos[event.target.name] = event.target.value;
         setCampos(campos);
     }
 
+    function getCurrentDate(separator='/'){
+
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        
+        return `${date}${separator}${month<10?`0${month}`:`${month}`}${separator}${year}`
+    }
+
     function handleFormSubmit(e) {
         e.preventDefault();
         campos["tipo"] = item;
         setCampos(JSON.stringify(campos));
-        axios.post('/encomendas/send-ilustra',
-            campos,
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then((response) => {
-                setCampos({
-                    tipo: '',
-                    nome: '',
-                    contato: '',
-                    email: '',
-                    desc: '',
-                    adicao_personagem: '',
-                    fundo: ''
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                let num_pedido = getRandomInt(1000000,9999999);
+                let uid = user.uid;
+                let status = "Pedido recebido";
+                let data = getCurrentDate();
+                fs.collection('Encomendas-list').add({
+                    uid,
+                    campos,
+                    status,
+                    data,
+                    num_pedido
+                }).then(() => {
+                    axios.post('/encomendas/send-ilustra',
+                        campos,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        }).then((response) => {
+                            setCampos({
+                                tipo: '',
+                                nome: '',
+                                contato: '',
+                                email: '',
+                                desc: '',
+                                adicao_personagem: '',
+                                fundo: ''
+                            });
+                            onHide();
+                            handleShow();
+                            setTimeout(() => {
+                                handleClose();
+                                history.push('/perfil');
+                            }, 4000)
+                        });
                 });
-                onHide();
-                handleShow();
-                setTimeout(() => {
-                    handleClose();
-                }, 4000)
-            });
+            }
+        })
     }
     return (<>
         <Modal
@@ -106,7 +143,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                                                     <Form.Check
                                                         type="radio"
                                                         className="default-radio default-radio-add">
-                                                        <Form.Check.Input className="radioBtn" name="adicao_personagem" type="radio" value="Sim" onChange={handleInputChange}/>
+                                                        <Form.Check.Input className="radioBtn" name="adicao_personagem" type="radio" value="Sim" onChange={handleInputChange} />
                                                         <Form.Check.Label>Sim</Form.Check.Label>
                                                     </Form.Check>
                                                 </Col>
@@ -115,7 +152,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                                                         type="radio"
                                                         className="default-radio default-radio-add"
                                                     >
-                                                        <Form.Check.Input className="radioBtn" name="adicao_personagem" type="radio" value="Não" onChange={handleInputChange}/>
+                                                        <Form.Check.Input className="radioBtn" name="adicao_personagem" type="radio" value="Não" onChange={handleInputChange} />
                                                         <Form.Check.Label>Não</Form.Check.Label>
                                                     </Form.Check>
                                                 </Col>
@@ -128,28 +165,28 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                                             <Form.Check
                                                 type="radio"
                                                 className="default-radio default-radio-back  default-radio-backs">
-                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio" value="Sem fundo" onChange={handleInputChange}/>
+                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio" value="Sem fundo" onChange={handleInputChange} />
                                                 <Form.Check.Label>Sem fundo</Form.Check.Label>
                                             </Form.Check>
                                             <Form.Check
                                                 type="radio"
                                                 className="default-radio default-radio-back"
                                             >
-                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio" value="Pattern simples" onChange={handleInputChange}/>
+                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio" value="Pattern simples" onChange={handleInputChange} />
                                                 <Form.Check.Label>Pattern simples</Form.Check.Label>
                                             </Form.Check>
                                             <Form.Check
                                                 type="radio"
                                                 className="default-radio default-radio-back"
                                             >
-                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio"  value="Cor sólida" onChange={handleInputChange}/>
+                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio" value="Cor sólida" onChange={handleInputChange} />
                                                 <Form.Check.Label>Cor sólida</Form.Check.Label>
                                             </Form.Check>
                                             <Form.Check
                                                 type="radio"
                                                 className="default-radio"
                                             >
-                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio" value="Outro (informar na descrição)" onChange={handleInputChange}/>
+                                                <Form.Check.Input className="radioBtn" name="fundo" type="radio" value="Outro (informar na descrição)" onChange={handleInputChange} />
                                                 <Form.Check.Label>Outro (informar na descrição)</Form.Check.Label>
                                             </Form.Check>
                                         </Form.Group>

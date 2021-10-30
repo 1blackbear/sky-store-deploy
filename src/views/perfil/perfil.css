@@ -1,0 +1,72 @@
+#profile-header {
+    margin-top: 3%;
+}
+#profile-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#table-title-profile {
+    margin-top: 1.5%;
+    margin-bottom: 2%;
+}
+.profile-image {
+    width: 250px;
+    height: 250px;
+}
+.profile-nav {
+    margin: 0px;
+}
+.profile-nav li a{
+    color: #707070;
+}
+.profile-nav li a:hover{
+    color: #474747;
+}
+.profile-nav li a:first-child{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+#progress-section {
+    margin-top: 5%;
+}
+.progress-bar-main {
+    padding-left: 6%;
+    padding-right: 6%;
+}
+#progress-bar {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+#progress-bar .progress-state {
+    text-align: end;
+    padding: 0px;
+}
+.progress-state:nth-child(2), .progress-state:nth-child(3) {
+    text-align: center !important;
+}
+.progress-state:nth-child(2) {
+    margin-right: 4.5%;
+}
+.progress-state:nth-child(3) {
+    margin-left: 2%;
+}
+.progress-state:first-child {
+    text-align: start !important;
+    
+}
+
+.capa-perfil {
+    border-radius: 150px;
+    background: #d8d8d838;
+}
+#edit-icon {
+    font-size: 1.7em;
+}
+#trigger-photo {
+    cursor: pointer;
+}
+#profile-input {
+    display: none;
+}

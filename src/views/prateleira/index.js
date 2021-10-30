@@ -54,62 +54,61 @@ function Prateleira() {
 
     const filterData = (value) => {
         fs.collection('Prateleira-item')
-        .where('option', '==', value )
-        .onSnapshot((snapshot) => {
-            const items = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
+            .where('option', '==', value)
+            .onSnapshot((snapshot) => {
+                const items = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
 
-            }))
-            setItems(items);
-        });
+                }))
+                setItems(items);
+            });
     }
 
-    const handleReset = () =>{
+    const handleReset = () => {
         fs.collection('Prateleira-item')
-        .onSnapshot((snapshot) => {
-            const items = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }))
-            setItems(items);
-            console.log(items); 
-        });
+            .onSnapshot((snapshot) => {
+                const items = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }))
+                setItems(items);
+                console.log(items);
+            });
     }
 
 
     return (
         <>
-        <Container className="card-part">
-            <Row >
-                
-                <Nav justify variant="tabs" className="d-flex justify-content-center nav-categorias" defaultActiveKey="cat1-btn">
-                    <Nav.Item>
-                        <Nav.Link eventKey="cat1-btn" onClick={handleReset} className="nav-itens">GERAL</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item >
-                        <Nav.Link eventKey="cat2-btn" onClick={() => filterData("Adesivo")} className="nav-itens">ADESIVO</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="cat3-btn" onClick={() => filterData("Estampa")} className="nav-itens">ESTAMPA</Nav.Link>
-                    </Nav.Item>
-                </Nav>                
-                
-                <PrateleiraItemMain 
-                items={items}
-                addToCart={addToCart}
-                >
-                </PrateleiraItemMain>
+            <Container className="card-part">
+                <Row >
 
-            </Row>
+                    <Nav justify variant="tabs" className="d-flex justify-content-center nav-categorias" defaultActiveKey="cat1-btn">
+                        <Nav.Item>
+                            <Nav.Link eventKey="cat1-btn" onClick={handleReset} className="nav-itens">GERAL</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item >
+                            <Nav.Link eventKey="cat2-btn" onClick={() => filterData("Adesivo")} className="nav-itens">ADESIVO</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="cat3-btn" onClick={() => filterData("Estampa")} className="nav-itens">ESTAMPA</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    <PrateleiraItemMain
+                        items={items}
+                        addToCart={addToCart}
+                    >
+                    </PrateleiraItemMain>
 
-        </Container>
-        <CarrinhoDeCompras
-            open={open}
-            handleCart={handleCart}
-        >
-        </CarrinhoDeCompras>
-    </>)
+                </Row>
+
+            </Container>
+            <CarrinhoDeCompras
+                open={open}
+                handleCart={handleCart}
+            >
+            </CarrinhoDeCompras>
+        </>)
 }
 
 export default Prateleira;

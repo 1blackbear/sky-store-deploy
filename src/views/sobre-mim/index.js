@@ -2,7 +2,7 @@ import './index.css';
 import { Form, Button, Modal } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { storage, fs, auth } from './../../config/firebase.js';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 
 function SobreMim() {

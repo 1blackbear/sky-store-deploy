@@ -1,21 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
-import { fs, auth, storage } from '../../../config/firebase.js';
-import { PrateleiraItem } from './prateleira-item';
-import { propTypes } from 'react-bootstrap/esm/Image';
-import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap';
+import { fs, auth } from '../../../config/firebase.js'
+import { EncomendasItem } from './individual-item-sky/encomenda-item-sky.js';
 
 
-const PrateleiraList = () => {
-    
-    const [show, setShow] = useState(false);
+const EncomendasListSky = () => {
     const [items, setItems] = useState([]);
-    
-    //lista
+
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if (user) {
-                fs.collection('Prateleira-item').onSnapshot(snapshot => {
+                fs.collection('Encomendas-list').onSnapshot(snapshot => {
                     const newItem = snapshot.docs.map((doc) => ({
                         ID: doc.id,
                         ...doc.data(),
@@ -23,42 +18,36 @@ const PrateleiraList = () => {
                     setItems(newItem);
                 })
             }
-            else {
-                alert('Usuário não está logado');
-            }
         })
     }, [])
-
 
     //Renderizar tabela database 
     return (
         <Container>
             <Row id="table-title">
                 <Col className="d-flex justify-content-between align-items-center">
-                    <h1>Prateleira Database</h1>
-                    <Button id="btn-addItem" href="/adiciona-prateleira"><Link to={"/adiciona-prateleira"} id={"link-addItem"}>Adicionar item</Link></Button>
+                    <h1>Minhas encomendas</h1>
                 </Col>
             </Row>
             <Row id="table-header">
                 <Row id="table-Item-header">
-                    <Col xs={1}>ID</Col>
-                    <Col xs={2}>Categoria</Col>
-                    <Col xs={5}>Titulo</Col>
-                    <Col xs={2}>Preço</Col>
-                    <Col xs={2}>Ações</Col>
+                <Col xs={3}>Número do Pedido</Col>
+                    <Col xs={2}>Titulo</Col>
+                    <Col xs={2}>Status</Col>
+                    <Col xs={2}>Data</Col>
+                    <Col xs={3}>Ações</Col>
                 </Row>
             </Row>
             <Row id="table-body">
                 {items.length > 0 && (<>
-                    <PrateleiraItem items={items} />
+                    <EncomendasItem items={items} />
                 </>)}
                 {items.length < 1 && (
                     <div className='container-fluid'>Por favor, espere....</div>
                 )}
             </Row>
         </Container>
-
     )
 };
 
-export default PrateleiraList;
+export default EncomendasListSky;

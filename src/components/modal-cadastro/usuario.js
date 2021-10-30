@@ -1,5 +1,5 @@
 import React from "react";
-import {auth} from '../../config/firebase.js'
+import {auth, fs} from '../../config/firebase.js'
 
 class Usuario extends React.Component {
     constructor() {
@@ -15,7 +15,7 @@ class Usuario extends React.Component {
         };
     }
 
-    cadastrar(email, senha, confirmSenha) {
+    cadastrar(email, senha, confirmSenha, nome) {
 
         if (!email || !senha) {
             this.setState({ msgTipo: 'erro' })
@@ -27,18 +27,16 @@ class Usuario extends React.Component {
             this.setState({ msg: 'As senhas informadas são diferentes!' })
             return;
         }
-        auth.createUserWithEmailAndPassword(auth, email, senha)
+        auth.createUserWithEmailAndPassword(email, senha)
             .then((resultado) => {
-                // Signed in
-                /**const user = userCredential.user;**/
-                // ...
+                fs.collection('Users').doc(resultado.user.uid).set({
+                    nome: nome,
+                    email: email,
+                })
                 this.setState({ msgTipo: 'sucesso' })
             })
             .catch((erro) => {
                 this.setState({ msgTipo: 'erro' })
-                /* const errorCode = error.code;
-                 const errorMessage = error.message;*/
-                // ..
                 switch (erro.message) {
                     case 'Password should be at least 6 characters':
                         this.setState({ msg: 'A senha deve ter pelo menos 6 caracteres!' });

@@ -14,9 +14,13 @@ import { Dropdown } from 'react-bootstrap';
 import ModalEsqueciSenha from './modal-login/modal-esquecisenha/modal-esquecisenha';
 import { auth, fs } from '../../config/firebase.js';
 import CarrinhoDeCompras from '../carrinho/carrinho';
+import { useHistory } from 'react-router-dom';
 
 
 function MenuSuperior() {
+
+    //Rotas para a página
+    const history = useHistory();
 
     /*Atributos do usuário atual */
     const [userCommun, setUser] = useState(null);
@@ -90,6 +94,7 @@ function MenuSuperior() {
 
     const handleLogout = () => {
         auth.signOut();
+        history.push('/');
         window.location.reload();
     }
 
@@ -144,6 +149,7 @@ function MenuSuperior() {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
+                                    <Dropdown.Item><Link to="/encomendas-list" className="link-dropdown">Minhas encomendas</Link></Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -157,6 +163,7 @@ function MenuSuperior() {
                                     <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
                                     <Dropdown.Item><Link to="/portifolio-list" className="link-dropdown">Adicionar item portifólio</Link></Dropdown.Item>
                                     <Dropdown.Item href="/prateleira-list">Adicionar item prateleira</Dropdown.Item>
+                                    <Dropdown.Item><Link to="/encomendas-list-sky" className="link-dropdown">Encomendas</Link></Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

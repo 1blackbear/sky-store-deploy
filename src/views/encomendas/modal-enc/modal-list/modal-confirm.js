@@ -27,6 +27,7 @@ const ModalConfirm = ({ onHide, show }) => {
                     exit="exit" // Exit state (used later) to variants.exit
                     transition={{ type: "spring", stiffness: 30 }}>
                     <h1>TUDO CERTO!</h1>
+                    <h1>GERANDO ORDEM DE PEDIDO...</h1>
                     <h1>EM BREVE ENTRAREI EM CONTATO</h1>
                 </motion.div>
             </Modal.Body>
