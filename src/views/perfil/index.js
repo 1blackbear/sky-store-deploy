@@ -6,16 +6,29 @@ import "./perfil.css";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import EditIcon from '@material-ui/icons/Edit';
+import ModificarSenha from './modificar-senha/modificar-senha.js';
+import DadosPessoais from './dados-pessoais/dados.js';
 
 
 const Perfil = () => {
     const [progress, setProgress] = useState(0);
+    const default_image = "https://firebasestorage.googleapis.com/v0/b/sky-loja.appspot.com/o/profile-images%2Fphoto_2021-11-01_20-07-23.jpg?alt=media&token=4f3dc9af-c2d3-4882-8b7a-1c858bfbc6c7";
     const cloud = "https://firebasestorage.googleapis.com/v0/b/sky-loja.appspot.com/o/cloud.png?alt=media&token=a317d1c4-94d2-4dc2-afe0-b701715b45e7"
 
+    /*Funções para abrir e fechar o Modal de Trocar senha */
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    /*Funções para abrir e fechar o Modal de Dados Pessoais */
+    const [showDados, setShowDados] = useState(false);
+    const handleCloseDados = () => setShowDados(false);
+    const handleShowDados = () => setShowDados(true);
+
     function returnDate(date) {
-        var partesData = date.split("/");
-        var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
-        return data;
+        return new Date(
+            date.seconds * 1000 + date.nanoseconds / 1000000,
+        );
     }
     const [items, setItems] = useState([]);
     const [name, setName] = useState("");
@@ -41,19 +54,26 @@ const Perfil = () => {
                         }));
                     newItem.map((individualItem, index) => { //Faz um map no vetor de itens do newItem
                         if (individualItem.uid === user.uid.toString() && newItem[index + 1] != null) {
+                            let item = individualItem;
                             if (returnDate(individualItem.data) > returnDate(newItem[index + 1].data)) {
-                                let vect = [individualItem];
-                                setItems(vect);
-                                if (individualItem.status === "Em contato")
-                                    setProgress(33.3)
-                                else if (individualItem.status === "Em produção")
-                                    setProgress(66.67)
-                                else if (individualItem.status === "Pedido entregue")
-                                    setProgress(100)
+                                setItems([individualItem]);
+                            } else {
+                                item = newItem[index + 1];
+                                setItems([newItem[index + 1]]);
                             }
+                            if (item.status === "Pedido recebido")
+                                setProgress(0)
+                            else if (item.status === "Em contato")
+                                setProgress(33.4)
+                            else if (item.status === "Em produção")
+                                setProgress(66.67)
+                            else if (item.status === "Pedido entregue")
+                                setProgress(100)
+
                         } else if (individualItem.uid === user.uid.toString() && newItem.length == 1) {
                             setItems((prevState) => [...prevState, individualItem]);
                         }
+
                     })
                 })
             }
@@ -92,13 +112,13 @@ const Perfil = () => {
     };
 
     //Renderizar tabela database 
-    return (
+    return (<>
         <Container>
             <Row id="profile-header">
                 <Col xs={3}>
                     <a onClick={uploadImage} id="trigger-photo">
                         <div className="imagem">
-                            <Image src={url == "" ? cloud : url} className="profile-image" roundedCircle />
+                            <Image src={url == "" ? default_image : url} className="profile-image" roundedCircle />
                             <div className="capa capa-perfil">
                                 <p className="text-item"><EditIcon id="edit-icon" /></p>
                             </div>
@@ -113,10 +133,10 @@ const Perfil = () => {
                     <Col xs={12}>
                         <Nav defaultActiveKey="/home" as="ul" className="profile-nav">
                             <Nav.Item as="li">
-                                <Nav.Link href="/manutencao">Dados pessoais</Nav.Link>
+                                <Nav.Link onClick={handleShowDados}>Dados pessoais</Nav.Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Nav.Link href="/manutencao">Alterar senha</Nav.Link>
+                                <Nav.Link onClick={handleShow}>Alterar senha</Nav.Link>
                             </Nav.Item>
                             <Nav.Item as="li">
                                 <Nav.Link eventKey="link-2" href="/encomendas-list">Minhas encomendas</Nav.Link>
@@ -202,7 +222,15 @@ const Perfil = () => {
                 </Row>
             </Row>
         </Container >
-    )
+        <ModificarSenha
+            show={show}
+            handleClose={handleClose}
+        />
+        <DadosPessoais
+            show={showDados}
+            handleClose={handleCloseDados}
+        />
+    </>)
 };
 
 export default Perfil;

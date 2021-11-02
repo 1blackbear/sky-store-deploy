@@ -38,16 +38,6 @@ const ModalFormDigital = ({ onHide, show, item }) => {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    function getCurrentDate(separator='/'){
-
-        let newDate = new Date()
-        let date = newDate.getDate();
-        let month = newDate.getMonth() + 1;
-        let year = newDate.getFullYear();
-        
-        return `${date}${separator}${month<10?`0${month}`:`${month}`}${separator}${year}`
-    }
-
     function handleFormSubmit(e) {
         e.preventDefault();
         campos["tipo"] = item;
@@ -57,7 +47,7 @@ const ModalFormDigital = ({ onHide, show, item }) => {
                 let num_pedido = getRandomInt(1000000,9999999);
                 let uid = user.uid;
                 let status = "Pedido recebido";
-                let data = getCurrentDate();
+                let data = new Date();
                 fs.collection('Encomendas-list').add({
                     uid,
                     campos,

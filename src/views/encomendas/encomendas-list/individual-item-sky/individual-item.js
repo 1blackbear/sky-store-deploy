@@ -4,6 +4,16 @@ import { fs } from './../../../../config/firebase.js';
 
 const IndividualItemEnco = ({ individualItem }) => {
 
+    function getCurrentDate(separator = '/') {
+        const fireBaseTime = new Date(
+            individualItem.data.seconds * 1000 + individualItem.data.nanoseconds / 1000000,
+        );
+        let date = fireBaseTime.getDate();
+        let month = fireBaseTime.getMonth() + 1;
+        let year = fireBaseTime.getFullYear();
+        return `${date}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${year}`
+    }
+
     const [status, setStatus] = useState('');
 
     const EditaItem = (e) => {
@@ -69,7 +79,7 @@ const IndividualItemEnco = ({ individualItem }) => {
                     <option value={stats["entregue"]}>{stats["entregue"]}</option>
                 </Form.Control>
             </Col>
-            <Col xs={2} className="table-child">{individualItem.data}</Col>
+            <Col xs={2} className="table-child">{getCurrentDate()}</Col>
             <Col xs={3} className="table-child">
                 <Col><Button className="btn-update" onClick={EditaItem}>Atualizar</Button></Col>
             </Col>
