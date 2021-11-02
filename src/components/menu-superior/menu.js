@@ -148,7 +148,7 @@ function MenuSuperior() {
                                     <a href="#"><PersonIcon className="menu-icons" style={{ fontSize: 28 }} /></a>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
+                                    <Dropdown.Item><Link to="/perfil" className="link-dropdown">Perfil</Link></Dropdown.Item>
                                     <Dropdown.Item><Link to="/encomendas-list" className="link-dropdown">Minhas encomendas</Link></Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
@@ -160,9 +160,9 @@ function MenuSuperior() {
                             <Dropdown id="dropdown">
                                 <Dropdown.Toggle variant="success" id="dropdown-basic" />
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
+                                     <Dropdown.Item><Link to="/perfil" className="link-dropdown">Perfil</Link></Dropdown.Item>
                                     <Dropdown.Item><Link to="/portifolio-list" className="link-dropdown">Adicionar item portifólio</Link></Dropdown.Item>
-                                    <Dropdown.Item href="/prateleira-list">Adicionar item prateleira</Dropdown.Item>
+                                      <Dropdown.Item><Link to="/prateleira-list" className="link-dropdown">Adicionar item prateleira</Link></Dropdown.Item>
                                     <Dropdown.Item><Link to="/encomendas-list-sky" className="link-dropdown">Encomendas</Link></Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
