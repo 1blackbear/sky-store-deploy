@@ -1,6 +1,13 @@
 {
   "homepage": "./",
   "name": "sky-store",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "96x96 64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    }
+  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
