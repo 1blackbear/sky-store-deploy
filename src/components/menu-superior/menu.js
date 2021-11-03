@@ -148,7 +148,7 @@ function MenuSuperior() {
                                     <a href="#"><PersonIcon className="menu-icons" style={{ fontSize: 28 }} /></a>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item><Link to="/perfil" className="link-dropdown">Perfil</Link></Dropdown.Item>
+                                    <Dropdown.Item href="/perfil"><Link to="/perfil" className="link-dropdown">Perfil</Link></Dropdown.Item>
                                     <Dropdown.Item><Link to="/encomendas-list" className="link-dropdown">Minhas encomendas</Link></Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
