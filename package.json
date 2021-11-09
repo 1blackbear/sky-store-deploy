@@ -1,18 +1,13 @@
 {
   "homepage": "./",
   "name": "sky-store",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "96x96 64x64 32x32 24x24 16x16",
-      "type": "image/png"
-    }
-  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@stripe/react-stripe-js": "^1.6.0",
+    "@stripe/stripe-js": "^1.21.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -35,7 +30,11 @@
     "react-scripts": "^4.0.3",
     "react-step-progress": "^1.0.3",
     "react-step-progress-bar": "^1.0.3",
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^8.1.0",
     "sass": "^1.43.2",
+    "stripe": "^8.186.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

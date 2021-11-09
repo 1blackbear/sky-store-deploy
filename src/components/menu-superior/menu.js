@@ -153,6 +153,7 @@ function MenuSuperior() {
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
+
                         </>
                         }
                         {userAdmin && <>

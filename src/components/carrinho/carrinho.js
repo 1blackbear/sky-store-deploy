@@ -4,10 +4,27 @@ import { auth, fs } from "../../config/firebase";
 import './carrinho.css'
 import ItensCarrinho from "./itens-carrinho";
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
+import StripeCheckout from "react-stripe-checkout";
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ModalPayment from './pagamento/modal-payment.js'
+
+toast.configure();
 
 
 const CarrinhoDeCompras = ({ handleCart, open }) => {
 
+     /*Funções para abrir e fechar o Modal de Pagamento */
+     const [show, setShow] = useState(false);
+     const handleClose = () => setShow(false);
+     const handleShow = () => {
+        setShow(true);
+        handleCart();
+     };
+
+    // getting current user function
     const [cartItens, setCartItens] = useState([]);
 
     useEffect(() => {
@@ -24,18 +41,20 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
         })
     }, [])
 
-        // getting the TotalProductPrice from cartProducts in a seperate array
-        const price = cartItens.map((cartItens)=>{
-            return parseFloat(cartItens.price);
-        })
-    
-        // reducing the price in a single value
-        const reducerOfPrice = (accumulator,currentValue)=>accumulator+currentValue;
-    
-        const totalPrice = price.reduce(reducerOfPrice,0);
+    // getting the TotalProductPrice from cartProducts in a seperate array
+    const price = cartItens.map((cartItens) => {
+        return parseFloat(cartItens.price);
+    })
+
+    // reducing the price in a single value
+    const reducerOfPrice = (accumulator, currentValue) => accumulator + currentValue;
+
+    const totalPrice = price.reduce(reducerOfPrice, 0);
 
 
-    return (
+
+
+    return (<>
         <Modal
             show={open}
             onHide={handleCart}
@@ -48,15 +67,15 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
                 {cartItens.length > 0 && (
                     <div className='container-fluid'>
                         <h1 className='products-box'>
-                            <ItensCarrinho cartItens={cartItens}/>
+                            <ItensCarrinho cartItens={cartItens} />
                         </h1>
                     </div>
                 )}
                 {cartItens.length < 1 && (
                     <div className='container-fluid empty-cart'>
-                        <LocalMallOutlinedIcon className="bag-empty"/>
+                        <LocalMallOutlinedIcon className="bag-empty" />
                         <p>Ooopps... Seu carrinho está vazio!</p>
-                        </div>
+                    </div>
                 )}
 
             </Modal.Body>
@@ -66,12 +85,12 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
                         <p>Total: R$ {totalPrice}</p>
                     </Col>
                     <Col xs={12} className='d-flex justify-content-center'>
-                        <Button className='btn-buy' >COMPRAR</Button>
+                        <Button className='btn-buy' onClick={handleShow}>COMPRAR</Button>
                     </Col>
                 </Row>
             </Modal.Footer>
-
         </Modal >
-    );
+        <ModalPayment show={show} handleClose={handleClose}/>
+    </>);
 };
 export default CarrinhoDeCompras;

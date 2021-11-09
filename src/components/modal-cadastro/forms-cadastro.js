@@ -101,15 +101,6 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                         </FechaCadastro>
                     </div>
                 </Modal.Footer>
-
-
-
-
-
-                <Usuario
-                    cadastrar={cadastrar}
-                >
-                </Usuario>
             </Form>
             {/*Forms  de Cadastro */}
 
