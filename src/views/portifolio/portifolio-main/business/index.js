@@ -10,6 +10,7 @@ import '../styles/clouds.css';
 const Portifolio = () => {
 
     //Vetores de itens da Coluna 1 e Coluna 2
+    const [items, setitems] = useState([]);
     const [itemsCol1, setitemsCol1] = useState([]);
     const [itemsCol2, setitemsCol2] = useState([]);
 
@@ -23,6 +24,7 @@ const Portifolio = () => {
                     ...doc.data(),
                 }));
             newItem.map((individualItem) => { //Faz um map no vetor de itens do newItem
+                setitems((prevState) => [...prevState, individualItem]);
                 if (individualItem.checkCol === 'col1') { //Verifica qual coluna pertence o item
                     setitemsCol1((prevState) => [...prevState, individualItem]);
                 } else {
@@ -47,9 +49,9 @@ const Portifolio = () => {
                         animate="enter" // Animated state to variants.enter
                         exit="exit" // Exit state (used later) to variants.exit
                         transition={{ type: "spring", stiffness: 150 }}>
-                            <h1 className="first-col-detail-main">Portifolio</h1>
-                            <h4 className="first-col-detail-desc">Seja bem vindo(a) ao meu portfólio! Aqui você encontrará os mais recentes trabalhos feitos com muito carinho por mim. Espero que goste e que tenha uma boa experiência! ;)</h4>
-                        
+                        <h1 className="first-col-detail-main">Portfólio</h1>
+                        <h4 className="first-col-detail-desc">Seja bem vindo(a) ao meu portfólio! Aqui você encontrará os mais recentes trabalhos feitos com muito carinho por mim. Espero que goste e que tenha uma boa experiência! ;)</h4>
+
                     </motion.div>
                 </Col>
             </Row>
@@ -69,6 +71,17 @@ const Portifolio = () => {
                         <PortifolioItemMain items={itemsCol2} />
                     )}
                     {itemsCol2.length < 1 && (
+                        <div className='container-fluid'>Por favor, espere....</div>
+                    )}
+                </Col>
+            </Row>
+            <Row id="linha-fotos-mobile">
+                <Col className="coluna">
+                    {/*O vetor de itens da coluna 2 é maior que 0? Se sim, renderiza os itens presente nele*/}
+                    {items.length > 0 && (
+                        <PortifolioItemMain items={items} />
+                    )}
+                    {items.length < 1 && (
                         <div className='container-fluid'>Por favor, espere....</div>
                     )}
                 </Col>

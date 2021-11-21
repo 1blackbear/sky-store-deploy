@@ -20,7 +20,13 @@ function TelaInicial() {
                     ID: doc.id,
                     ...doc.data(),
                 }));
-                setitems([newItem[0],newItem[1],newItem[2]]);
+                let i = 0;
+                newItem.map((individualItem) => { //Faz um map no vetor de itens do newItem
+                    if (i < 3) {
+                        setitems((prevState) => [...prevState, individualItem]);
+                    }
+                    i++;
+                });
         })
     }, [])
  

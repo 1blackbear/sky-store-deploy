@@ -15,10 +15,10 @@ const IndividualItemEnco = ({ individualItem }) => {
     //Renderizar individualItem
     return (
         <Row className="table-Item">
-            <Col xs={4} className="table-child">{individualItem.num_pedido}</Col>
-            <Col xs={3} className="table-child">{individualItem.campos['tipo']}</Col>
+            <Col xs={4} className="table-child nm-table-mobile">{individualItem.num_pedido}</Col>
+            <Col xs={3} className="table-child title-table-mobile">{individualItem.campos['tipo']}</Col>
             <Col xs={2} className="table-child">{individualItem.status}</Col>
-            <Col xs={3} className="table-child">{getCurrentDate()}</Col>
+            <Col xs={3} className="table-child data-table-mobile">{getCurrentDate()}</Col>
         </Row>
     )
 }

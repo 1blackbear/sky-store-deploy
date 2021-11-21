@@ -115,8 +115,8 @@ const Perfil = () => {
     return (<>
         <Container>
             <Row id="profile-header">
-                <Col xs={3}>
-                    <div className="imagem">
+                <Col xs={{ span: 3, offset: 1 }} md={{ span: 3, offset: 0 }}>
+                    <div className="imagem img-profile-d">
                         <Image  src={url == "" ? default_image : url} className="profile-image" roundedCircle />
                         <div id="trigger-photo" onClick={uploadImage} className="capa capa-perfil">
                             <p className="text-item"><EditIcon id="edit-icon" /></p>
@@ -126,7 +126,7 @@ const Perfil = () => {
                 </Col>
                 <Col xs={9} id="profile-column">
                     <Col xs={12}>
-                        <h1>Olá, {name.split(' ').slice(0, 2).join(' ')}!</h1>
+                        <h1 className="text-align-center">Olá, {name.split(' ').slice(0, 2).join(' ')}!</h1>
                     </Col>
                     <Col xs={12}>
                         <Nav defaultActiveKey="/home" as="ul" className="profile-nav">
@@ -147,16 +147,17 @@ const Perfil = () => {
                 </Col>
             </Row>
             <Row id="table-title-profile">
-                <Col className="d-flex justify-content-between align-items-center">
-                    <h1>Última encomenda</h1>
+                <Col className="d-flex justify-content-between text-align-center align-items-center">
+                    <h1 className="last-encomenda">Última encomenda</h1>
                 </Col>
             </Row>
             <Row id="table-header">
                 <Row id="table-Item-header">
-                    <Col xs={4}>Número do Pedido</Col>
-                    <Col xs={3}>Titulo</Col>
-                    <Col xs={2}>Status</Col>
-                    <Col xs={3}>Data</Col>
+                    <Col xs={4} className="nm-big">Número do Pedido</Col>
+                    <Col xs={4} className="nm-table-mobile nm-mobile">Nº Pedido</Col>
+                    <Col xs={3} className="title-table-mobile">Titulo</Col>
+                    <Col xs={2} >Status</Col>
+                    <Col xs={3} className="data-table-mobile">Data</Col>
                 </Row>
             </Row>
             <Row id="table-body">

@@ -71,3 +71,44 @@
 #profile-input {
     display: none;
 }
+.nm-mobile {
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    #progress-section {
+        margin-left: 5%;
+        margin-bottom: 15vh;
+    }
+    #profile-header {
+        display: flex;
+        justify-content: center;
+    }
+    .img-profile-d {
+        margin-left: -50%;
+        display: flex;
+        justify-content: center;
+    }
+    .last-encomenda {
+        margin-top: 5%;
+    }
+    .title-table-mobile {
+        display: none;
+    }
+    .nm-big {
+        display: none;
+    }
+    .nm-mobile {
+        display: block;
+    }
+    .nm-table-mobile {
+        margin-left: 6%;
+    }
+    .data-table-mobile {
+        margin-left: 10%;
+    }
+    .text-align-center {
+        justify-content: center !important;
+        text-align: center;
+    }
+}

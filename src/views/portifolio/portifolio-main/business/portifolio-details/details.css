@@ -6,20 +6,37 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    justify-items: center;
     text-align: center;
     color: white;
 }
+.first-col-detail p {
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
 .first-col-detail h1 {
     font-weight: bold;
-}
-.first-col-detail p {
-    margin-left: 25%;
-    max-width: 50%;
 }
 .first-detail-image {
     width: 100%;  
 }
 .col-detail {
     padding: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .first-section-detail {
+        height: 35vh;
+    }
+    .first-col-detail {
+        padding-top: 5%;
+       display: block;
+    }
+    .first-col-detail p {
+        padding: 0px;
+        padding-left: 1%;
+        padding-right: 1%;
+        display: block;
+        font-size: 0.9em;
+        color: #707070;
+    }
 }

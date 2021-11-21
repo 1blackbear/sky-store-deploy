@@ -40,22 +40,22 @@ export const Encomendas = () => {
                             <Col className="d-flex text-tutorial">
                                 <p>1.</p>
                                 <p>Ao clicar no botão abaixo você terá a possibilidade de escolher qual o tipo de arte que
-                                    você deseja (arte digital ou ilustração) e após isso poderá escolher a categoria em que
-                                    ela melhor se encaixa.</p>
+                                    você deseja (arte digital ou ilustração digital).</p>
                             </Col>
                             <Col className="d-flex text-tutorial">
                                 <p>2.</p>
-                                <p>Personalize sua arte do jeito que você imagina, ajudando a Skai ter uma visão melhor do
-                                    que você almeja.</p>
+                                <p>Na segunda etapa, você deverá escolher o que deseja que a sky produza pra você, caso nenhuma das opções se encaixe
+                                    no seu desejo, basta clicar em "outros"!
+                                </p>
                             </Col>
                             <Col className="d-flex text-tutorial">
                                 <p>3.</p>
-                                <p>A Sky entrará em contato com você para se alinharem e decidirem os melhores pontos
-                                    do seu desenho. </p>
+                                <p>Nesta etapa você irá preencher um pequeno formulário informando os detalhes da arte desejada,
+                                     e lembre-se: quanto mais detalhes você fornecer à sky, mais incrível a arte ficará!</p>
                             </Col>
                             <Col className="d-flex text-tutorial">
                                 <p>4.</p>
-                                <p>Tudo certo, agora a imagem é sua! Pode usar e abusar dela.</p>
+                                <p>Tudo certo, agora é só esperar a sky entrar em contato pelo número informado na etapa anterior e observar o status da sua encomenda em seu perfil!</p>
                             </Col>
                         </Col>
                     </Row>

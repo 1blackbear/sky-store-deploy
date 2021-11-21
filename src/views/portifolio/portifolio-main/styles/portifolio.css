@@ -29,6 +29,9 @@ h3 {
 #button:hover {
     cursor: pointer;
 }
+#linha-fotos-mobile {
+    display: none;
+}
 #linha-fotos {
     background-color: white;
 }
@@ -87,6 +90,24 @@ h3 {
 }
 
 @media screen and (max-width: 768px) {
+    #linha-fotos-mobile {
+        display: block;
+    }
+    #linha-fotos {
+        display: none;
+    }
+    .first-section-detail-main {
+        height: 35vh;
+    }
+    .first-col-detail-main {
+        font-size: 2em;
+    }
+    .first-col-detail-desc {
+        font-weight:normal;
+        padding: 2%;
+        font-size: 1em;
+         color: #707070;
+    }
     .first-col-detail {
         background-color: white;
     }
