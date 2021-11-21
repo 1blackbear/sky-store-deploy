@@ -24,6 +24,12 @@
     border-style: solid none;
     border-bottom-style: none;
 }
+.table-portfolio {
+    margin: 0px;
+}
+#table-Item-header {
+    margin: 0px;
+}
 #table-header,#table-title {
     font-weight: bold;
 }

@@ -29,7 +29,9 @@ class Usuario extends React.Component {
         }
         auth.createUserWithEmailAndPassword(email, senha)
             .then((resultado) => {
+                let urlImg = "https://firebasestorage.googleapis.com/v0/b/sky-loja.appspot.com/o/default-image.jpg?alt=media&token=1f5a3516-a00f-4edc-a0ac-743ff0e60814";
                 fs.collection('Users').doc(resultado.user.uid).set({
+                    url: urlImg,
                     nome: nome,
                     email: email,
                 })

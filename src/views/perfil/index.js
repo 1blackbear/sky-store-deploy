@@ -116,14 +116,12 @@ const Perfil = () => {
         <Container>
             <Row id="profile-header">
                 <Col xs={3}>
-                    <a onClick={uploadImage} id="trigger-photo">
-                        <div className="imagem">
-                            <Image src={url == "" ? default_image : url} className="profile-image" roundedCircle />
-                            <div className="capa capa-perfil">
-                                <p className="text-item"><EditIcon id="edit-icon" /></p>
-                            </div>
+                    <div className="imagem">
+                        <Image  src={url == "" ? default_image : url} className="profile-image" roundedCircle />
+                        <div id="trigger-photo" onClick={uploadImage} className="capa capa-perfil">
+                            <p className="text-item"><EditIcon id="edit-icon" /></p>
                         </div>
-                    </a>
+                    </div>
                     <Form.Control type="file" id="profile-input" ref={inputElement} onChange={HandleImg} />
                 </Col>
                 <Col xs={9} id="profile-column">

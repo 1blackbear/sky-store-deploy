@@ -2,8 +2,8 @@ import './index.css';
 import { Form, Button, Modal } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { storage, fs, auth } from './../../config/firebase.js';
-import { motion } from "framer-motion";
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function SobreMim() {
     const [show, setShow] = useState(false);
@@ -91,68 +91,60 @@ function SobreMim() {
         })
     }, [])
 
-    const variants = {
-        hidden: { x: -200, y: 0 },
-        enter: { x: 0, y: 0 },
-        exit: { x: 0, y: -100 },
-    }
-
-
     return (
         <section className="start-page-back">
             <div className="container">
-                <motion.div variants={variants} // Pass the variant object into Framer Motion 
-                    initial="hidden" // Set the initial state to variants.hidden
-                    animate="enter" // Animated state to variants.enter
-                    exit="exit" // Exit state (used later) to variants.exit
-                    transition={{ type: "spring", stiffness: 150 }}>
-                    <div className="sobre-mim row">
+                <div className="sobre-mim row">
 
-                        {items.length > 0 && (
-                            <img className="col-12 skai-photo col-sm-6" src={imgUrl} />
-                        )}
-                        <div className="col-12 col-sm-6 text-about">
-                            {items.length > 0 && (
-                                <a> {desc}
-                                </a>
-                            )}
-                            {showBtn && (
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                    <Button onClick={handleShow} id="update-aboutme">Atualizar Conteúdo</Button>
-                                </Form.Group>
-                            )}
-
+                    {items.length > 0 && (
+                        <div id="img-id">
+                            <LazyLoadImage
+                                className="col-12 skai-photo col-sm-6"
+                                effect="blur"
+                                src={imgUrl} />
                         </div>
-                        <Form id="form">
-                            <Modal
-                                show={show}
-                                centered
-                                onHide={handleClose}
-                                keyboard={false}
-                            >
-                                <Modal.Header>
-                                    <Modal.Title>Atualizar conteúdo</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body id="body-praleira">
-                                    <Form.Group controlId="formFileMultiple" className="mb-3" id="input-files-1">
-                                        <Form.Label>Escolha a imagem principal</Form.Label>
-                                        <Form.Control type="file" className="input-photos" onChange={HandleMainImg} />
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                        <Form.Label>Descrição</Form.Label>
-                                        <Form.Control as="textarea" rows={4} defaultValue={items.length > 0 ? desc : ""} onChange={(e) => setDesc(e.target.value)} />
-                                    </Form.Group>
-                                </Modal.Body>
-                                <Modal.Footer>
-                                    <div />
-                                    <button type="button"
-                                        class="btn btn-primary button-save" onClick={AddNewItem}>Enviar</button>
-                                </Modal.Footer>
-                            </Modal>
-                        </Form>
+                    )}
+                    <div className="col-12 col-sm-6 text-about">
+                        {items.length > 0 && (
+                            <a> {desc}
+                            </a>
+                        )}
+                        {showBtn && (
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                <Button onClick={handleShow} id="update-aboutme">Atualizar Conteúdo</Button>
+                            </Form.Group>
+                        )}
 
                     </div>
-                </motion.div>
+                    <Form id="form">
+                        <Modal
+                            show={show}
+                            centered
+                            onHide={handleClose}
+                            keyboard={false}
+                        >
+                            <Modal.Header>
+                                <Modal.Title>Atualizar conteúdo</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body id="body-praleira">
+                                <Form.Group controlId="formFileMultiple" className="mb-3" id="input-files-1">
+                                    <Form.Label>Escolha a imagem principal</Form.Label>
+                                    <Form.Control type="file" className="input-photos" onChange={HandleMainImg} />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Descrição</Form.Label>
+                                    <Form.Control as="textarea" rows={4} defaultValue={items.length > 0 ? desc : ""} onChange={(e) => setDesc(e.target.value)} />
+                                </Form.Group>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <div />
+                                <button type="button"
+                                    class="btn btn-primary button-save" onClick={AddNewItem}>Enviar</button>
+                            </Modal.Footer>
+                        </Modal>
+                    </Form>
+
+                </div>
             </div>
         </section>
 

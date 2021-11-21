@@ -28,7 +28,7 @@ export const IndividualItem = ({ individualItem }) => {
     
     //Renderizar individualItem
     return (
-        <Row className="table-Item">
+        <Row className="table-Item table-portfolio">
             <Col xs={1}>{individualItem.id}</Col>
             <Col xs={1}>{col}</Col>
             <Col xs={2}>{individualItem.title}</Col>

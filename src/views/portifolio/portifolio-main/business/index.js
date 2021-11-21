@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { fs } from '../../../../config/firebase.js'
 import { PortifolioItemMain } from './portifolio-main-item.js';
 import { motion } from "framer-motion";
+import '../styles/clouds.css';
 
 const Portifolio = () => {
 
@@ -39,15 +40,17 @@ const Portifolio = () => {
 
     return (
         <Container fluid>
-            <Row className="first-section-detail">
-            <Col className="first-col-detail">
-                <motion.div variants={variants} // Pass the variant object into Framer Motion 
-                    initial="hidden" // Set the initial state to variants.hidden
-                    animate="enter" // Animated state to variants.enter
-                    exit="exit" // Exit state (used later) to variants.exit
-                    transition={{ type: "spring", stiffness: 150 }}>
-                        <h1>Portifolio</h1>
-                </motion.div>
+            <Row className="first-section-detail-main">
+                <Col className="first-col-detail">
+                    <motion.div variants={variants} // Pass the variant object into Framer Motion 
+                        initial="hidden" // Set the initial state to variants.hidden
+                        animate="enter" // Animated state to variants.enter
+                        exit="exit" // Exit state (used later) to variants.exit
+                        transition={{ type: "spring", stiffness: 150 }}>
+                            <h1 className="first-col-detail-main">Portifolio</h1>
+                            <h4 className="first-col-detail-desc">Seja bem vindo(a) ao meu portfólio! Aqui você encontrará os mais recentes trabalhos feitos com muito carinho por mim. Espero que goste e que tenha uma boa experiência! ;)</h4>
+                        
+                    </motion.div>
                 </Col>
             </Row>
             <Row id="linha-fotos"> {/*Linha de referência para a commentSection*/}
@@ -60,7 +63,7 @@ const Portifolio = () => {
                         <div className='container-fluid'>Por favor, espere....</div>
                     )}
                 </Col>
-                <Col className="coluna">
+                <Col className="coluna coluna-dois">
                     {/*O vetor de itens da coluna 2 é maior que 0? Se sim, renderiza os itens presente nele*/}
                     {itemsCol2.length > 0 && (
                         <PortifolioItemMain items={itemsCol2} />

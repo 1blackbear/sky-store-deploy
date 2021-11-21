@@ -1,10 +1,29 @@
 import './index.css';
-import  Buttons  from '../../components/botao/buttons';
+import Buttons from '../../components/botao/buttons';
 import { ReactComponent as LogoMobile } from '../../images/logo-mobile.svg';
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { fs } from '../../config/firebase.js';
+import { PortifolioItemMain } from '../portifolio/portifolio-main/business/portifolio-main-item.js';
 
 function TelaInicial() {
+    //Vetores de itens da Coluna 1 e Coluna 2
+    const [items, setitems] = useState([]);
+
+    //Atualização dinâmicas de itens da coluna com base em lista do firebase
+    useEffect(() => {
+        //Busca a snapshot da coleção 'Portifolio-item'
+        fs.collection('Portifolio-item').onSnapshot(snapshot => {
+            const newItem = // Variável com vetor de itens do map seguinte:
+                snapshot.docs.map((doc) => ({  //Faz um map na lista de documentos da seleção
+                    ID: doc.id,
+                    ...doc.data(),
+                }));
+                setitems([newItem[0],newItem[1],newItem[2]]);
+        })
+    }, [])
+ 
     return (
         <section className="start-page-back">
             <div className="start-page container flex-column justify-content-between">
@@ -26,6 +45,16 @@ function TelaInicial() {
                     </div>
                 </motion.div>
                 <div />
+            </div>
+            <div id="top-bar"></div>
+            <div id="portfolio-view">
+                {/*O vetor de itens da coluna 1 é maior que 0? Se sim, renderiza os itens presente nele*/}
+                {items.length > 0 && (
+                    <PortifolioItemMain items={items} />
+                )}
+                {items.length < 1 && (
+                    <div className='container-fluid'>Por favor, espere....</div>
+                )}
             </div>
         </section>
     )

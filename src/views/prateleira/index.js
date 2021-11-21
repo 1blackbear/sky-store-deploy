@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { PrateleiraItemMain } from './envio-item/pagina-principal/prateleira-item-main';
 import CarrinhoDeCompras from '../../components/carrinho/carrinho';
 import { fs, auth } from '../../config/firebase.js';
+import { SubmenuItemMain } from './submenu/filter/submenu-item-main';
 
 
 function Prateleira() {
@@ -14,6 +15,9 @@ function Prateleira() {
     };
 
     const [items, setItems] = useState([]);
+
+    const [categoria, setCategoria] = useState([]);
+
 
     function GetUserUid() {
         const [uid, setUid] = useState(null);
@@ -52,6 +56,16 @@ function Prateleira() {
         })
     }, [])
 
+    useEffect(() => {
+        fs.collection('Submenu-item').onSnapshot(snapshot => {
+            const newItem = snapshot.docs.map((doc) => ({
+                ID: doc.id,
+                ...doc.data(),
+            }));
+            setCategoria(newItem);
+        })
+    }, [])
+
     const filterData = (value) => {
         fs.collection('Prateleira-item')
             .where('option', '==', value)
@@ -85,15 +99,11 @@ function Prateleira() {
 
                     <Nav justify variant="tabs" className="d-flex justify-content-center nav-categorias" defaultActiveKey="cat1-btn">
                         <Nav.Item>
-                            <Nav.Link eventKey="cat1-btn" onClick={handleReset} className="nav-itens">GERAL</Nav.Link>
+                            <Nav.Link eventKey="cat1-btn" onClick={handleReset} className="nav-itens">Geral</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item >
-                            <Nav.Link eventKey="cat2-btn" onClick={() => filterData("Adesivo")} className="nav-itens">ADESIVO</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="cat3-btn" onClick={() => filterData("Estampa")} className="nav-itens">ESTAMPA</Nav.Link>
-                        </Nav.Item>
+                        <SubmenuItemMain categoria={categoria} filterData={filterData}> </SubmenuItemMain>
                     </Nav>
+
                     <PrateleiraItemMain
                         items={items}
                         addToCart={addToCart}

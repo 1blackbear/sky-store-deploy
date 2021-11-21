@@ -2,8 +2,6 @@
     padding: 15px 0px;
     width: 100%;
     background-color: #90CBEB;
-    /*position:fixed;*/
-    z-index: 3;
 }
 .menu-icon {
     display: none;
@@ -34,10 +32,14 @@ ul {
 .menu-icons:hover {
     color: #707070;
 }
+.nav {
+    margin-left: 14%;
+}
 .icons{
     display: flex;
     align-items: center;
-    margin-left: 80px;
+    margin-left: 7%;
+    width: max-content;
 }
 
 .nav-links-mobile {
@@ -115,6 +117,10 @@ ul {
     color: #707070;
 }
 
+.logged-user {
+    display: none;
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -177,28 +183,32 @@ ul {
       .button-link {
           text-decoration: none;
       }
+      #dropdown {
+        display: none;
+      }
+      #login-button {
+        display: none;
+      }
+      .logged-user {
+          display: block;
+      }
 
-      
-
+}
+@media screen and (min-width: 768px) and (min-height: 1000px) {
+    .menu{
+        width: 100%;
+        background-image: none;
+        background-color: #90CBEB;
+    }
 }
 @media screen and (max-width: 1200px) and (min-width: 768px) {
     #home{
         display: none;
     }
-    .icons{
-        margin-left: 0px;
-    }
-    ul{
-        margin-left: 80px;
-    }
-    
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
     #sobre-mim{
         display: none;
-    }
-    ul{
-        margin-left: 40px;
     }
 }
 

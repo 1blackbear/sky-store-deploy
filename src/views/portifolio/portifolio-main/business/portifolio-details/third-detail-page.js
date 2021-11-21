@@ -3,6 +3,8 @@ import React from 'react'
 import './details.css';
 import { useState, useEffect } from 'react';
 import { fs } from '../../../../../config/firebase.js'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const ThirdDetailPage = () => {
     const [item, setItem] = useState(null);
@@ -39,10 +41,22 @@ const ThirdDetailPage = () => {
             <Row>
                 <Col className="col-detail">
                     {item && (<>
-                        <img src={item.urls[0]} className="first-detail-image" />
-                        <img src={item.urls[1]} className="first-detail-image" />
-                        <img src={item.urls[2]} className="first-detail-image" />
-                        <img src={item.urls[3]} className="first-detail-image" />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[0]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[1]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[2]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[3]} />
                     </>)}
                     {!item && (
                         <div className='container-fluid'>Por favor, espere....</div>

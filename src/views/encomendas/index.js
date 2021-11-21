@@ -4,8 +4,8 @@ import PlayArrow from '@material-ui/icons/PlayArrowRounded';
 import './index.css';
 import { motion } from "framer-motion";
 import ModalList from './modal-enc/modal-list.js';
-
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export const Encomendas = () => {
 
@@ -26,11 +26,14 @@ export const Encomendas = () => {
                     <h1 id="title-tutorial">Como eu faço uma encomenda?</h1>
                 </Row>
                 <Row className="row-tutorial">
-                    <img id="encomendas-tutorial" src={imgUrl} />
+                    <LazyLoadImage
+                        className="col-12 skai-photo col-sm-6"
+                        effect="blur"
+                        src={imgUrl} />
                 </Row>
                 <div className="desc-tutorial">
-                    <Row className="row-tutorial">
-                        <h1 id="title-desc-tutorial"><PlayArrow className="playIcon" />Descrição das etapas</h1>
+                    <Row className="row-tutorial d-flex">
+                        <Col id="desc-etapas"><PlayArrow className="playIcondesc" /><div id="title-desc-tutorial">Descrição das etapas</div></Col>
                     </Row>
                     <Row className="row-desc-tutorial">
                         <Col>
@@ -56,7 +59,7 @@ export const Encomendas = () => {
                             </Col>
                         </Col>
                     </Row>
-                    <ModalList/>
+                    <ModalList />
                 </div>
 
             </Container>

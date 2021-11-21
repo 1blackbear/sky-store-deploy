@@ -9,7 +9,7 @@ const FormsPrateleira = () => {
     //Rotas
     const history = useHistory();
 
-    //- Itens
+    //- Items
     const [items, setItems] = useState([]);
 
     //- Titulo

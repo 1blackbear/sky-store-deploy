@@ -3,6 +3,7 @@ const cors = require('cors');
 const {v4: uuidv4}=require('uuid');
 const stripe=require('stripe')('sk_test_51JrZLfKyWWBDpZuikaXVZfdHihMgOLXrN8Ka07Cs5EjRZu5O3PwifoyVGzsCfozZ6dNgHAKyktpuZgK1Vz73b3Id00bByLRsRs');
 
+
 const app = express();
 app.use(cors());
 
@@ -12,7 +13,31 @@ app.get('/',(req,res)=>{
     res.send('Welcome to our Ecommerce Store');
 })
 
-app.post('/checkout',async(req, res)=>{
+
+app.post('/create-payment-intent', async (req, res) =>{
+    let status
+    let error
+    const {paymentMethodType, currency} = req.body;
+
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: 1999,
+            currency: currency,
+            payment_methd_types: [paymentMethodType],
+        });
+        res.json({ clientSecret: paymentIntent.client_secret });
+        
+    } catch (error) {
+        res.status(400).json({ error: {message: error.message}});
+        console.log(error);
+        status="error"
+        
+    }
+    
+    res.json({ clientSecret: paymentIntent.client_secret});
+})
+
+/*app.post('/checkout',async(req, res)=>{
     let error;
     let status;
     try{
@@ -47,7 +72,8 @@ app.post('/checkout',async(req, res)=>{
     }
     res.json({status});
 })
+*/
 
-app.listen(8080,()=>{
+app.listen(4242,()=>{
     console.log('your app is running on port no 8080');
 })

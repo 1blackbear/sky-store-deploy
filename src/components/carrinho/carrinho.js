@@ -4,7 +4,6 @@ import { auth, fs } from "../../config/firebase";
 import './carrinho.css'
 import ItensCarrinho from "./itens-carrinho";
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
-import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -14,15 +13,17 @@ import ModalPayment from './pagamento/modal-payment.js'
 toast.configure();
 
 
+
+
 const CarrinhoDeCompras = ({ handleCart, open }) => {
 
-     /*Funções para abrir e fechar o Modal de Pagamento */
-     const [show, setShow] = useState(false);
-     const handleClose = () => setShow(false);
-     const handleShow = () => {
+    /*Funções para abrir e fechar o Modal de Pagamento */
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => {
         setShow(true);
         handleCart();
-     };
+    };
 
     // getting current user function
     const [cartItens, setCartItens] = useState([]);
@@ -56,6 +57,7 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
 
     return (<>
         <Modal
+            centered
             show={open}
             onHide={handleCart}
             dialogClassName="modalCart"
@@ -65,8 +67,8 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
             </Modal.Header>
             <Modal.Body id="modal-body">
                 {cartItens.length > 0 && (
-                    <div className='container-fluid'>
-                        <h1 className='products-box'>
+                    <div className='container-fluid products-box'>
+                        <h1>
                             <ItensCarrinho cartItens={cartItens} />
                         </h1>
                     </div>
@@ -90,7 +92,7 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
                 </Row>
             </Modal.Footer>
         </Modal >
-        <ModalPayment show={show} handleClose={handleClose}/>
+        <ModalPayment show={show} handleClose={handleClose} />
     </>);
 };
 export default CarrinhoDeCompras;

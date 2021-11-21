@@ -32,7 +32,7 @@
 }
 .arte-digital:hover {
     cursor: pointer;
-    filter: grayscale(100%)
+    filter: grayscale(100%);
 }
 .ilustra:hover {
     cursor: pointer;

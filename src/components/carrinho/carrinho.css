@@ -1,11 +1,25 @@
-.modalCart{
-    margin: 0;
-    margin-left: 70vw;
+@media screen and (min-width: 768px) {
+    .modalCart{
+        margin: 0;
+        margin-left: 70vw;
+    }
+    .modalCart .modal-content{
+        height: 100vh;
+    }
 }
-.modalCart .modal-content{
-    height: 100vh;
+@media screen and (max-width: 768px) {
+    .modalCart .modal-content{
+        height: 95vh;
+    }
+    .item-text p{
+        font-size: 1.3em;
+        display: block;
+    }
 }
-
+.products-box {
+    height: 63vh;
+    overflow: auto;
+}
 .item-img{
     width: 100%;
     border: solid 1px #5f69b9;

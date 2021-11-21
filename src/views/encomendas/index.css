@@ -1,6 +1,6 @@
 .row-tutorial {
+    display: flex !important;
     margin-top: 80px;
-    justify-content: center;
 }
 #title-tutorial {
     margin-left: 5%;
@@ -11,6 +11,19 @@
 #encomendas-tutorial {
     width: 72%;
 }
+#desc-etapas {
+    display: flex;
+    align-items: center;
+}
+.playIcondesc {
+    margin-left: -20px;
+    margin-right: 5px;
+    align-items: center;
+    color: #707070;
+    font-size: 3rem !important; 
+}
+
+
 #title-desc-tutorial {
     font-weight: bold;
     color: #707070;

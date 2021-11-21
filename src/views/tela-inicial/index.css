@@ -42,16 +42,37 @@
     display: none;
 }
 
+#portfolio-view {
+    display: none;
+}
+#top-bar {
+    display: none;
+}
+
+
 /*-------RESPONSIVIDADE*-------*/
 @media screen and (max-height: 1024px) and (min-height: 950px) {
-    
-    
+
     #root, .start-page{ 
         height: 25% !important;
     }
 }
 
  @media screen and (max-width: 768px){
+    #top-bar {
+        display: block;
+        width: 100vw;
+        background-image: url("/src/images/background.svg");
+        background-repeat: no-repeat;
+        background-size:100%;
+        background-position:0 -120px;
+        transform: scaleX(50);
+        height: 60px;
+    }
+    #portfolio-view {
+        background-color: #90CBEB;
+        display: block;
+    }
     .start-page-back{
         background-image: url("/src/images/background-mobile.svg");
         background-position-x: -40px;
@@ -73,6 +94,13 @@
     .start-page p {
         font-size: 16px;
         margin-right: 80px;
+    }
+}
+
+@media screen and (max-width: 800px) and (min-width: 768px) {
+    .start-page-back{
+        margin-top: 10%;
+        background-image: none;
     }
 }
 

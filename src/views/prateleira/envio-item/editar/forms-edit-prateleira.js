@@ -159,7 +159,7 @@ const FormsEditPrateleira = () => {
                                 <Form.Control type="file" className="photos-input" onChange={HandleImg} />
                             </div>
                              <button type="button"
-                            class="btn btn-primary button-save" onClick={EditaItem}>Salvar</button>  
+                            class="btn btn-primary button-save" onClick={EditaItem}>Atualizar</button>  
                                                               
                         </Form.Group>
 

@@ -93,8 +93,8 @@ function MenuSuperior() {
     }
 
     const handleLogout = () => {
-        auth.signOut();
         history.push('/');
+        auth.signOut();
         window.location.reload();
     }
 
@@ -127,10 +127,15 @@ function MenuSuperior() {
                     <li className="nav-item">
                         <Link to="/sobre-mim" className="nav-link" onClick={closeMobileMenu} id="sobre-mim">SOBRE MIM</Link>
                     </li>
-                    <a href="#" onClick={handleShow} className="button-link"><ButtonMobile id="button-mobile" /></a>
+                    {!GetCurrentUser() && <>
+                        <a href="#" onClick={handleShow} className="button-link"><ButtonMobile id="button-mobile" /></a>
+                    </>}
+                    {GetCurrentUser() && <>
+                        <Link to="/perfil" className="nav-link logged-user" onClick={closeMobileMenu}>Perfil</Link>
+                        <a href="#" onClick={handleLogout} className="nav-link logged-user">Sair</a>
+                    </>}
                 </ul>
                 <div className="icons col-2">
-
                     <a href="#"><ShareIcon className="menu-icons" onClick={handleShowComp} style={{ fontSize: 25 }} /></a>
                     <ModalCompartilha
                         show={showcomp}
@@ -141,10 +146,8 @@ function MenuSuperior() {
                     </>}
                     {GetCurrentUser() && <>
                         {!userAdmin && <>
-                            {/*<a id="text-user"> Olá, estranho</a>*/}
-                            <Dropdown >
+                            <Dropdown>
                                 <Dropdown.Toggle variant="success" id="dropdown-logged">
-
                                     <a href="#"><PersonIcon className="menu-icons" style={{ fontSize: 28 }} /></a>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>

@@ -3,6 +3,8 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import './carrinho.css'
 import { fs, auth } from '../../config/firebase.js';
 import CloseIcon from '@material-ui/icons/Close';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 
 const ItemIndividualCarrinho = ({ cartItem }) => {
@@ -20,7 +22,12 @@ const ItemIndividualCarrinho = ({ cartItem }) => {
     return (
         <Row className='item'>
             <Col xs={3}>
-            <img src={cartItem.url} alt='item-img' className='item-img'/>
+            <LazyLoadImage
+                        className="item-img"
+                        alt='item-img'
+                        effect="opacity"
+                        width="100%"
+                        src={cartItem.url} />
             </Col>
             <Col xs={7} className='item-text'>
                 <Col xs={12}><p>{cartItem.title}</p></Col>

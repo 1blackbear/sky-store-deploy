@@ -31,7 +31,7 @@ const EncomendasListSky = () => {
             </Row>
             <Row id="table-header">
                 <Row id="table-Item-header">
-                <Col xs={3}>Número do Pedido</Col>
+                    <Col xs={3}>Número do Pedido</Col>
                     <Col xs={2}>Titulo</Col>
                     <Col xs={2}>Status</Col>
                     <Col xs={2}>Data</Col>

@@ -3,6 +3,8 @@ import React from 'react'
 import './details.css';
 import { useState, useEffect } from 'react';
 import { fs } from '../../../../../config/firebase.js'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const FirstDetailPage = () => {
     const [item, setItem] = useState(null);
@@ -39,10 +41,22 @@ const FirstDetailPage = () => {
             <Row>
                 <Col className="col-detail">
                     {item && (<>
-                        <img src={item.urls[0]} className="first-detail-image" />
-                        <img src={item.urls[2]} className="first-detail-image" />
-                        <img src={item.urls[4]} className="first-detail-image" />
-                        <img src={item.urls[6]} className="first-detail-image" />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[0]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[2]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[4]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[6]} />
                     </>)}
                     {!item && (
                         <div className='container-fluid'>Por favor, espere....</div>
@@ -51,10 +65,22 @@ const FirstDetailPage = () => {
                 </Col>
                 <Col className="col-detail">
                     {item && (<>
-                        <img src={item.urls[1]} className="first-detail-image" />
-                        <img src={item.urls[3]} className="first-detail-image" />
-                        <img src={item.urls[5]} className="first-detail-image" />
-                        <img src={item.urls[7]} className="first-detail-image" />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[1]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[3]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[5]} />
+                        <LazyLoadImage
+                        className="first-detail-image"
+                        effect="opacity"
+                        src={item.urls[7]} />
                     </>)}
                     {!item && (
                         <div className='container-fluid'>Por favor, espere....</div>

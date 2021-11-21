@@ -1,6 +1,6 @@
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import { fs } from './../../../../config/firebase.js';
+import { fs, auth } from './../../../../config/firebase.js';
 
 const IndividualItemEnco = ({ individualItem }) => {
 
@@ -54,7 +54,7 @@ const IndividualItemEnco = ({ individualItem }) => {
                     entregue: 'Pedido entregue',
                 }
             );
-        } else {
+        } else if (individualItem.status === "Pedido entregue") {
             setStats(
                 {
                     recebido: individualItem.status,
@@ -65,6 +65,17 @@ const IndividualItemEnco = ({ individualItem }) => {
             );
         }
     }, [])
+
+    //Função para deletar o individualItem desejado
+    const handleDelete = () => {
+        if (window.confirm('Você tem certeza que deseja deletar esse item?')) {
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    fs.collection('Encomendas-list').doc(individualItem.ID).delete();
+                }
+            })
+        }
+    };
 
     //Renderizar individualItem
     return (
@@ -80,8 +91,9 @@ const IndividualItemEnco = ({ individualItem }) => {
                 </Form.Control>
             </Col>
             <Col xs={2} className="table-child">{getCurrentDate()}</Col>
-            <Col xs={3} className="table-child">
-                <Col><Button className="btn-update" onClick={EditaItem}>Atualizar</Button></Col>
+            <Col xs={2} className="table-child d-flex">
+                <Col xs={6}><Button className="btn-update link-editItem" onClick={EditaItem}>Atualizar</Button></Col>
+                <Col xs={6}><Button className="btn-delete" onClick={handleDelete}>Deletar</Button></Col>
             </Col>
         </Row>
     )

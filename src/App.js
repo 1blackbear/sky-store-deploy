@@ -22,7 +22,9 @@ import FormsEditPrateleira from './views/prateleira/envio-item/editar/forms-edit
 import EncomendasList from './views/encomendas/encomendas-list/encomendas-list.js';
 import EncomendasListSky from './views/encomendas/encomendas-list/encomendas-list-sky.js';
 import Perfil from './views/perfil/index.js';
-
+import SubmenuList from './views/prateleira/submenu/submenu';
+import FormSubmenu from './views/prateleira/submenu/adicionar/forms-submenu';
+import FormSubmenuEdit from './views/prateleira/submenu/editar/forms-submenu-edit';
 
 const App = () => {
   const [showBtn, setShowBtn] = useState(false);
@@ -63,6 +65,10 @@ const App = () => {
           <Route exact path='/encomendas-list' component={EncomendasList} />
           <Route exact path='/encomendas-list-sky' component={EncomendasListSky} />
           <Route exact path='/perfil' component={Perfil} />
+          <Route exact path='/submenu-list' component={SubmenuList} />
+          <Route exact path='/adiciona-submenu' component={FormSubmenu} />
+          <Route exact path='/edita-submenu/:id' component={FormSubmenuEdit} />
+
         </Switch>
       </Router>
     </AnimatePresence>

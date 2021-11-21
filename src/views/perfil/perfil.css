@@ -58,7 +58,8 @@
 }
 
 .capa-perfil {
-    border-radius: 150px;
+    width: 250px;
+    border-radius: 100%;
     background: #d8d8d838;
 }
 #edit-icon {

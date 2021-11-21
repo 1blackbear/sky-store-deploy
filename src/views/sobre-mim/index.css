@@ -8,9 +8,13 @@
     align-items: center;
    justify-content: center;
 }
+#img-id {
+    width: 400px;
+}
 .skai-photo {
     margin-right: 50px;
-    width: 30%;
+    width: 100%;
+    height: 380px;
 }
 #update-aboutme{
     margin-top: 5%;
@@ -20,7 +24,15 @@
 #update-aboutme:hover{
     background-color: #5a3b83;
 }
-@media screen and (max-width: 768px) {
+ @media screen and (min-width: 991px) {
+    .skai-photo {
+        margin-right: 50px;
+        width: 85%;
+        height: 320px;
+    }
+ }
+
+@media screen and (max-width: 990px) {
     .sobre-mim{
         padding-bottom: 50%;
     }
@@ -29,8 +41,12 @@
         color: #707070;
         text-align: center;
     }
+    #img-id {
+        display: flex;
+        justify-content: center;
+    }
     .skai-photo {
         margin-right: 0px;
-        width: 80%;
+        height: 250px;
     }
 }
