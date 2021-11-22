@@ -39,7 +39,7 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                     email: email,
                 })
                 setMsgTipo('sucesso')
-                if(resultado.user.uid) {
+                if(resultado != null) {
                     setTimeout(() => {
                         toggle();
                     }, 1500)
