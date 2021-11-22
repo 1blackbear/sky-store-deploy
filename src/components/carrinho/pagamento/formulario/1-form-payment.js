@@ -1,20 +1,34 @@
 import { useState, useEffect } from 'react';
 import { Modal, Button, Row, Col, Form, Card } from 'react-bootstrap';
 import '../pagamento.css';
+import { EstadosList } from './estados.js';
 
-const PaymentFormOne = ({ nome, setNome, end, setEnd, cidade, setCidade, cep, setCEP,pais,setPais,email,setEmail,next }) => {
+const PaymentFormOne = ({ nome, setNome, cpf, setCPF, estado, setEstado, end, setEnd, cidade, setCidade, cep, setCEP, email, setEmail, next }) => {
     return (
         <>
             <Modal.Body>
                 <Form>
                     <Form.Group>
-                        <Form.Label className="titulo-campo">Nome</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Nome"
-                            value={nome}
-                            onChange={(e) => setNome(e.target.value)}
-                        />
+                        <Row>
+                            <Col xs={7}>
+                                <Form.Label className="titulo-campo">Nome</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Nome"
+                                    value={nome}
+                                    onChange={(e) => setNome(e.target.value)}
+                                />
+                            </Col>
+                            <Col xs={5}>
+                                <Form.Label className="titulo-campo">CPF</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    placeholder="CPF"
+                                    value={cpf}
+                                    onChange={(e) => setCPF(e.target.value)}
+                                />
+                            </Col>
+                        </Row>
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label className="titulo-campo">E-mail</Form.Label>
@@ -26,26 +40,17 @@ const PaymentFormOne = ({ nome, setNome, end, setEnd, cidade, setCidade, cep, se
                         />
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label className="titulo-campo">Endereço</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="Endereço completo"
-                            value={end}
-                            onChange={(e) => setEnd(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
                         <Row>
-                            <Col xs={6}>
-                                <Form.Label className="titulo-campo">Cidade</Form.Label>
+                            <Col xs={8}>
+                                <Form.Label className="titulo-campo">Endereço</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder="Cidade"
-                                    value={cidade}
-                                    onChange={(e) => setCidade(e.target.value)}
+                                    placeholder="Endereço completo"
+                                    value={end}
+                                    onChange={(e) => setEnd(e.target.value)}
                                 />
                             </Col>
-                            <Col xs={6}>
+                            <Col xs={4}>
                                 <Form.Label className="titulo-campo">CEP</Form.Label>
                                 <Form.Control
                                     type="email"
@@ -57,17 +62,35 @@ const PaymentFormOne = ({ nome, setNome, end, setEnd, cidade, setCidade, cep, se
                         </Row>
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label className="titulo-campo">País</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="País"
-                            value={pais}
-                            onChange={(e) => setPais(e.target.value)}
-                        />
+                        <Row>
+                            <Col xs={7}>
+                                <Form.Label className="titulo-campo">Cidade</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    placeholder="Cidade"
+                                    value={cidade}
+                                    onChange={(e) => setCidade(e.target.value)}
+                                />
+                            </Col>
+                            <Col xs={5}>
+                                <Form.Label className="titulo-campo">Estado</Form.Label>
+                                <Form.Control as="select" onChange={(e) => setEstado(e.target.value)}>
+                                    <EstadosList />
+                                </Form.Control>
+                                {/*
+                                <Form.Control
+                                    type="email"
+                                    placeholder="UF"
+                                    value={estado}
+                                    onChange={(e) => setEstado(e.target.value)}
+    />*/}
+                            </Col>
+                        </Row>
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <Modal.Footer className="d-flex justify-content-between">
+                <Button className="btn-secondary" disabled> Anterior</Button>
                 <Button className="button-save" type="submit" onClick={next}>Próximo</Button>
             </Modal.Footer>
         </>

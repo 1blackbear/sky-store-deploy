@@ -82,7 +82,6 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
             >
                 <Modal.Header>
                     <Modal.Title>Fazer login</Modal.Title>
-                    <i class="fas fa-times mb-4 icon-fechar" onClick={onHide}></i>
                 </Modal.Header>
                 <Modal.Body>
                     <div class="modal-body">
@@ -114,6 +113,7 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
                                     <label onClick={showEsq} class="esqueci" for="" ><a href="#">Esqueci minha senha</a></label>
                                 </div><div class="botao-part">
                                     <button type="submit" className="btn btn-primary button-save" onClick={logar}>Entrar</button>
+                                    <button className="btn btn-secondary" onClick={onHide}>Fechar</button>
                                 </div>
                             </div>
                         </form>

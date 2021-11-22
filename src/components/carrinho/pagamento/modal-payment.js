@@ -2,13 +2,6 @@ import { useState, useEffect } from 'react';
 import { Modal, Button, Row, Col, Form, Card } from 'react-bootstrap';
 import {
     Elements,
-    ElementProps,
-    CardNumberElement,
-    CardExpiryElement,
-    CardCvcElement,
-    useElements,
-    useStripe,
-    CardElement,
 } from '@stripe/react-stripe-js';
 import './pagamento.css';
 import 'react-step-progress/dist/index.css';
@@ -23,12 +16,14 @@ const ModalPayment = ({ totalPrice, handleClose, show }) => {
 
     //Primeira etapa do formulário
     const [nome, setNome] = useState("");
+    const [cpf, setCPF] = useState("");
     const [end, setEnd] = useState("");
     const [cidade, setCidade] = useState("");
+    const [estado, setEstado] = useState("");
     const [cep, setCEP] = useState("");
-    const [pais, setPais] = useState("");
+    const [pais, setPais] = useState("BR");
     const [email, setEmail] = useState();
-    
+
     const [cardNumber, setCardNumber] = useState();
 
     //Estilização padrão para campos ipunt do Stripe
@@ -119,21 +114,41 @@ const ModalPayment = ({ totalPrice, handleClose, show }) => {
                     <PaymentFormOne
                         nome={nome}
                         setNome={setNome}
+                        cpf={cpf}
+                        setCPF={setCPF}
                         end={end}
                         setEnd={setEnd}
                         cidade={cidade}
                         setCidade={setCidade}
+                        estado={estado}
+                        setEstado={setEstado}
                         cep={cep}
                         setCEP={setCEP}
                         pais={pais}
-                        setPais={setPais}
                         email={email}
-                        setEmail={setEmail}                        
+                        setEmail={setEmail}
                         next={next}
                     >
                     </PaymentFormOne>
                 </>)}
                 {stepTwo && (<>
+                    <Elements stripe={stripePromise}>
+                        <PaymentFormTwo
+                            nome={nome}
+                            end={end}
+                            cpf={cpf}
+                            cidade={cidade}
+                            cep={cep}
+                            pais={pais}
+                            email={email}
+                            estado={estado}
+                            prev={prev}
+                            prevDisable={prevDisable}
+                            totalPrice={totalPrice}
+                        ></PaymentFormTwo>
+                    </Elements>
+                </>)}
+                {stepThree && (<>
                     <PaymentFormThree
                         next={next}
                         prev={prev}
@@ -141,21 +156,6 @@ const ModalPayment = ({ totalPrice, handleClose, show }) => {
                         totalPrice={totalPrice}
                     >
                     </PaymentFormThree>
-                </>)}
-                {stepThree && (<>
-                    <Elements stripe={stripePromise}>
-                        <PaymentFormTwo
-                            nome={nome}
-                            end={end}
-                            cidade={cidade}
-                            cep={cep}
-                            pais={pais}
-                            email={email}
-                            prev={prev}
-                            prevDisable={prevDisable}
-                            totalPrice={totalPrice}
-                        ></PaymentFormTwo>
-                    </Elements>
                 </>)}
             </Modal.Body>
 

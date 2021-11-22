@@ -14,10 +14,11 @@ import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { auth, fs } from "../../../../config/firebase";
+import '../pagamento.css';
 
 toast.configure();
 
-const PaymentFormTwo = ({ nome, end, cidade, cep, pais, email, prev, prevDisable, totalPrice }) => {
+const PaymentFormTwo = ({ nome, cpf, end, cidade, estado, cep, pais, email, prev, prevDisable, totalPrice }) => {
 
     const inputStyle = {
         iconColor: '#a9a9a9',
@@ -33,12 +34,16 @@ const PaymentFormTwo = ({ nome, end, cidade, cep, pais, email, prev, prevDisable
         },
     }
 
+    const [paymentMethodType, setPaymentMethodType] = useState("");
+
     const [check, setCheckList] = useState(true);
     function handleInputChange(event) {
         if (event.target.value === 'boleto') {
             setCheckList(false);
+            setPaymentMethodType("boleto");
         } else if (event.target.value === 'card') {
             setCheckList(true);
+            setPaymentMethodType("card")
         }
     }
 
@@ -58,67 +63,96 @@ const PaymentFormTwo = ({ nome, end, cidade, cep, pais, email, prev, prevDisable
         if (!stripe || !elements) {
             return;
         }
-
-
         const { clientSecret } = await fetch('create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                paymentMethodType: 'card',
+                paymentMethodType: paymentMethodType,
                 currency: 'brl',
                 amount: totalPrice * 100,
-                /*city: cidade,
-                country: pais,
-                line1: end,
-                postal_code: cep,
-                email: email,
-                name: nome,*/
             }),
         }).then(r => r.json());
 
-        const { paymentIntent } = await stripe.confirmCardPayment(
-            clientSecret, {
-            payment_method: {
-                card: elements.getElement(CardNumberElement),
-            },
-        })
+        if (check) {
+            const { paymentIntent } = await stripe.confirmCardPayment(
+                clientSecret, {
+                payment_method: {
+                    card: elements.getElement(CardNumberElement),
+                },
+            })
 
-        if (paymentIntent) {
-            history.push('/');
-            toast.success('Compra realizada com sucesso', {
-                position: 'top-left',
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
-
-            const carts = await fs.collection('Cart' + " " + uid).get()
-            let num_pedido = getRandomInt(1000000, 9999999);
-            const pedidoString = num_pedido.toString()
-
-            let valores = {
-                'item': newItem,
-                'num_pedido': pedidoString,
-                'data_pedido': new Date(),
-                'uid': uid,
+            if (paymentIntent) {
+                history.push('/');
+                toast.success('Compra realizada com sucesso', {
+                    position: 'top-left',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
             }
-            
-            
-
-            fs.collection('Pedidos-list').doc(pedidoString).set(valores)
-
-            for (var snap of carts.docs) {
-                fs.collection('Cart' + " " + uid).doc(snap.id).delete();
+        } else {
+            console.log(paymentMethodType)
+            const { error, paymentIntent } = await stripe.confirmBoletoPayment(
+                clientSecret, {
+                payment_method: {
+                    billing_details: {
+                        address: {
+                            line1: end,
+                            city: cidade,
+                            state: estado,
+                            postal_code: cep,
+                            country: pais,
+                        },
+                        name: nome,
+                        email: email
+                    },
+                    boleto: {
+                        tax_id: cpf,
+                    }
+                }
+            })
+            if (paymentIntent) {
+                history.push('/');
+                toast.success('O pagamento será confirmado em 2 dias úteis a partir da data do pagamento', {
+                    position: 'top-left',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
             }
-            setTimeout(() => {
-                window.location.reload();
-            }, 2000) 
         }
+
+
+        const carts = await fs.collection('Cart' + " " + uid).get()
+        let num_pedido = getRandomInt(1000000, 9999999);
+        const pedidoString = num_pedido.toString()
+
+        let valores = {
+            'item': newItem,
+            'num_pedido': pedidoString,
+            'data_pedido': new Date(),
+            'uid': uid,
+        }
+
+
+
+        fs.collection('Pedidos-list').doc(pedidoString).set(valores)
+
+        for (var snap of carts.docs) {
+            fs.collection('Cart' + " " + uid).doc(snap.id).delete();
+        }
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000)
+
     };
 
     const [newItem, setNewItem] = useState();
@@ -217,6 +251,15 @@ const PaymentFormTwo = ({ nome, end, cidade, cep, pais, email, prev, prevDisable
                         <Modal.Footer className="d-flex justify-content-between">
                             <Button className="btn-secondary" onClick={prev} disabled={prevDisable}> Anterior</Button>
                             <Button className="button-save" type="submit">Pagar</Button>
+                        </Modal.Footer>
+                    </Form>
+                </>)}
+
+                {!check && (<>
+                    <Form onSubmit={handleSubmit}>
+                        <Modal.Footer className="d-flex justify-content-between">
+                            <Button className="btn-secondary" onClick={prev} disabled={prevDisable}> Anterior</Button>
+                            <Button className="button-save" type="submit">{check ? "Pagar" : "Gerar Boleto"}</Button>
                         </Modal.Footer>
                     </Form>
                 </>)}

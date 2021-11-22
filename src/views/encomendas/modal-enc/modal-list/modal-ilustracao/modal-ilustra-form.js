@@ -40,6 +40,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
 
     function handleFormSubmit() {
         campos["tipo"] = item;
+        setCampos(JSON.stringify(campos));
         auth.onAuthStateChanged(user => {
             if (user) {
                 let num_pedido = getRandomInt(1000000, 9999999);
@@ -53,21 +54,13 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                     data,
                     num_pedido
                 }).then(() => {
-                    fetch('/encomendas/send-ilustra', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(campos),
-                    })
-                    /*axios.post('/encomendas/send-ilustra',
+                    axios.post('/encomendas/send-ilustra',
                         campos,
                         {
                             headers: {
                                 'Content-Type': 'application/json'
                             }
-                        })*/.then((response) => {
-                            response.json()
+                        }).then((response) => {
                             setCampos({
                                 tipo: '',
                                 nome: '',

@@ -52,3 +52,14 @@
     margin-bottom: 2%;
     width: 22px;
 }
+.label-choose-modal {
+    width: 100%;
+}
+.card-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.card-body p {
+    margin: 0px;
+}

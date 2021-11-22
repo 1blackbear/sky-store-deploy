@@ -16,10 +16,9 @@ const ModalCadastro = ({ show, onHide, voltaLogin, toggle }) => {
             >
                 <Modal.Header>
                     <Modal.Title>Cadastrar novo usuário</Modal.Title>
-                    <i class="fas fa-times mb-4 icon-fechar" onClick={toggle}></i>
                 </Modal.Header>
                 <Modal.Body id="modal-body">
-                    <FormsCadastro voltaLogin={voltaLogin}>
+                    <FormsCadastro voltaLogin={voltaLogin} toggle={toggle}>
                     </FormsCadastro>
                 </Modal.Body>
 

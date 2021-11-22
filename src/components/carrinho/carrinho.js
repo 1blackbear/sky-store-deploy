@@ -80,12 +80,17 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
                         <p>Total: R$ {totalPrice}</p>
                     </Col>
                     <Col xs={12} className='d-flex justify-content-center'>
-                        <Button className='btn-buy' onClick={handleShow}>COMPRAR</Button>
+                        {cartItens.length < 1 && (
+                            <Button className='btn-buy btn-secondary' disabled>COMPRAR</Button>
+                        )}
+                        {cartItens.length > 0 && (
+                            <Button className='btn-buy' onClick={handleShow}>COMPRAR</Button>
+                        )}
                     </Col>
                 </Row>
             </Modal.Footer>
         </Modal >
-            <ModalPayment totalPrice={totalPrice} show={show} handleClose={handleClose} />
+        <ModalPayment totalPrice={totalPrice} show={show} handleClose={handleClose} />
     </>);
 };
 export default CarrinhoDeCompras;
