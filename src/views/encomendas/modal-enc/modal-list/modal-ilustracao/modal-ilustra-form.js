@@ -67,6 +67,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                                 'Content-Type': 'application/json'
                             }
                         })*/.then((response) => {
+                            response.json();
                             setCampos({
                                 tipo: '',
                                 nome: '',
