@@ -140,7 +140,7 @@ const Perfil = () => {
                                 <Nav.Link eventKey="link-2" href="/encomendas-list">Minhas encomendas</Nav.Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Nav.Link href="/manutencao">Histórico de compras</Nav.Link>
+                                <Nav.Link href="/pedidos-list">Histórico de compras</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>

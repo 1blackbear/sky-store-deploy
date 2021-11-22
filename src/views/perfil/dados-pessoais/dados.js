@@ -4,7 +4,6 @@ import { fs, auth } from '../../../config/firebase.js'
 import EditIcon from '@material-ui/icons/Edit';
 import Close from '@material-ui/icons/Close';
 
-
 const DadosPessoais = ({ show, handleClose }) => {
 
     const [nome, setNome] = useState("");

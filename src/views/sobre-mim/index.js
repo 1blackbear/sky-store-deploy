@@ -49,7 +49,7 @@ function SobreMim() {
                 handleClose();
             });
         } else {
-            const uploadTask = storage.ref(`/portifolio-images/${imgMain.name}`).put(imgMain);
+            const uploadTask = storage.ref(`/portfolio-images/${imgMain.name}`).put(imgMain);
             uploadTask.on('state_changed', snapshot => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
             }, (err) => {

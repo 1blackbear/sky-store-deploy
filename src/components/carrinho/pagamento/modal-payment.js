@@ -19,7 +19,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51JrZLfKyWWBDpZuitxWoSwRmwTw3dInYsukVrmY4nVT0WyvRmZx4AKteESxudKGBAiyVTwCi6yN8nW5iyMar6XxV00DpzR3JKQ');
 
-const ModalPayment = ({ handleClose, show }) => {
+const ModalPayment = ({ totalPrice, handleClose, show }) => {
 
     //Primeira etapa do formulário
     const [nome, setNome] = useState("");
@@ -134,6 +134,15 @@ const ModalPayment = ({ handleClose, show }) => {
                     </PaymentFormOne>
                 </>)}
                 {stepTwo && (<>
+                    <PaymentFormThree
+                        next={next}
+                        prev={prev}
+                        prevDisable={prevDisable}
+                        totalPrice={totalPrice}
+                    >
+                    </PaymentFormThree>
+                </>)}
+                {stepThree && (<>
                     <Elements stripe={stripePromise}>
                         <PaymentFormTwo
                             nome={nome}
@@ -142,29 +151,12 @@ const ModalPayment = ({ handleClose, show }) => {
                             cep={cep}
                             pais={pais}
                             email={email}
-                            next={next}
                             prev={prev}
                             prevDisable={prevDisable}
+                            totalPrice={totalPrice}
                         ></PaymentFormTwo>
                     </Elements>
                 </>)}
-                {stepThree && (<>
-                    <PaymentFormThree
-                        prev={prev}
-                        prevDisable={prevDisable}
-                    >
-                    </PaymentFormThree>
-                </>)}
-                {/* <Modal.Footer className="d-flex justify-content-between">
-                    <Button className="btn-secondary" onClick={prev} disabled={prevDisable}> Anterior</Button>
-                    {!stepThree && (
-                        <Button className="button-save" onClick={next}>Próximo</Button>
-                    )}
-                    {stepThree && (
-                        <Button className="button-save" type="submit">Pagar</Button>
-                    )}
-                </Modal.Footer>
-                */}
             </Modal.Body>
 
         </Modal>

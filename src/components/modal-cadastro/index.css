@@ -16,6 +16,10 @@
     height: max-content;
 }
 
+.icon-fechar{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     #modal-body{
         height: unset;

@@ -1,34 +1,42 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import {fs, auth} from '../../../../config/firebase.js'
-import { Link } from "react-router-dom";
+import { fs, auth } from '../../../../config/firebase.js'
+import { Link, useHistory } from "react-router-dom";
 import '../styles/portifolio-list.css';
 import { PortifolioItem } from './portifolio-item.js';
 
 const PortifolioList = () => {
     const [items, setItems] = useState([]);
 
-    useEffect(()=>{
-        auth.onAuthStateChanged(user=>{
-            if(user){
-                fs.collection('Portifolio-item').onSnapshot(snapshot=>{
-                    const newItem = snapshot.docs.map((doc)=>({
-                        ID: doc.id,
-                        ...doc.data(),
-                    }));
-                    setItems(newItem);                    
-                })
+    const history = useHistory();
+
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                if (user.uid.toString() == "UGr7iwkw4ONmIlS16rJzROSTQ6A3") {
+                    fs.collection('Portifolio-item').onSnapshot(snapshot => {
+                        const newItem = snapshot.docs.map((doc) => ({
+                            ID: doc.id,
+                            ...doc.data(),
+                        }));
+                        setItems(newItem);
+                    })
+                } else {
+                    history.push('/');
+                }
+            } else {
+                history.push('/');
             }
         })
-    },[])
+    }, [])
 
     //Renderizar tabela database 
     return (
         <Container>
             <Row id="table-title">
                 <Col className="d-flex justify-content-between align-items-center">
-                    <h1>Portifolio Database</h1>
-                    <Button id="btn-addItem" href="/adiciona-portifolio"><Link to="/adiciona-portifolio" id="link-addItem">Adicionar item</Link></Button>
+                    <h1>Portfolio Database</h1>
+                    <Button id="btn-addItem" href="/adiciona-portfolio"><Link to="/adiciona-portfolio" id="link-addItem">Adicionar item</Link></Button>
                 </Col>
             </Row>
             <Row id="table-header">
@@ -42,7 +50,7 @@ const PortifolioList = () => {
             </Row>
             <Row id="table-body">
                 {items.length > 0 && (
-                    <PortifolioItem items={items}/>
+                    <PortifolioItem items={items} />
                 )}
                 {items.length < 1 && (
                     <div className='container-fluid'>Por favor, espere....</div>

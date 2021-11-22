@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Form, Row, Col, InputGroup, Modal, Container } from 'react-bootstrap';
-import { fs, storage } from '../../../../config/firebase';
-import { useHistory, useParams } from 'react-router-dom';
+import { fs, storage, auth } from '../../../../config/firebase';
+import { useHistory } from 'react-router-dom';
 
 const FormsEditPortifolio = () => {
 
@@ -37,7 +37,6 @@ const FormsEditPortifolio = () => {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }
-
 
     const HandleImg = (e) => {
         let selectedFile = e.target.files[0];
@@ -96,11 +95,11 @@ const FormsEditPortifolio = () => {
                             setTitle('');
                             setDesc('');
                             setCheckCol('');
-                            history.push('/portifolio-list');
+                            history.push('/portfolio-list');
                             history.go(0);
                         });
                     } else {
-                        const uploadTask = storage.ref(`/portifolio-images/${img.name}`).put(img);
+                        const uploadTask = storage.ref(`/portfolio-images/${img.name}`).put(img);
                         uploadTask.on('state_changed', snapshot => {
                             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
                         }, (err) => {
@@ -116,7 +115,7 @@ const FormsEditPortifolio = () => {
                                     setTitle('');
                                     setDesc('');
                                     setCheckCol('');
-                                    history.push('/portifolio-list');
+                                    history.push('/portfolio-list');
                                     history.go(0);
                                 });
                             })
@@ -126,6 +125,26 @@ const FormsEditPortifolio = () => {
             })
         })
     };
+
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                if (user.uid.toString() == "UGr7iwkw4ONmIlS16rJzROSTQ6A3") {
+                    fs.collection('Portifolio-item').onSnapshot(snapshot => {
+                        const newItem = snapshot.docs.map((doc) => ({
+                            ID: doc.id,
+                            ...doc.data(),
+                        }));
+                        setItems(newItem);
+                    })
+                } else {
+                    history.push('/');
+                }
+            } else {
+                history.push('/');
+            }
+        })
+    }, [])
 
 
     return (

@@ -3,7 +3,8 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { fs, auth, storage } from '../../../config/firebase.js';
 import { PrateleiraItem } from './prateleira-item';
 import { propTypes } from 'react-bootstrap/esm/Image';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 
 
 const PrateleiraList = () => {
@@ -11,20 +12,26 @@ const PrateleiraList = () => {
     const [show, setShow] = useState(false);
     const [items, setItems] = useState([]);
 
+    const history = useHistory();
+
     //lista
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if (user) {
-                fs.collection('Prateleira-item').onSnapshot(snapshot => {
-                    const newItem = snapshot.docs.map((doc) => ({
-                        ID: doc.id,
-                        ...doc.data(),
-                    }));
-                    setItems(newItem);
-                })
+                if (user.uid.toString() == "UGr7iwkw4ONmIlS16rJzROSTQ6A3") {
+                    fs.collection('Prateleira-item').onSnapshot(snapshot => {
+                        const newItem = snapshot.docs.map((doc) => ({
+                            ID: doc.id,
+                            ...doc.data(),
+                        }));
+                        setItems(newItem);
+                    })
+                } else {
+                    history.push('/');
+                }
             }
             else {
-                alert('Usuário não está logado');
+                history.push('/');
             }
         })
     }, [])

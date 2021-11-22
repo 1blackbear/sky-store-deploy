@@ -20,7 +20,7 @@ const ModalDigital = ({ onHide, show }) => {
         <Modal
             onHide={onHide}
             show={show}
-            dialogClassName="modal-100w"
+            dialogClassName="modal-mobile-enc"
             backdrop="static"
         >
             <Modal.Header closeButton id="modal-enc-header">
@@ -33,24 +33,24 @@ const ModalDigital = ({ onHide, show }) => {
                     </Row>
                     <Row className="modal-enc-linha">
                         <Row>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-visita" onClick={() => {handleShowForm("CARTÃO DE VISITA")}}>CARTÃO DE VISITA</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col  xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-logo" onClick={() => {handleShowForm("LOGO")}}>LOGO</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col  xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-capa" onClick={() => {handleShowForm("CAPA DE LIVRO")}}>CAPA DE LIVRO</div>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4}className="modal-enc-col">
                                 <div className="modal-img-size modal-img-adesivo" onClick={() => {handleShowForm("ADESIVO")}}>ADESIVO</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-redes" onClick={() => {handleShowForm("REDES SOCIAIS")}}>REDES SOCIAIS</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-doutros" onClick={() => {handleShowForm("OUTROS")}}>OUTROS</div>
                             </Col>
                         </Row>

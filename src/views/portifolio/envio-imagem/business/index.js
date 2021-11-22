@@ -1,11 +1,11 @@
 import { Form, Container, Row, Col, Modal } from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/index.css';
 import '../styles/check.scss';
 import option1 from '../../../../images/portifolio-inicial/adicionar-img/option1.jpg';
 import option2 from '../../../../images/portifolio-inicial/adicionar-img/option2.jpg';
 import option3 from '../../../../images/portifolio-inicial/adicionar-img/option3.jpg';
-import { storage, fs } from '../../../../config/firebase.js';
+import { storage, fs, auth } from '../../../../config/firebase.js';
 import { useHistory } from 'react-router-dom';
 
 
@@ -176,11 +176,33 @@ const AddPortifolio = () => {
                     setCheckCol('');
                     setCheckType('');
                     handleClose();
-                    history.push('/portifolio-list');
+                    history.push('/portfolio-list');
                 });
             })
         })
     };
+
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                if (user.uid.toString() == "UGr7iwkw4ONmIlS16rJzROSTQ6A3") {
+                    fs.collection('Portifolio-item').onSnapshot(snapshot => {
+                        const newItem = snapshot.docs.map((doc) => ({
+                            ID: doc.id,
+                            ...doc.data(),
+                        }));
+                        setItems(newItem);
+                    })
+                } else {
+                    history.push('/');
+                }
+            } else {
+                history.push('/');
+            }
+        })
+    }, [])
 
 
     return (

@@ -25,6 +25,8 @@ import Perfil from './views/perfil/index.js';
 import SubmenuList from './views/prateleira/submenu/submenu';
 import FormSubmenu from './views/prateleira/submenu/adicionar/forms-submenu';
 import FormSubmenuEdit from './views/prateleira/submenu/editar/forms-submenu-edit';
+import PedidosList from './views/pedidos/pedido-list'
+
 
 const App = () => {
   const [showBtn, setShowBtn] = useState(false);
@@ -48,19 +50,19 @@ const App = () => {
         )}
         <Switch> 
           <Route exact path='/' component={TelaInicial} />
-          <Route exact path='/manutencao' component={Manutencao} />
-          <Route exact path='/portifolio' component={Portifolio} />
-          <Route exact path='/adiciona-portifolio' component={AddPortifolio} />
-          <Route exact path='/portifolio-list' component={PortifolioList} />
-          <Route exact path='/portifolio-details/:id' component={PortifolioFirstDetail} />
-          <Route exact path='/portifolio-details-1/:id' component={PortifolioSecDetail} />
-          <Route exact path='/portifolio-details-2/:id' component={PortifolioThirdDetail} />
+          <Route exact path='/portfolio' component={Portifolio} />
+          <Route exact path='/adiciona-portfolio' component={AddPortifolio} />
+          <Route exact path='/portfolio-list' component={PortifolioList} />
+          <Route exact path='/portfolio-details/:id' component={PortifolioFirstDetail} />
+          <Route exact path='/portfolio-details-1/:id' component={PortifolioSecDetail} />
+          <Route exact path='/portfolio-details-2/:id' component={PortifolioThirdDetail} />
+          <Route exact path='/pedidos-list' component={PedidosList} />
           <Route exact path='/sobre-mim' component={SobreMim} />
           <Route exact path='/prateleira' component={Prateleira} />
           <Route exact path='/prateleira-list' component={PrateleiraList} />
           <Route exact path='/encomendas' component={Encomendas} />
           <Route exact path='/adiciona-prateleira' component={FormsPrateleira}/>
-          <Route exact path='/edita-portifolio/:id' component={FormsEditPortifolio}/>
+          <Route exact path='/edita-portfolio/:id' component={FormsEditPortifolio}/>
           <Route exact path='/edita-prateleira/:id' component={FormsEditPrateleira}/>
           <Route exact path='/encomendas-list' component={EncomendasList} />
           <Route exact path='/encomendas-list-sky' component={EncomendasListSky} />

@@ -2,11 +2,11 @@
     margin-top: 0px;
 }
 .modal-img-size {
-    width: 180px;
-    height: 180px;
+    width: 175px;
+    height: 175px;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: 20%;
+    margin-bottom: 15%;
     color: white;
     font-size: 1.7em;
     font-weight: bold;
@@ -14,4 +14,16 @@
     display: flex;
     justify-content: center;
     filter: grayscale(50%)
+}
+@media screen and (max-height: 700px) { 
+    .modal-img-size {
+        width: 150px;
+        height: 150px;
+    } 
+}
+@media screen and (max-height: 601px) { 
+    .modal-img-size {
+        width: 130px;
+        height: 130px;
+    } 
 }

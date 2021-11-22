@@ -4,14 +4,7 @@ import { auth, fs } from "../../config/firebase";
 import './carrinho.css'
 import ItensCarrinho from "./itens-carrinho";
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import ModalPayment from './pagamento/modal-payment.js'
-
-toast.configure();
-
 
 
 
@@ -92,7 +85,7 @@ const CarrinhoDeCompras = ({ handleCart, open }) => {
                 </Row>
             </Modal.Footer>
         </Modal >
-        <ModalPayment show={show} handleClose={handleClose} />
+            <ModalPayment totalPrice={totalPrice} show={show} handleClose={handleClose} />
     </>);
 };
 export default CarrinhoDeCompras;

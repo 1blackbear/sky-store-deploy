@@ -12,9 +12,7 @@ const ItemIndividualCarrinho = ({ cartItem }) => {
     const handleCartItemDelete=()=>{
         auth.onAuthStateChanged(user=>{
             if(user){
-                fs.collection('Cart' + " " + user.uid).doc(cartItem.ID).delete().then(()=>{
-                    console.log('successfully deleted');
-                })
+                fs.collection('Cart' + " " + user.uid).doc(cartItem.ID).delete();
             }
         })
     }

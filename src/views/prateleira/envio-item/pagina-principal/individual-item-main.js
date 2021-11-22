@@ -29,6 +29,7 @@ export const IndividualItemPratMain = ({ individualItem, addToCart }) => {
                         className="artes-img"
                         effect="opacity"
                         width="100%"
+                        onClick={handleAddToCart}
                         src={individualItem.url} />
                 </Col>
                 <Col>
@@ -46,7 +47,7 @@ export const IndividualItemPratMain = ({ individualItem, addToCart }) => {
                             placement={"top"}
                             overlay={show ?
                                 <Tooltip>
-                                    Você precisa estar logado antes: /
+                                    Você precisa estar logado antes :/
                                 </Tooltip>
                                 :
                                 <a></a>

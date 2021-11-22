@@ -1,5 +1,5 @@
 import React from "react";
-import {auth, fs} from '../../config/firebase.js'
+import { auth, fs } from '../../config/firebase.js';
 
 class Usuario extends React.Component {
     constructor() {
@@ -56,7 +56,7 @@ class Usuario extends React.Component {
             });
     }
 
-    
+
 
     render() {
         return (

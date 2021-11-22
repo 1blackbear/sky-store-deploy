@@ -1,0 +1,62 @@
+.items-body-pedido {
+    margin: 0 25vh;
+}
+.card-pedido-row {
+    margin-bottom: 6%;
+    padding: 0px;
+    margin-right: 50px !important;
+    border: #7070706c solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+.card-pedido-header {
+    background-color: #cab6a588;
+    border-bottom: #7070706c solid;
+    border-width: 1px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 15px;
+    margin: 0px;
+}
+.pedido-preco {
+    font-size: 1.05em;
+}
+.col-pedido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-pedido-body {
+    margin: 15px;
+    border-bottom: #70707034 solid;
+    border-width: 0.5px;
+    padding-bottom: 1%;
+}
+.card-pedido-body:last-child {
+    border: none;
+}
+.btn-update {
+    color: black;
+}
+.photo-item-pedido {
+    pointer-events: none;
+    width: 120px;
+}
+.pedido-title {
+    font-size: 1.2em;
+    margin-bottom: 1%;
+}
+#minhas-compras-title {
+    margin-top: 80px;
+    margin-bottom: 3%;
+}
+.btn-download {
+    color: #707070;
+    border: none;
+    padding: 8px 15px;
+    background-color: #c8cdf4;
+}
+.btn-download:hover {
+    background-color: #5f69b9;
+}

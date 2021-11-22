@@ -20,10 +20,10 @@ const ModalEnco = ({ onHide, show, showIlustra, showDigital}) => {
                         <h1>O QUE VOCÊ DESEJA?</h1>
                     </Row>
                     <Row className="modal-enc-linha">
-                        <Col xs={6} className="modal-enc-col">
+                        <Col xs={12} md={6} className="modal-enc-col">
                             <div className="modal-enc-ret ilustra" onClick={showIlustra}>ILUSTRAÇÃO</div>
                         </Col>
-                        <Col xs={6} className="modal-enc-col">
+                        <Col xs={12} md={6} className="modal-enc-col">
                             <div className="modal-enc-ret arte-digital" onClick={showDigital}>ARTE DIGITAL</div>
                         </Col>
                     </Row>

@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Form, Button, Row, Col, InputGroup, Modal } from 'react-bootstrap';
-import FechaCadastro from "./botao-fechar";
 import Usuario from "./usuario";
 import './index.css';
 
 
-const FormsCadastro = ({ voltaLogin, toggle }) => {
+const FormsCadastro = ({ voltaLogin }) => {
 
     const [nome, setNome] = useState("");
     const [confirmSenha, setConfirmSenha] = useState("");
@@ -22,7 +21,6 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
     function cadastrar(){
         user.cadastrar(email, senha, confirmSenha, nome);
     }
-
 
     return (
 
@@ -95,10 +93,6 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                         <Button className="btn btn-primary button-save" variant="primary" onClick={cadastrar} type="submit" block>
                             Cadastrar
                         </Button>
-                        <FechaCadastro
-                            onClick={toggle}
-                        >
-                        </FechaCadastro>
                     </div>
                 </Modal.Footer>
             </Form>

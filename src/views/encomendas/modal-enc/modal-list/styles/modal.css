@@ -7,6 +7,17 @@
     width: 90vw;
     height: 92vh;
 }
+@media screen and (max-width: 768px) {
+  .modal-100w {
+      margin: inherit;
+      width: 100vw;
+      height: 100vh;
+  }
+  .modal-100w .modal-content {
+      width: 100vw;
+      height: 100%;
+  }
+}
 .close {
     background-color: transparent;
     border: none;

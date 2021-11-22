@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Row, Col, InputGroup, Modal, Container } from 'react-bootstrap';
-import { fs, storage } from '../../../../config/firebase';
-import { useHistory, useParams } from 'react-router-dom';
+import { fs, storage, auth } from '../../../../config/firebase';
+import { useHistory } from 'react-router-dom';
 import '../../prateleira.css';
 
 const FormsPrateleira = () => {
@@ -77,7 +77,28 @@ const FormsPrateleira = () => {
             })
         })
     };
-  
+
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                if (user.uid.toString() == "UGr7iwkw4ONmIlS16rJzROSTQ6A3") {
+                    fs.collection('Prateleira-item').onSnapshot(snapshot => {
+                        const newItem = snapshot.docs.map((doc) => ({
+                            ID: doc.id,
+                            ...doc.data(),
+                        }));
+                        setItems(newItem);
+                    })
+                } else {
+                    history.push('/');
+                }
+            }
+            else {
+                history.push('/');
+            }
+        })
+    }, [])
+
     return (
         <Container>
             <Row>
@@ -111,8 +132,8 @@ const FormsPrateleira = () => {
                                 <Form.Control type="file" className="photos-input" onChange={HandleImg} />
                             </div>
                             <button type="button"
-                            class="btn btn-primary button-save" onClick={AddNewItem}>Adicionar</button>  
-                                                            
+                                class="btn btn-primary button-save" onClick={AddNewItem}>Adicionar</button>
+
                         </Form.Group>
 
                     </Form>

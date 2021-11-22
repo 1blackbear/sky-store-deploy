@@ -44,3 +44,31 @@
 .desc-tutorial {
     padding: 0px 5%;
 }
+.step-photo {
+    width: 60%;
+    margin-left: 18vw !important;
+}
+
+@media screen and (max-width: 768px) {
+    .step-photo {
+        display: none;
+    }
+    .text-tutorial p {
+        display: block ;
+    }
+    #title-tutorial {
+        margin: 0px;
+        margin-bottom: -25%;
+        text-align: center;
+    }
+    #title-desc-tutorial {
+        font-size: 1.8em;
+    }
+    .playIcondesc{
+        display: none !important;
+    }
+    .botao-encomende {
+        justify-content: center !important;
+    }
+
+}

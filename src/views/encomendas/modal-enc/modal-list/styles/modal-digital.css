@@ -29,3 +29,9 @@
     filter: grayscale(100%)
 }
 
+@media screen and (max-width: 768px) {
+    .modal-img-size{
+    margin: 0px;
+    margin-bottom: 10% !important;
+}
+}

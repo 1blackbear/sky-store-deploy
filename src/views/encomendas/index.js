@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap"
-import imgUrl from '../../images/Tutorial.svg';
+import imgUrl from '../../images/passos.png';
 import PlayArrow from '@material-ui/icons/PlayArrowRounded';
 import './index.css';
 import { motion } from "framer-motion";
@@ -25,10 +25,11 @@ export const Encomendas = () => {
                 <Row className="row-tutorial">
                     <h1 id="title-tutorial">Como eu faço uma encomenda?</h1>
                 </Row>
-                <Row className="row-tutorial">
+                <Row className="row-tutorial ">
                     <LazyLoadImage
-                        className="col-12 skai-photo col-sm-6"
+                        className="col-12 step-photo col-sm-6"
                         effect="blur"
+                        height="300px"
                         src={imgUrl} />
                 </Row>
                 <div className="desc-tutorial">

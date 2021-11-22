@@ -122,7 +122,7 @@ function MenuSuperior() {
                         <Link to="/prateleira" onClick={closeMobileMenu} className="nav-link">PRATELEIRA</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/portifolio" onClick={closeMobileMenu} className="nav-link" >PORTIFÓLIO</Link>
+                        <Link to="/portfolio" onClick={closeMobileMenu} className="nav-link">PORTFÓLIO</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/sobre-mim" className="nav-link" onClick={closeMobileMenu} id="sobre-mim">SOBRE MIM</Link>
@@ -131,8 +131,9 @@ function MenuSuperior() {
                         <a href="#" onClick={handleShow} className="button-link"><ButtonMobile id="button-mobile" /></a>
                     </>}
                     {GetCurrentUser() && <>
-                        <Link to="/perfil" className="nav-link logged-user" onClick={closeMobileMenu}>Perfil</Link>
-                        <a href="#" onClick={handleLogout} className="nav-link logged-user">Sair</a>
+                        <a href="#" onClick={handleCart} className="nav-link logged-user">CARRINHO</a>
+                        <Link to="/perfil" className="nav-link logged-user" onClick={closeMobileMenu}>PERFIL</Link>
+                        <a href="#" onClick={handleLogout} className="nav-link logged-user">SAIR</a>
                     </>}
                 </ul>
                 <div className="icons col-2">
@@ -164,7 +165,7 @@ function MenuSuperior() {
                                 <Dropdown.Toggle variant="success" id="dropdown-basic" />
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
-                                    <Dropdown.Item href="/portifolio-list">Adicionar item portifólio</Dropdown.Item>
+                                    <Dropdown.Item href="/portfolio-list">Adicionar item portfólio</Dropdown.Item>
                                     <Dropdown.Item href="/prateleira-list">Adicionar item prateleira</Dropdown.Item>
                                     <Dropdown.Item href="/encomendas-list-sky">Encomendas</Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>

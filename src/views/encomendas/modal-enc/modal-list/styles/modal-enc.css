@@ -1,5 +1,5 @@
 .modal-enc-linha {
-    margin-top: 5%;
+    margin-top: 4%;
     font-weight: bold;
     color: #707070;
     text-align: center;
@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     width: 60%;
-    height: 25vh;
+    height: 32.5vh;
 }
 .ilustra{
     margin-left: 15%;
@@ -37,4 +37,21 @@
 .ilustra:hover {
     cursor: pointer;
     filter: grayscale(100%)
+}
+@media screen and (max-width: 768px) {
+    .ilustra {
+        margin: 0px;
+        margin-bottom: 10%;
+    }
+    .modal-enc-linha h1 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+    .arte-digital {
+        margin: 0px;
+    }
+    .modal-enc-ret {
+        width: 100%;
+        height: 25vh;
+    }
 }

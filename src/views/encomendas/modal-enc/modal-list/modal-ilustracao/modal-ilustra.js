@@ -20,7 +20,7 @@ const ModalIlustra = ({ onHide, show }) => {
         backdrop="static"
             onHide={onHide}
             show={show}
-            dialogClassName="modal-100w"
+            dialogClassName="modal-mobile-enc"
         >
             <Modal.Header closeButton id="modal-enc-header">
                 <div />
@@ -32,24 +32,24 @@ const ModalIlustra = ({ onHide, show }) => {
                     </Row>
                     <Row className="modal-enc-linha">
                         <Row>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-perfil" onClick={() => {handleShowForm("PERFIL")}}>PERFIL</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-paisagem" onClick={() => {handleShowForm("PAISAGEM")}}>PAISAGEM</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-half" onClick={() => {handleShowForm("METADE DE CORPO")}}>METADE DE CORPO</div>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-conc" onClick={() => {handleShowForm("CONCEITUAL")}}>CONCEITUAL</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-pet" onClick={() => {handleShowForm("PET")}}>PET</div>
                             </Col>
-                            <Col xs={4} className="modal-enc-col">
+                            <Col xs={12} md={4} className="modal-enc-col">
                                 <div className="modal-img-size modal-img-outros" onClick={() => {handleShowForm("OUTROS")}}>OUTROS</div>
                             </Col>
                         </Row>

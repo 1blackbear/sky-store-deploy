@@ -26,4 +26,39 @@
     cursor: pointer;
     filter: grayscale(100%)
 }
-
+.modal-mobile-enc {
+    margin-left: 5vw;
+    width: 100vw;
+    height: 90vh;
+}
+.modal-mobile-enc .modal-content {
+    width: 90vw;
+    height: 92vh;
+}
+@media screen and (max-height: 700px) {
+    
+    .modal-mobile-enc-form {
+        margin: inherit;
+        width: 100%;
+        height: max-content;
+    }
+    .modal-mobile-enc-form .modal-content {
+        width: 100vw;
+        height: 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .modal-mobile-enc {
+        margin: inherit;
+        width: 100%;
+        height: max-content;
+    }
+    .modal-mobile-enc .modal-content {
+        width: 100vw;
+        height: 100%;
+    }
+    .modal-img-size{
+    margin: 0px;
+    margin-bottom: 10% !important;
+}
+}

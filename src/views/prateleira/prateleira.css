@@ -17,11 +17,10 @@
     padding:0;
     margin-bottom: 13px;
     margin-top: 10px;
-
 }
+
 .part2-body{
-padding:0;
-   
+    padding:0;
 }
 #shopping-icon {
     font-size: 24px;
@@ -40,12 +39,22 @@ padding:0;
 }
 
 .artes-img{
+    pointer-events: none;
     height:256px;
     border: 1px solid #c8cdf4;
 }
 .artes-img:hover{
     cursor: pointer;
-    border-color: #5f69b9;
+    border-color: #c8cdf4;
+}
+
+.part1{
+    margin-top: 80px;
+}
+
+.card-part{
+    height: max-content;
+    margin-bottom: 10%;
 }
 
 .nav-itens{

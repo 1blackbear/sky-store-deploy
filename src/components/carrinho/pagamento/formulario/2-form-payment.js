@@ -6,13 +6,18 @@ import {
     CardCvcElement,
     useElements,
     useStripe,
-    CardElement,
 } from '@stripe/react-stripe-js';
 import PaymentIcon from '@material-ui/icons/Payment';
 import boleto from '../../../../images/boleto-icon.png'
 import '../pagamento.css';
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { auth, fs } from "../../../../config/firebase";
 
-const PaymentFormTwo = (nome, end, cidade, cep,pais,email, next, prev, prevDisable) => {
+toast.configure();
+
+const PaymentFormTwo = ({ nome, end, cidade, cep, pais, email, prev, prevDisable, totalPrice }) => {
 
     const inputStyle = {
         iconColor: '#a9a9a9',
@@ -39,16 +44,21 @@ const PaymentFormTwo = (nome, end, cidade, cep,pais,email, next, prev, prevDisab
 
     const elements = useElements();
     const stripe = useStripe();
-
+    const history = useHistory();
     //Função submit do formulário
+    const uid = auth.currentUser.uid;
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setTimeout(() => { console.log(elements.getElement(CardElement)) }, 3000);
 
         if (!stripe || !elements) {
             return;
         }
-        console.log('stripe', stripe);
+
 
         const { clientSecret } = await fetch('create-payment-intent', {
             method: 'POST',
@@ -58,19 +68,74 @@ const PaymentFormTwo = (nome, end, cidade, cep,pais,email, next, prev, prevDisab
             body: JSON.stringify({
                 paymentMethodType: 'card',
                 currency: 'brl',
+                amount: totalPrice * 100,
+                /*city: cidade,
+                country: pais,
+                line1: end,
+                postal_code: cep,
+                email: email,
+                name: nome,*/
             }),
         }).then(r => r.json());
-
-        next();
 
         const { paymentIntent } = await stripe.confirmCardPayment(
             clientSecret, {
             payment_method: {
                 card: elements.getElement(CardNumberElement),
+            },
+        })
+
+        if (paymentIntent) {
+            history.push('/');
+            toast.success('Compra realizada com sucesso', {
+                position: 'top-left',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            });
+
+            const carts = await fs.collection('Cart' + " " + uid).get()
+            let num_pedido = getRandomInt(1000000, 9999999);
+            const pedidoString = num_pedido.toString()
+
+            let valores = {
+                'item': newItem,
+                'num_pedido': pedidoString,
+                'data_pedido': new Date(),
+                'uid': uid,
             }
+            
+            
+
+            fs.collection('Pedidos-list').doc(pedidoString).set(valores)
+
+            for (var snap of carts.docs) {
+                fs.collection('Cart' + " " + uid).doc(snap.id).delete();
+            }
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000) 
         }
-        )
     };
+
+    const [newItem, setNewItem] = useState();
+
+    useEffect(() => {
+        if (uid) {
+            fs.collection('Cart' + " " + uid).onSnapshot(snapshot => {
+                setNewItem(snapshot.docs.map((doc) => ({
+                    ID: doc.id,
+                    ...doc.data(),
+                }))
+                )
+
+
+            })
+        }
+    }, [newItem])
 
     return (
         <>
@@ -151,7 +216,7 @@ const PaymentFormTwo = (nome, end, cidade, cep,pais,email, next, prev, prevDisab
                         </Form.Group>
                         <Modal.Footer className="d-flex justify-content-between">
                             <Button className="btn-secondary" onClick={prev} disabled={prevDisable}> Anterior</Button>
-                            <Button className="button-save" type="submit" onClick={next}>Próximo</Button>
+                            <Button className="button-save" type="submit">Pagar</Button>
                         </Modal.Footer>
                     </Form>
                 </>)}

@@ -39,7 +39,7 @@
   .label-choose-modal input:checked+.card-box {
     border: 2px solid #90CBEB;
   }
-.card-body {
+.body-card {
     display: flex;
     flex-direction: column;
     justify-content: center;

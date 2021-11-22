@@ -1,9 +1,9 @@
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import FormsCadastro from "./forms-cadastro";
 
 
-const ModalCadastro = ({show, onHide, voltaLogin, toggle}) => {
-       
+const ModalCadastro = ({ show, onHide, voltaLogin, toggle }) => {
+
     return (
         <div>
             {/*Modal de Cadastro */}
@@ -16,12 +16,13 @@ const ModalCadastro = ({show, onHide, voltaLogin, toggle}) => {
             >
                 <Modal.Header>
                     <Modal.Title>Cadastrar novo usuário</Modal.Title>
+                    <i class="fas fa-times mb-4 icon-fechar" onClick={toggle}></i>
                 </Modal.Header>
                 <Modal.Body id="modal-body">
-                    <FormsCadastro voltaLogin={voltaLogin} toggle={toggle}>
-                    </FormsCadastro>                
+                    <FormsCadastro voltaLogin={voltaLogin}>
+                    </FormsCadastro>
                 </Modal.Body>
-                
+
             </Modal >
             {/*Modal  de Cadastro */}
         </div>

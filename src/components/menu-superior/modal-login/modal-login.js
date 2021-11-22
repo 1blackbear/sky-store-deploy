@@ -1,13 +1,10 @@
 import { Modal, InputGroup } from 'react-bootstrap';
 import { useState } from "react";
 import './modal-login.css';
-import {auth} from '../../../config/firebase.js';
+import { auth, fs } from '../../../config/firebase.js';
 import { googleProvider } from '../../../config/auth-methods';
 import googleAuth from '../../../service/auth';
-
-
-
-
+import firebase from "firebase";
 
 const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
 
@@ -19,18 +16,20 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
 
     const [typeInput, setTypeInput] = useState("password");
 
-    const handleOnClick = async (provider) =>{
+    const user = firebase.auth().currentUser;
+
+    const handleOnClick = async (provider) => {
         const res = await googleAuth(provider);
-            setEmail("");
-            setSenha("");
+        setEmail("");
+        setSenha("");
+        setErrorMsg('');
+        setSuccessMsg('Logado com sucesso! Um momentinho para redirecionarmos você. ^.^');
+        setTimeout(() => {
+            setSuccessMsg('');
             setErrorMsg('');
-            setSuccessMsg('Logado com sucesso! Um momentinho para redirecionarmos você. ^.^');
-            setTimeout(() => {
-                setSuccessMsg('');
-                setErrorMsg('');
-                onHide();
-            }, 3000)
-            console.log(res);
+            onHide();
+        }, 3000)
+        console.log(res);
     };
 
     function logar(e) {
@@ -83,6 +82,7 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
             >
                 <Modal.Header>
                     <Modal.Title>Fazer login</Modal.Title>
+                    <i class="fas fa-times mb-4 icon-fechar" onClick={onHide}></i>
                 </Modal.Header>
                 <Modal.Body>
                     <div class="modal-body">
@@ -96,8 +96,8 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Senha</label>
                                 <InputGroup>
-                                <input onChange={(e) => setSenha(e.target.value)} type={typeInput} className="form-control inputText" id="exampleInputPassword1" />
-                                <InputGroup.Text className="visibility" ><a onClick={() => { if (typeInput == "password") setTypeInput("text"); else setTypeInput("password"); }}>
+                                    <input onChange={(e) => setSenha(e.target.value)} type={typeInput} className="form-control inputText" id="exampleInputPassword1" />
+                                    <InputGroup.Text className="visibility" ><a onClick={() => { if (typeInput == "password") setTypeInput("text"); else setTypeInput("password"); }}>
                                         {typeInput == "password" && <i class="fas fa-eye"></i>}
                                         {typeInput != "password" && <i class="fas fa-eye-slash"></i>}
                                     </a></InputGroup.Text>
@@ -114,7 +114,6 @@ const ModalLogin = ({ show, onHide, onClick, showEsq }) => {
                                     <label onClick={showEsq} class="esqueci" for="" ><a href="#">Esqueci minha senha</a></label>
                                 </div><div class="botao-part">
                                     <button type="submit" className="btn btn-primary button-save" onClick={logar}>Entrar</button>
-                                    <button className="btn btn-secondary" onClick={onHide}>Fechar</button>
                                 </div>
                             </div>
                         </form>

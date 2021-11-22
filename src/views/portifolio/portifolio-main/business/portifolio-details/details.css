@@ -17,6 +17,7 @@
     font-weight: bold;
 }
 .first-detail-image {
+    pointer-events: none;
     width: 100%;  
 }
 .col-detail {
