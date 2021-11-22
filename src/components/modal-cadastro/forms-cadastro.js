@@ -19,7 +19,8 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
     const [msgTipo, setMsgTipo] = useState("");
     const [msg, setMsg] = useState("");
 
-    function cadastrar() {
+    function cadastrar(e) {
+        e.preventDefault();
         if (!email || !senha) {
             setMsgTipo('erro')
             setMsg('Você precisa informar o email e senha para fazer o cadastro!')
@@ -65,7 +66,6 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
 
 
     }
-    const ref = useRef();
     return (
 
         <>
@@ -141,7 +141,7 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                         <Button className="btn btn-primary button-save" variant="primary" type="submit" block>
                             Cadastrar
                         </Button>
-                        <FechaCadastro ref={ref}
+                        <FechaCadastro
                             onClick={toggle}
                         >
                         </FechaCadastro>
