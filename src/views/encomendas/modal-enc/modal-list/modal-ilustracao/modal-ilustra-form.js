@@ -38,7 +38,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
         setCampos(campos);
     }
 
-    const handleFormSubmi = async () => {
+    function handleFormSubmit() {
         campos["tipo"] = item;
         auth.onAuthStateChanged(user => {
             if (user) {
@@ -53,7 +53,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                     data,
                     num_pedido
                 }).then(() => {
-                    await fetch('/encomendas/send-ilustra', {
+                    fetch('/encomendas/send-ilustra', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                                 'Content-Type': 'application/json'
                             }
                         })*/.then((response) => {
-                            response.json();
+                            response.json()
                             setCampos({
                                 tipo: '',
                                 nome: '',

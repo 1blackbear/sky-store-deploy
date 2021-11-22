@@ -7,7 +7,7 @@ const stripe = require('stripe')('sk_test_51JrZLfKyWWBDpZuikaXVZfdHihMgOLXrN8Ka0
 
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.use(require('cors')());
 app.use(express.json());
@@ -17,7 +17,6 @@ app.post('/create-payment-intent', async (req, res) => {
     let status
     let error
     const { paymentMethodType, currency, amount } = req.body;
-    console.log(req.body.amount);
 
     try {
         const paymentIntent = await stripe.paymentIntents.create({
@@ -75,10 +74,10 @@ app.post('/encomendas/send-ilustra', (req, res, next) => {
 });
 
 
-if(process.env.NODE_ENV === "production") {
+
     app.use(express.static(path.join(__dirname, 'build')));
     app.get('/*', (req, res) => res.sendFile('index.html', { root: 'build' }));
-}
+
 
 
 
