@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "./static/css/main.20a698b0.chunk.css",
+    "main.js": "./static/js/main.e181a8d1.chunk.js",
+    "main.js.map": "./static/js/main.e181a8d1.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.656d7126.js",
+    "runtime-main.js.map": "./static/js/runtime-main.656d7126.js.map",
+    "static/css/2.ebd41350.chunk.css": "./static/css/2.ebd41350.chunk.css",
+    "static/js/2.c5581b0c.chunk.js": "./static/js/2.c5581b0c.chunk.js",
+    "static/js/2.c5581b0c.chunk.js.map": "./static/js/2.c5581b0c.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.ebd41350.chunk.css.map": "./static/css/2.ebd41350.chunk.css.map",
+    "static/css/main.20a698b0.chunk.css.map": "./static/css/main.20a698b0.chunk.css.map",
+    "static/js/2.c5581b0c.chunk.js.LICENSE.txt": "./static/js/2.c5581b0c.chunk.js.LICENSE.txt",
+    "static/media/modal-digital.css": "./static/media/post de insta.86a20037.png",
+    "static/media/modal-enc.css": "./static/media/ilustração.753da546.jpg",
+    "static/media/menu.css": "./static/media/logo-admin.de2e5925.svg",
+    "static/media/index.css": "./static/media/background.d60292db.svg",
+    "static/media/portifolio.css": "./static/media/background-portifolio.ee9a60fb.jpg",
+    "static/media/botao-whatsapp.8706f58b.svg": "./static/media/botao-whatsapp.8706f58b.svg",
+    "static/media/modal-ilustra.css": "./static/media/pet.4aad7e6d.png",
+    "static/media/logo-mobile.f0845ffd.svg": "./static/media/logo-mobile.f0845ffd.svg",
+    "static/media/logo.14d2b9b3.svg": "./static/media/logo.14d2b9b3.svg",
+    "static/media/option1.1d0a97c6.jpg": "./static/media/option1.1d0a97c6.jpg",
+    "static/media/option2.66a8057d.jpg": "./static/media/option2.66a8057d.jpg",
+    "static/media/option3.23fed901.jpg": "./static/media/option3.23fed901.jpg",
+    "static/media/passos.656f6587.png": "./static/media/passos.656f6587.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.656d7126.js",
+    "static/css/2.ebd41350.chunk.css",
+    "static/js/2.c5581b0c.chunk.js",
+    "static/css/main.20a698b0.chunk.css",
+    "static/js/main.e181a8d1.chunk.js"
+  ]
+}
