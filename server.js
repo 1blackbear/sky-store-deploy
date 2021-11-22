@@ -7,6 +7,8 @@ const stripe = require('stripe')('sk_test_51JrZLfKyWWBDpZuikaXVZfdHihMgOLXrN8Ka0
 
 const app = express();
 
+const port = process.env.PORT || 5000;
+
 app.use(require('cors')());
 app.use(express.json());
 
@@ -73,12 +75,13 @@ app.post('/encomendas/send-ilustra', (req, res, next) => {
 });
 
 
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, 'build')));
+    app.get('/*', (req, res) => res.sendFile('index.html', { root: 'build' }));
+}
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/*', (req, res) => res.sendFile('index.html', { root: 'build' }));
 
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('server start');
 });
