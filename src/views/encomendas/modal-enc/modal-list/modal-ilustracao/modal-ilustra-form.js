@@ -38,7 +38,7 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
         setCampos(campos);
     }
 
-    function handleFormSubmit() {
+    const handleFormSubmi = async () => {
         campos["tipo"] = item;
         auth.onAuthStateChanged(user => {
             if (user) {
@@ -53,20 +53,12 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                     data,
                     num_pedido
                 }).then(() => {
-                    fetch('/encomendas/send-ilustra', {
+                    await fetch('/encomendas/send-ilustra', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify({
-                            tipo: '',
-                            nome: '',
-                            contato: '',
-                            email: '',
-                            desc: '',
-                            adicao_personagem: '',
-                            fundo: ''
-                        }),
+                        body: JSON.stringify(campos),
                     })
                     /*axios.post('/encomendas/send-ilustra',
                         campos,
