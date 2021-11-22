@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Form, Button, Row, Col, InputGroup, Modal } from 'react-bootstrap';
 import { auth, fs } from '../../config/firebase.js';
 import './index.css';
@@ -39,11 +39,9 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                     email: email,
                 })
                 setMsgTipo('sucesso')
-
-                setTimeout(()=>{
-                    voltaLogin()
-                },1500)
-               
+                setTimeout(() => {
+                    toggle();
+                }, 1500)
             })
             .catch((erro) => {
                 setMsgTipo('erro')
@@ -62,8 +60,10 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                         break;
                 }
             });
-    }
 
+
+    }
+    const ref = useRef();
     return (
 
         <>
@@ -128,8 +128,8 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                         </Col>
                     </Row>
                     <Row className="msg-cad-row">
-                            {msgTipo === 'sucesso' && <span><strong>WoW!</strong>Usuário cadastrado com sucesso! &#128526; </span>}
-                            {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546; </span>}
+                        {msgTipo === 'sucesso' && <span><strong>WoW!</strong>Usuário cadastrado com sucesso! &#128526; </span>}
+                        {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546; </span>}
                     </Row>
                 </Modal.Body>
                 <Modal.Footer id="footer-cadastro" className="modal-footer footer d-flex justify-content-between">
@@ -139,7 +139,7 @@ const FormsCadastro = ({ voltaLogin, toggle }) => {
                         <Button className="btn btn-primary button-save" variant="primary" type="submit" block>
                             Cadastrar
                         </Button>
-                        <FechaCadastro
+                        <FechaCadastro ref={ref}
                             onClick={toggle}
                         >
                         </FechaCadastro>

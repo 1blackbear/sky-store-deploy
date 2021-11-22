@@ -34,7 +34,7 @@ const PaymentFormTwo = ({ nome, cpf, end, cidade, estado, cep, pais, email, prev
         },
     }
 
-    const [paymentMethodType, setPaymentMethodType] = useState("");
+    const [paymentMethodType, setPaymentMethodType] = useState("card");
 
     const [check, setCheckList] = useState(true);
     function handleInputChange(event) {
@@ -59,6 +59,7 @@ const PaymentFormTwo = ({ nome, cpf, end, cidade, estado, cep, pais, email, prev
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+
 
         if (!stripe || !elements) {
             return;

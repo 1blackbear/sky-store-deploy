@@ -23,6 +23,7 @@ const ModalPayment = ({ totalPrice, handleClose, show }) => {
     const [cep, setCEP] = useState("");
     const [pais, setPais] = useState("BR");
     const [email, setEmail] = useState();
+    
 
     const [cardNumber, setCardNumber] = useState();
 

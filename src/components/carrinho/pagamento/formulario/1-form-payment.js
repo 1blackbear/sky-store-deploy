@@ -4,6 +4,10 @@ import '../pagamento.css';
 import { EstadosList } from './estados.js';
 
 const PaymentFormOne = ({ nome, setNome, cpf, setCPF, estado, setEstado, end, setEnd, cidade, setCidade, cep, setCEP, email, setEmail, next }) => {
+    useEffect(() => {
+        console.log(nome);
+        console.log(estado);
+    },[estado]);
     return (
         <>
             <Modal.Body>
@@ -11,7 +15,7 @@ const PaymentFormOne = ({ nome, setNome, cpf, setCPF, estado, setEstado, end, se
                     <Form.Group>
                         <Row>
                             <Col xs={7}>
-                                <Form.Label className="titulo-campo">Nome</Form.Label>
+                                <Form.Label className="titulo-campo">Nosme</Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="Nome"
