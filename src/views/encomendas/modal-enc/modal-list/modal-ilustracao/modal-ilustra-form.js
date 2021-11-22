@@ -58,7 +58,15 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(campos),
+                        body: JSON.stringify({
+                            tipo: '',
+                            nome: '',
+                            contato: '',
+                            email: '',
+                            desc: '',
+                            adicao_personagem: '',
+                            fundo: ''
+                        }),
                     })
                     /*axios.post('/encomendas/send-ilustra',
                         campos,
