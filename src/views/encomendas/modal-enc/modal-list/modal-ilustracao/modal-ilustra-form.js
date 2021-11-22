@@ -54,13 +54,20 @@ const ModalFormIlustra = ({ onHide, show, item }) => {
                     data,
                     num_pedido
                 }).then(() => {
-                    axios.post('/encomendas/send-ilustra',
+                    fetch('/encomendas/send-ilustra', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: campos,
+                    })
+                    /*axios.post('/encomendas/send-ilustra',
                         campos,
                         {
                             headers: {
                                 'Content-Type': 'application/json'
                             }
-                        }).then((response) => {
+                        })*/.then((response) => {
                             setCampos({
                                 tipo: '',
                                 nome: '',

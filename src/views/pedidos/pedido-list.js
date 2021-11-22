@@ -7,21 +7,6 @@ import { PedidoItem } from './pedido-list/individual-item/pedido-item.js';
 const PedidosList = () => {
     const [items, setItems] = useState([]);
 
-    /*useEffect(() => {
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                fs.collection('Pedidos-list').onSnapshot(snapshot => {
-                    const newItem = // Variável com vetor de itens do map seguinte:
-                        snapshot.docs.map((doc) => ({  //Faz um map na lista de documentos da seleção
-                            ID: doc.id,
-                            ...doc.data(),
-                        }));
-                        setItems(newItem)
-                })
-            }
-        })
-    }, [])*/
-
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if (user) {
