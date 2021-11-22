@@ -4,13 +4,13 @@ module.exports = (email, nome, contato, tipo, desc, adicao_personagem, fundo) =>
     const smtpTransport = mailer.createTransport({
         service: "gmail",
         auth: {
-            user: "skylst.suporte@gmail.com",
+            user: "tskystore@outlook.com",
             pass: "@SKYSTORE",
         },
     })
 
     const mail = {
-        from: "Sky <skylst.suporte@gmail.com>",
+        from: "Sky <tskystore@outlook.com>",
         to: "skylst.suporte@gmail.com",
         subject: `${nome} solicitou uma encomenda!`,
         html: `<p>Nome completo: ${nome}<br/>
