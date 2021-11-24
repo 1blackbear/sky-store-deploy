@@ -24,7 +24,7 @@
 .modal-img-perfil:hover, .modal-img-paisagem:hover, .modal-img-half:hover, 
 .modal-img-pet:hover, .modal-img-outros:hover, .modal-img-conc:hover{
     cursor: pointer;
-    filter: grayscale(100%)
+    border: 2px solid black;
 }
 .modal-mobile-enc {
     margin-left: 5vw;

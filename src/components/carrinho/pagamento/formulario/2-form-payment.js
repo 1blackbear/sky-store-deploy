@@ -81,6 +81,17 @@ const PaymentFormTwo = ({ nome, cpf, end, cidade, estado, cep, pais, email, prev
                 clientSecret, {
                 payment_method: {
                     card: elements.getElement(CardNumberElement),
+                    billing_details: {
+                        address: {
+                            line1: end,
+                            city: cidade,
+                            state: estado,
+                            postal_code: cep,
+                            country: pais,
+                        },
+                        name: nome,
+                        email: email
+                    },
                 },
             })
 
@@ -97,7 +108,6 @@ const PaymentFormTwo = ({ nome, cpf, end, cidade, estado, cep, pais, email, prev
                 });
             }
         } else {
-            console.log(paymentMethodType)
             const { error, paymentIntent } = await stripe.confirmBoletoPayment(
                 clientSecret, {
                 payment_method: {

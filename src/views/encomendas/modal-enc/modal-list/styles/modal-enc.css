@@ -19,24 +19,22 @@
     justify-content: center;
     width: 60%;
     height: 32.5vh;
+    border: 2px solid white;
+}
+.modal-enc-ret:hover {
+    cursor: pointer;
+    border: 2px solid black;
 }
 .ilustra{
     margin-left: 15%;
     background-image: url("/src/images/encomendas/ilustração.jpg");
     background-position-y: -60px;
+    backdrop-filter: brightness(80%);
 }
 .arte-digital {
     margin-right: 15%;
     background-image: url("/src/images/encomendas/arte\ digital.jpg");
     background-position-y: -35px;
-}
-.arte-digital:hover {
-    cursor: pointer;
-    filter: grayscale(100%);
-}
-.ilustra:hover {
-    cursor: pointer;
-    filter: grayscale(100%)
 }
 @media screen and (max-width: 768px) {
     .ilustra {

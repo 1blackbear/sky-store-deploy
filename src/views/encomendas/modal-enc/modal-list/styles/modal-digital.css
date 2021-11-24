@@ -26,7 +26,7 @@
 .modal-img-logo:hover, .modal-img-adesivo:hover, .modal-img-capa:hover, 
 .modal-img-visita:hover, .modal-img-doutros:hover, .modal-img-redes:hover{
     cursor: pointer;
-    filter: grayscale(100%)
+    border: 2px solid black;
 }
 
 @media screen and (max-width: 768px) {

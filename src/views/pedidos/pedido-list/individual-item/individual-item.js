@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Row, Col, Button, Container } from 'react-bootstrap';
+import { Row, Col, Button, Container, Nav } from 'react-bootstrap';
 import './pedido.css';
 
 const IndividualItemPedido = ({ individualItem }) => {
@@ -18,11 +18,6 @@ const IndividualItemPedido = ({ individualItem }) => {
     })
 
 
-
-
-
-
-
     function ReptileListItems() {
         const reptiles = individualItem.item;
         return reptiles.map((reptile) =>
@@ -34,10 +29,14 @@ const IndividualItemPedido = ({ individualItem }) => {
                     <Col xs={5} className="col-pedido">
                         <Col xs={12} className="pedido-title">{reptile.title}</Col>
                         <Col xs={12} className="pedido-preco">
-                        R$ {reptile.price}
+                            R$ {reptile.price}
                         </Col>
                     </Col>
-                    <Col xs={4} className="col-pedido"><Button className='btn-download'>Baixar Imagem</Button></Col>
+                    <Col xs={4} className="col-pedido">
+                        <Nav.Link href={reptile.url} download target="_blank">
+                            <Button className='btn-download'>Baixar Imagem</Button>
+                        </Nav.Link>
+                    </Col>
                 </Row>
             </>
         );

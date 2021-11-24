@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 
 const ModalComp = ({ show, onHide }) => {
     const mensagem = "E aí gente! Venham aqui conhecer o site da sky, tenho certeza que irão gostar!! ";
-    const link = "https://sky-store.netlify.app/";
+    const link = "https://tsky-store.herokuapp.com/";
     return (
         <div id="share">
             {/*Modal  de Compartilhar */}
